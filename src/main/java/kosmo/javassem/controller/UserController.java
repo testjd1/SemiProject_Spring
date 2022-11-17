@@ -14,7 +14,8 @@ import kosmo.javassem.service.UserService;
 
 
 
-@RestController("/customer")
+@Controller
+@RequestMapping("customer")
 public class UserController {
   
    @Autowired
@@ -22,10 +23,11 @@ public class UserController {
 
    
        //DB 안 거치고 화면만 띄우는 것들 >> 매번매번 MAPPING 하지 않고 여기 거치도록
-      @RequestMapping("/{step}.do")
-      public String viewPage(@PathVariable String step) {
-         System.out.println("경로:" + step);
-         return step;
+      
+      @RequestMapping("/{url}.do")
+      public String userJoin(@PathVariable String url) {
+      System.out.println("경로:" + url);
+       return "/customer/" + url;
       }
       
    /*   
