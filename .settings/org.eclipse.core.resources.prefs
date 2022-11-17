@@ -1,4 +1,4 @@
 eclipse.preferences.version=1
-encoding//src/main/webapp/resources/board.jsp=UTF-8
-encoding//src/main/webapp/resources/colorlib-error-404-12/index.jsp=UTF-8
-encoding//src/main/webapp/resources/story.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/customer/board/board.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/customer/colorlib-error-404-12/index.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/customer/story/story.jsp=UTF-8
