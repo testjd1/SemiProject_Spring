@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="QnaDAO">
+
+	
+	<!-- oracle 인 경우 	-->
+	<insert id="insertBoard" parameterType="kosmo.javassem.domain.QnaVO">
+		INSERT INTO Qna(SEQ, USERID, TITLE, REGDATE, CONTENT, PASS)
+		VALUES(Qna_seq.nextval,
+			#{userid}, #{title}, sysdate, #{content}, #{pass})
+	</insert> 
+	
+
+<!-- 
+	<update id="updateBoard" parameterType="kosmo.javassem.domain.BoardVO">
+		<![CDATA[
+		UPDATE BOARD1 SET
+		TITLE = #{title},
+		CONTENT = #{content}
+		WHERE SEQ = #{seq}
+		]]>
+	</update>
+	
+	<delete id="deleteBoard" parameterType="kosmo.javassem.domain.BoardVO">
+		<![CDATA[
+		DELETE BOARD1
+		WHERE SEQ = #{seq}
+		]]>
+	</delete>
+ -->	
+	
+	<select id="getBoard" resultType="kosmo.javassem.domain.QnaVO">
+		<![CDATA[
+		SELECT seq, userid, title, regdate, content, pass
+		FROM Qna
+		WHERE SEQ = #{seq}
+		]]>
+	</select>
+	
+		
+	<select id="getBoardList" resultType="kosmo.javassem.domain.QnaVO" >
+			
+			SELECT *
+			FROM Qna
+			ORDER BY SEQ DESC
+		
+	</select> 
+	
+	
+</mapper>

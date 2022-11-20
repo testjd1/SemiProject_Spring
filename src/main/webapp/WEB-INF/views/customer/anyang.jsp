@@ -7,74 +7,146 @@
 <!DOCTYPE HTML>
 
 <html>
-   <head>
+<head>
 
-      <title>S.o.S escape</title>
-      <meta charset="utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-      <% String pjName = "/sosBoard"; %>
-      <link rel="stylesheet" href='<%=pjName%>/resources/assets/css/main.css'>
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
-     
-   </head>
-   <body class="is-preload">
-      <div id="page-wrapper">
+<title>S.o.S escape</title>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, user-scalable=no" />
+<% String pjName = "/sosBoard"; %>
 
-        <!-- Header -->
-            <header id="header">
-            
-            </header>
-            
-         <!-- Nav -->
-         
-            <nav id="nav">
-               <div id="navImage">
-                  <a href="index.do"><img src="<%=pjName%>/resources/images/logo2.png" height="138px"></a>
+<!-- 로그인, 모달  jquery-->
+<script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+
+<!-- modal js -->
+<script src="<%=pjName%>/resources/assets/js/modal.js"></script>
+
+<!-- login css -->
+<link rel="stylesheet" href='<%=pjName%>/resources/assets/css/login.css'>
+
+<!-- 모달  css-->
+<link rel="stylesheet" href='<%=pjName%>/resources/assets/css/modal.css'>
+<!-- main css -->
+<link rel="stylesheet" href='<%=pjName%>/resources/assets/css/main.css'>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+
+</head>
+<body class="is-preload">
+	<div id="page-wrapper">
+
+		<!-- Header -->
+		<header id="header"> </header>
+
+<!-- login Modal -->
+      <div class="modal-wrapper">
+         <a class="btn-close trigger" href="#">Close</a>
+         <div class="modal">
+            <!--모달에 넣고싶은 내용 넣기-->
+
+         <div class="form-structor">
+      <div class="signup">
+         <h2 class="form-title" id="signup">
+            <span>or</span>Sign up
+         </h2>
+         <div class="form-holder">
+            <form method="POST" id="insert-customer" action="insertCustomer.do">
+
+               <input type="text" class="input" placeholder="id" name="userid">
+               <input type="text" class="input" placeholder="Name" name="name" />
+               <input type="password" class="input" placeholder="Password"
+                  name="pass" /> <input type="email" class="input"
+                  placeholder="Email" name="email" /> <input type="text"
+                  class="input" placeholder="tel" name="tel" />
+
+               <!--<button class="submit-btn">OK</button> -->
+
+               <input type="submit" class="submit-btn" value="Submit"
+                  name="submit" />
+            </form>
+         </div>
+      </div>
+
+      <div class="login slide-up">
+         <div class="center">
+            <h2 class="form-title" id="login">
+               <span>or</span>Log in
+            </h2>
+            <form method="POST" id="insert-customer" action="loginCustomer.do">
+               <div class="form-holder">
+                  <input type="text" class="input" placeholder="id" name="userid" />
+                  <!--  ${sessionScope.loginId}-->
+                  <input type="password" class="input" placeholder="Password"
+                     name="pass" />
                </div>
-                              
-               <ul>
-                  <li class="current"><a href="index.do">Home</a></li>
-                  
-                  <li><a href="story.do">Story</a></li>
-                  <li><a href="location.do">Location</a>
-                     <ul>
-                        <li><a href="hongdae.do">홍대</a></li>
-                        <li><a href="anyang.do">안양</a></li>
-                        <li><a href="gumi.do">구미</a></li>
-                     </ul>
-                  
-                  
-                  </li>
-                  <li><a href="theme.do">Theme</a>
-                     <ul>
-                        <li><a href="theme.do">공포</a></li>
-                        <li><a href="infiltration.do">잠입</a></li>
-                        <li><a href="comic.do">코믹</a></li>
-                        <li><a href="fantasy.do">판타지</a></li>
-                        <li><a href="emotion.do">감성</a></li>
-                        <li><a href="error.do">에러페이지</a></li>
-                     </ul>
-                  </li>
-                  <li><a href="qna.do">Q&A</a></li>
-                  <li><a href="board.do">Board</a></li>
-                  <li><a href="mypage.do">Mypage</a></li>
-                  <li><a href="login.do">Login</a></li>
-               </ul>
-            </nav>
+               <!--  <button class="submit-btn">Log in</button>-->
+               <input type="submit" class="submit-btn" value="Log in" name="login" />
+            </form>
 
-         <!-- Main -->
-            <section id="main">
-               <div class="container">
-                  <div class="row">
-                     
-                        <div class="sidebar">
+         </div>
+      </div>
+   </div>
+         </div>
+      </div>
+      <!-- 모달 끝!!! -->
 
-                           <!-- Sidebar -->
+		<!-- Nav -->
 
-                              <!-- Recent Posts -->
-                              <div id="googleMap" style="width: 70%; height: 400px; width:1000px;" ></div>
+		<nav id="nav">
+			<div id="navImage">
+				<a href="../customer/index.do"><img
+					src="<%=pjName%>/resources/images/logo2.png" height="138px"></a>
+			</div>
 
-           <script>
+			<ul>
+				<li class="current"><a href="../customer/index.do">Home</a></li>
+
+				<li><a href="../customer/story.do">Story</a></li>
+				<li><a href="../customer/location.do">Location</a>
+					<ul>
+						<li><a href="../customer/hongdae.do">홍대</a></li>
+						<li><a href="../customer/anyang.do">안양</a></li>
+						<li><a href="../customer/gumi.do">구미</a></li>
+					</ul></li>
+				<li><a href="../customer/theme.do">Theme</a>
+					<ul>
+						<li><a href="../customer/horror.do">공포</a></li>
+						<li><a href="../customer/infiltration.do">잠입</a></li>
+						<li><a href="../customer/comic.do">코믹</a></li>
+						<li><a href="../customer/fantasy.do">판타지</a></li>
+						<li><a href="../customer/emotion.do">감성</a></li>
+						<li><a href="../customer/error.do">에러페이지</a></li>
+					</ul></li>
+				<li><a href="../qna/getQnaList.do">Q&A</a></li>
+				<li><a href="../board/getBoardList.do">Board</a></li>
+				<c:if test="${sessionScope.loginId==null}">
+					<li><a class="btn trigger" href="../customer/login.do">Login</a></li>
+				</c:if>
+				<c:if test="${sessionScope.loginId!=null}">
+					<li><a href="../customer/mypage.do">Mypage</a></li>
+					<li><a class="btn trigger" href="logout.do">Logout</a></li>
+
+				</c:if>
+
+
+
+			</ul>
+		</nav>
+
+		<!-- Main -->
+		<section id="main">
+			<div class="container">
+				<div class="row">
+
+					<div class="sidebar">
+
+						<!-- Sidebar -->
+
+						<!-- Recent Posts -->
+						<div id="googleMap"
+							style="width: 70%; height: 400px; width: 1000px;"></div>
+
+						<script>
            function myMap(){
             var mapOptions = { 
                center:new google.maps.LatLng(37.4025, 126.9222),
@@ -86,135 +158,144 @@
                 document.getElementById("googleMap") 
                , mapOptions );
          }
-      </script> 
-      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDogecLb7PjMiFZvVIeUYhUI9-Kgse6hmg&callback=myMap"></script>
-                                
-
-       <section class="m">
-
-            <br/>
-                
-                <h2>주소</h2> <hr/>
-             <i class="fa-solid fa-location-dot">  경기 안양시 만안구 안양동 88-1 엔터식스 7층</i><br/><br/>
-
-          <h2>전화</h2> <hr/>
-
-             <i class="fa-solid fa-phone"> 031-1234-5678</i><br/><br/>
+      </script>
+						<script
+							src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDogecLb7PjMiFZvVIeUYhUI9-Kgse6hmg&callback=myMap"></script>
 
 
+						<section class="m">
 
-          <h2>찾아오시는 길</h2>  <hr/>
-          <i class="fa-solid fa-train-subway">  지하철: 1호선 | 안양역 1번 출구 연결 </i><br/>
-          <i class="fa-sharp fa-solid fa-bus-simple"> 버스: [안양역 앞] <br/>
-            1, 2, 3, 3-1, 6, 9, 15-1, 52, 83, 303, 333, 1303, 1650, 3330 <br/><br/>
-             [안양역 건너편] <br/>
-            2, 6-3, 11, 12, 55, 81 <br/><br/>
-             [안양역 뒷편] <br/>
-            5-1 <br/><br/>
-             [안양역 시외버스터미널] <br/>
-            4200-1</i><br/><br/>
-      
+							<br />
 
-          <h2>주차 안내</h2> <hr/>
-          <i class="fa-solid fa-square-parking"> [주차요금 안내]</i><br/>
-           <h1> 주차 할인권 등록 시 당일 최대 3시간 무료 <br/>
-            (기본요금 최초 30분 1,500원 / 초과 시 30분당 1,500원)</h1> 
-          <h1> [주차 정산]<br/> 무인정산기 활용 사전 정산<br/><br/>
-            [무인정산기 위치] <br/>주차장 (2층, M3층, 3층, 4층) <br/>
-          </h1>
-          
-          
-         </section>
+							<h2>주소</h2>
+							<hr />
+							<i class="fa-solid fa-location-dot"> 경기 안양시 만안구 안양동 88-1 엔터식스
+								7층</i><br />
+							<br />
 
-                           
-                        </div>
-                     </div>
-                     
-                    
+							<h2>전화</h2>
+							<hr />
+
+							<i class="fa-solid fa-phone"> 031-1234-5678</i><br />
+							<br />
 
 
 
-
-                     <div class="col-12">
-
-                        <!-- Features -->
-                           <section class="box features">
-                              
-                              <div>
-                                 <div class="row">
-                                    <div class="col-3 col-6-medium col-12-small">
-
-                                       <!-- Feature -->
-                                       
-
-                                    </div>
-                                    <div class="col-3 col-6-medium col-12-small">
-
-                                       <!-- Feature -->
-                                       
-
-                                    </div>
-                                    <div class="col-3 col-6-medium col-12-small">
-
-                                       <!-- Feature -->
-                                       
-                                    </div>
-                                    <div class="col-3 col-6-medium col-12-small">
-
-                                       <!-- Feature -->
-                                       
-
-                                    </div>
-                                    <div class="col-12">
-                                       
-                                    </div>
-                                 </div>
-                              </div>
-                           </section>
-
-                     </div>
-                  </div>
-               </div>
-            </section>
-
-         <!-- Footer -->
-            <footer id="footer">
-               <div class="container">
-                  <div class="row gtr-200">
-                     <div class="col-12">
-
-                        <!-- About -->
-                        
+							<h2>찾아오시는 길</h2>
+							<hr />
+							<i class="fa-solid fa-train-subway"> 지하철: 1호선 | 안양역 1번 출구 연결
+							</i><br /> <i class="fa-sharp fa-solid fa-bus-simple"> 버스: [안양역
+								앞] <br /> 1, 2, 3, 3-1, 6, 9, 15-1, 52, 83, 303, 333, 1303,
+								1650, 3330 <br />
+							<br /> [안양역 건너편] <br /> 2, 6-3, 11, 12, 55, 81 <br />
+							<br /> [안양역 뒷편] <br /> 5-1 <br />
+							<br /> [안양역 시외버스터미널] <br /> 4200-1
+							</i><br />
+							<br />
 
 
-                     </div>
-                     <div class="col-12">
+							<h2>주차 안내</h2>
+							<hr />
+							<i class="fa-solid fa-square-parking"> [주차요금 안내]</i><br />
+							<h1>
+								주차 할인권 등록 시 당일 최대 3시간 무료 <br /> (기본요금 최초 30분 1,500원 / 초과 시 30분당
+								1,500원)
+							</h1>
+							<h1>
+								[주차 정산]<br /> 무인정산기 활용 사전 정산<br />
+								<br /> [무인정산기 위치] <br />주차장 (2층, M3층, 3층, 4층) <br />
+							</h1>
 
-                        <!-- Contact -->
-                          
 
-                     </div>
-                  </div>
+						</section>
 
-                  <!-- Copyright -->
-                     <div id="copyright">
-                      
 
-                     </div>
+					</div>
+				</div>
 
-               </div>
-            </footer>
 
-      </div>
 
-      <!-- Scripts -->
-     <script src="<%=pjName%>/resources/assets/js/jquery.min.js"></script>
-         <script src="<%=pjName%>/resources/assets/js/jquery.dropotron.min.js"></script>
-         <script src="<%=pjName%>/resources/assets/js/jquery.scrolly.min.js"></script>
-         <script src="<%=pjName%>/resources/assets/js/browser.min.js"></script>
-         <script src="<%=pjName%>/resources/assets/js/breakpoints.min.js"></script>
-         <script src="<%=pjName%>/resources/assets/js/util.js"></script>
-         <script src="<%=pjName%>/resources/assets/js/main.js"></script>
 
-   </body>
+
+
+				<div class="col-12">
+
+					<!-- Features -->
+					<section class="box features">
+
+						<div>
+							<div class="row">
+								<div class="col-3 col-6-medium col-12-small">
+
+									<!-- Feature -->
+
+
+								</div>
+								<div class="col-3 col-6-medium col-12-small">
+
+									<!-- Feature -->
+
+
+								</div>
+								<div class="col-3 col-6-medium col-12-small">
+
+									<!-- Feature -->
+
+								</div>
+								<div class="col-3 col-6-medium col-12-small">
+
+									<!-- Feature -->
+
+
+								</div>
+								<div class="col-12"></div>
+							</div>
+						</div>
+					</section>
+
+				</div>
+			</div>
+	</div>
+	</section>
+
+	<!-- Footer -->
+	<footer id="footer">
+		<div class="container">
+			<div class="row gtr-200">
+				<div class="col-12">
+
+					<!-- About -->
+
+
+
+				</div>
+				<div class="col-12">
+
+					<!-- Contact -->
+
+
+				</div>
+			</div>
+
+			<!-- Copyright -->
+			<div id="copyright"></div>
+
+		</div>
+	</footer>
+
+	</div>
+
+	<script src="<%=pjName%>/resources/assets/js/jquery.min.js"></script>
+	<script src="<%=pjName%>/resources/assets/js/jquery.dropotron.min.js"></script>
+	<script src="<%=pjName%>/resources/assets/js/jquery.scrolly.min.js"></script>
+	<script src="<%=pjName%>/resources/assets/js/browser.min.js"></script>
+	<script src="<%=pjName%>/resources/assets/js/breakpoints.min.js"></script>
+	<script src="<%=pjName%>/resources/assets/js/util.js"></script>
+	<script src="<%=pjName%>/resources/assets/js/main.js"></script>
+	<script
+      src="<%=pjName%>/resources/https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!-- login  js 추가-->
+   <script src="<%=pjName%>/resources/assets/js/login.js"></script>
+
+</body>
 </html>

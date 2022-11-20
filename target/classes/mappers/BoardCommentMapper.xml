@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BoardCommentVO">
+
+	<insert id="insertReply" parameterType="kosmo.javassem.domain.BoardCommentVO">
+	
+		<!-- 오라클-->
+		INSERT INTO BoardComment(SEQ, USERID, COMM, PASS, commtime)
+		VALUES(BoardComment_seq.nextval,
+			#{userid}, #{comm}, #{pass}, sysdate)
+	</insert>
+
+
+	<select id='selectAllReply' resultType='kosmo.javassem.domain.BoardCommentVO'>
+		SELECT * FROM BoardComment
+	</select>
+	
+	<delete id='deleteReply' parameterType='kosmo.javassem.domain.BoardCommentVO'>
+		DELETE FROM BoardComment WHERE seq=#{seq}
+		</delete>
+ 
+</mapper>

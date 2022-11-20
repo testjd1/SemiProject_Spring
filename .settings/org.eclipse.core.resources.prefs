@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
-encoding//src/main/webapp/WEB-INF/views/customer/board.jsp=UTF-8
-encoding//src/main/webapp/WEB-INF/views/customer/location.jsp=UTF-8
-encoding//src/main/webapp/WEB-INF/views/customer/theme.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/customer/comic.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/customer/emotion.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/customer/login.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/customer/story.jsp=UTF-8
