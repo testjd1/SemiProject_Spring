@@ -39,12 +39,16 @@
 	</select>
 	
 		
-	<select id="getBoardList" resultType="kosmo.javassem.domain.QnaVO" >
+   	<select id="getBoardList" parameterType="hashmap" resultType="kosmo.javassem.domain.QnaVO"  >
 			
 			SELECT *
-			FROM Qna
+			FROM QNA
+				<where>
+				<if test="searchCondition != null">
+					${searchCondition} like '%${searchKeyword}%'
+				</if>
+				</where>
 			ORDER BY SEQ DESC
-		
 	</select> 
 	
 	

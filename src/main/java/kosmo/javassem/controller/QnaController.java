@@ -1,6 +1,8 @@
 package kosmo.javassem.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,7 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
+import kosmo.javassem.domain.BoardVO;
 import kosmo.javassem.domain.QnaVO;
 import kosmo.javassem.service.QnaService;
 
@@ -33,17 +37,22 @@ public class QnaController {
 	
 		// 글 목록 검색
 		@RequestMapping("/getQnaList.do")
-		public void getQnaList(QnaVO vo, Model model) {
-			model.addAttribute("qnaList", boardService.getBoardList(vo));
+		public void getQnaList(String searchCondition, String searchKeyword, Model m) {
+			HashMap map=new HashMap();
+	    	map.put("searchKeyword", searchKeyword);
+	    	map.put("searchCondition", searchCondition);
+	    	
+	    	List<QnaVO> list=boardService.getBoardList(map);
+			m.addAttribute("qnaList", list);
 			// ViewResolver를 지정하지 않으면 아래처럼 페이지명 지정
 			// return "views/getBoardList.jsp"; // View 이름 리턴 
 		}
 	
 		// 글 등록
-		@RequestMapping(value = "/saveBoard.do")
+	    @RequestMapping(value = "/insertQna.do" , method = RequestMethod.POST)
 		public String insertBoard(QnaVO vo) throws IOException {
 			boardService.insertBoard(vo);
-			return "redirect:/getQnaList.do";
+			return "redirect:/qna/getQnaList.do";
 		}
 
 		// 글 수정

@@ -1,5 +1,6 @@
 package kosmo.javassem.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import kosmo.javassem.domain.BoardVO;
@@ -21,5 +22,6 @@ public interface BoardService {
 	BoardVO getBoard(BoardVO vo);
 
 	// 글 목록 조회
-	List<BoardVO> getBoardList(BoardVO vo);
+	List<BoardVO> getBoardList(HashMap map);
+
 }

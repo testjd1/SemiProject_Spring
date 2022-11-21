@@ -1,5 +1,6 @@
 package kosmo.javassem.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import kosmo.javassem.domain.BoardVO;
@@ -22,5 +23,5 @@ public interface QnaService {
 	QnaVO getBoard(QnaVO vo);
 
 	// 글 목록 조회
-	List<QnaVO> getBoardList(QnaVO vo);
+	List<QnaVO> getBoardList(HashMap map);
 }

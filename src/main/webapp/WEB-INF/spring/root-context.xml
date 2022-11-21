@@ -23,6 +23,7 @@
            <value>kosmo.javassem.domain.BoardVO</value>
            <value>kosmo.javassem.domain.QnaVO</value>
            <value>kosmo.javassem.domain.BoardCommentVO</value>
+           <value>kosmo.javassem.domain.QnaCommentVO</value>
         </list>
     </property>
 

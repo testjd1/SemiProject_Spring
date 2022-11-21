@@ -13,7 +13,9 @@
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
-<% String pjName = "/sosBoard"; %>
+<%
+	String pjName = "/sosBoard";
+%>
 
 <!-- 로그인, 모달  jquery-->
 <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
@@ -26,10 +28,29 @@
 
 <!-- 모달  css-->
 <link rel="stylesheet" href='<%=pjName%>/resources/assets/css/modal.css'>
+
 <!-- main css -->
 <link rel="stylesheet" href='<%=pjName%>/resources/assets/css/main.css'>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+	
+<!-- Favicon -->
+<link rel="icon" href='<%=pjName%>/resources/images/favicon.ico'>	
+	
+<!-- 로그인 script -->
+
+<script>
+ 
+   var t = '${sessionScope.sok}';
+   if (t == '1') {
+      alert('회원 가입이 완료되었습니다! 로그인창을 통해 로그인해주세요');
+   } else if (t == '9') {
+      alert('중복된 아이디입니다. 다른 아이디를 입력해주세요!')
+   } else if (t == '5') {
+      alert('로그인 오류! 다시 입력해주세요')
+   }
+</script>
+	
 
 </head>
 <body class="is-preload">
@@ -38,57 +59,60 @@
 		<!-- Header -->
 		<header id="header"> </header>
 
-<!-- login Modal -->
-      <div class="modal-wrapper">
-         <a class="btn-close trigger" href="#">Close</a>
-         <div class="modal">
-            <!--모달에 넣고싶은 내용 넣기-->
+		<!-- login Modal -->
+		<div class="modal-wrapper">
+			<a class="btn-close trigger" href="#">Close</a>
+			<div class="modal">
+				<!--모달에 넣고싶은 내용 넣기-->
 
-         <div class="form-structor">
-      <div class="signup">
-         <h2 class="form-title" id="signup">
-            <span>or</span>Sign up
-         </h2>
-         <div class="form-holder">
-            <form method="POST" id="insert-customer" action="insertCustomer.do">
+				<div class="form-structor">
+					<div class="signup">
+						<h2 class="form-title" id="signup">
+							<span>or</span>Sign up
+						</h2>
+						<div class="form-holder">
+							<form method="POST" id="insert-customer"
+								action="insertCustomer.do">
 
-               <input type="text" class="input" placeholder="id" name="userid">
-               <input type="text" class="input" placeholder="Name" name="name" />
-               <input type="password" class="input" placeholder="Password"
-                  name="pass" /> <input type="email" class="input"
-                  placeholder="Email" name="email" /> <input type="text"
-                  class="input" placeholder="tel" name="tel" />
+								<input type="text" class="input" placeholder="id" name="userid">
+								<input type="text" class="input" placeholder="Name" name="name" />
+								<input type="password" class="input" placeholder="Password"
+									name="pass" /> <input type="email" class="input"
+									placeholder="Email" name="email" /> <input type="text"
+									class="input" placeholder="tel" name="tel" />
 
-               <!--<button class="submit-btn">OK</button> -->
+								<!--<button class="submit-btn">OK</button> -->
 
-               <input type="submit" class="submit-btn" value="Submit"
-                  name="submit" />
-            </form>
-         </div>
-      </div>
+								<input type="submit" class="submit-btn" value="Submit"
+									name="submit" />
+							</form>
+						</div>
+					</div>
 
-      <div class="login slide-up">
-         <div class="center">
-            <h2 class="form-title" id="login">
-               <span>or</span>Log in
-            </h2>
-            <form method="POST" id="insert-customer" action="loginCustomer.do">
-               <div class="form-holder">
-                  <input type="text" class="input" placeholder="id" name="userid" />
-                  <!--  ${sessionScope.loginId}-->
-                  <input type="password" class="input" placeholder="Password"
-                     name="pass" />
-               </div>
-               <!--  <button class="submit-btn">Log in</button>-->
-               <input type="submit" class="submit-btn" value="Log in" name="login" />
-            </form>
+					<div class="login slide-up">
+						<div class="center">
+							<h2 class="form-title" id="login">
+								<span>or</span>Log in
+							</h2>
+							<form method="POST" id="insert-customer"
+								action="loginCustomer.do">
+								<div class="form-holder">
+									<input type="text" class="input" placeholder="id" name="userid" />
+									<!--  ${sessionScope.loginId}-->
+									<input type="password" class="input" placeholder="Password"
+										name="pass" />
+								</div>
+								<!--  <button class="submit-btn">Log in</button>-->
+								<input type="submit" class="submit-btn" value="Log in"
+									name="login" />
+							</form>
 
-         </div>
-      </div>
-   </div>
-         </div>
-      </div>
-      <!-- 모달 끝!!! -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 모달 끝!!! -->
 
 		<!-- Nav -->
 
@@ -108,25 +132,27 @@
 						<li><a href="../customer/anyang.do">안양</a></li>
 						<li><a href="../customer/gumi.do">구미</a></li>
 					</ul></li>
-				<li><a href="../customer/theme.do">Theme</a>
-					<ul>
-						<li><a href="../customer/horror.do">공포</a></li>
-						<li><a href="../customer/infiltration.do">잠입</a></li>
-						<li><a href="../customer/comic.do">코믹</a></li>
-						<li><a href="../customer/fantasy.do">판타지</a></li>
-						<li><a href="../customer/emotion.do">감성</a></li>
-						<li><a href="../customer/error.do">에러페이지</a></li>
-					</ul></li>
+				 <li><a href="../theme/theme.do">Theme</a>
+               <ul>
+                  <li><a href="../theme/theme.do?themegenre=horror">공포</a></li>
+                  <li><a href="../theme/theme.do?themegenre=infiltration">잠입</a></li>
+                  <li><a href="../theme/theme.do?themegenre=comic">코믹</a></li>
+                  <li><a href="../theme/theme.do?themegenre=fantasy">판타지</a></li>
+                  <li><a href="../theme/theme.do?themegenre=emotion">감성</a></li>
+                  <li><a href="../customer/error.do">에러페이지</a></li>
+               </ul></li>
 				<li><a href="../qna/getQnaList.do">Q&A</a></li>
 				<li><a href="../board/getBoardList.do">Board</a></li>
 				<c:if test="${sessionScope.loginId==null}">
-					<li><a class="btn trigger" href="../customer/login.do">Login</a></li>
+					<li><a id="gologin" class="btn trigger"
+						href="../customer/login.do">Login</a></li>
 				</c:if>
 				<c:if test="${sessionScope.loginId!=null}">
 					<li><a href="../customer/mypage.do">Mypage</a></li>
-					<li><a class="btn trigger" href="logout.do">Logout</a></li>
+					<li><a class="btn" href="../customer/logout.do">Logout</a></li>
 
 				</c:if>
+
 
 
 
@@ -147,18 +173,19 @@
 							style="width: 70%; height: 400px; width: 1000px;"></div>
 
 						<script>
-           function myMap(){
-            var mapOptions = { 
-               center:new google.maps.LatLng(37.4025, 126.9222),
-               zoom:18,
-               
-           };
-       
-           var map = new google.maps.Map( 
-                document.getElementById("googleMap") 
-               , mapOptions );
-         }
-      </script>
+							function myMap() {
+								var mapOptions = {
+									center : new google.maps.LatLng(37.4025,
+											126.9222),
+									zoom : 18,
+
+								};
+
+								var map = new google.maps.Map(document
+										.getElementById("googleMap"),
+										mapOptions);
+							}
+						</script>
 						<script
 							src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDogecLb7PjMiFZvVIeUYhUI9-Kgse6hmg&callback=myMap"></script>
 
@@ -170,14 +197,12 @@
 							<h2>주소</h2>
 							<hr />
 							<i class="fa-solid fa-location-dot"> 경기 안양시 만안구 안양동 88-1 엔터식스
-								7층</i><br />
-							<br />
+								7층</i><br /> <br />
 
 							<h2>전화</h2>
 							<hr />
 
-							<i class="fa-solid fa-phone"> 031-1234-5678</i><br />
-							<br />
+							<i class="fa-solid fa-phone"> 031-1234-5678</i><br /> <br />
 
 
 
@@ -186,12 +211,10 @@
 							<i class="fa-solid fa-train-subway"> 지하철: 1호선 | 안양역 1번 출구 연결
 							</i><br /> <i class="fa-sharp fa-solid fa-bus-simple"> 버스: [안양역
 								앞] <br /> 1, 2, 3, 3-1, 6, 9, 15-1, 52, 83, 303, 333, 1303,
-								1650, 3330 <br />
-							<br /> [안양역 건너편] <br /> 2, 6-3, 11, 12, 55, 81 <br />
-							<br /> [안양역 뒷편] <br /> 5-1 <br />
-							<br /> [안양역 시외버스터미널] <br /> 4200-1
-							</i><br />
-							<br />
+								1650, 3330 <br /> <br /> [안양역 건너편] <br /> 2, 6-3, 11, 12, 55,
+								81 <br /> <br /> [안양역 뒷편] <br /> 5-1 <br /> <br /> [안양역
+								시외버스터미널] <br /> 4200-1
+							</i><br /> <br />
 
 
 							<h2>주차 안내</h2>
@@ -202,8 +225,8 @@
 								1,500원)
 							</h1>
 							<h1>
-								[주차 정산]<br /> 무인정산기 활용 사전 정산<br />
-								<br /> [무인정산기 위치] <br />주차장 (2층, M3층, 3층, 4층) <br />
+								[주차 정산]<br /> 무인정산기 활용 사전 정산<br /> <br /> [무인정산기 위치] <br />주차장
+								(2층, M3층, 3층, 4층) <br />
 							</h1>
 
 
@@ -293,9 +316,9 @@
 	<script src="<%=pjName%>/resources/assets/js/util.js"></script>
 	<script src="<%=pjName%>/resources/assets/js/main.js"></script>
 	<script
-      src="<%=pjName%>/resources/https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<!-- login  js 추가-->
-   <script src="<%=pjName%>/resources/assets/js/login.js"></script>
+		src="<%=pjName%>/resources/https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<!-- login  js 추가-->
+	<script src="<%=pjName%>/resources/assets/js/login.js"></script>
 
 </body>
 </html>

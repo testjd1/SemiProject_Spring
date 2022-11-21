@@ -1,6 +1,8 @@
 package kosmo.javassem.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,12 +27,17 @@ public class BoardController {
       public String viewPage(@PathVariable String step) {
          return "/board/"+step;
       }
-   
+
       // 글 목록 검색
       @RequestMapping("/getBoardList.do")
-      public void getBoardList(BoardVO vo, Model model) {
-         System.out.println("getBoardList.do 요청");
-         model.addAttribute("boardList", boardService.getBoardList(vo));
+      public void getBoardList(String searchCondition, String searchKeyword, Model m) {
+    	  
+    	HashMap map=new HashMap();
+    	map.put("searchKeyword", searchKeyword);
+    	map.put("searchCondition", searchCondition);
+    	
+    	List<BoardVO> list=boardService.getBoardList(map);
+        m.addAttribute("boardList", list);
          // ViewResolver를 지정하지 않으면 아래처럼 페이지명 지정
          // return "views/getBoardList.jsp"; // View 이름 리턴
       }
@@ -59,11 +66,11 @@ public class BoardController {
       // 글 상세 조회
       @RequestMapping("/getBoard.do")
       public void getBoard(BoardVO vo, Model model) {
-         System.out.println(">>" + vo);
          BoardVO list =  boardService.getBoard(vo);
-         System.out.println(">>>" + list);
          model.addAttribute("board", list); // Model 정보 저장         
       }
+      
+      
       
       //------------------------------------------
       @RequestMapping("/test.do")

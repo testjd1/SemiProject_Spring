@@ -28,31 +28,36 @@ public class UserMemberController {
       
       @RequestMapping(value = "/{url}.do")
       public String userJoin(@PathVariable String url) {
-      System.out.println("경로:" + url);
+      System.out.println("customer 경로:" + url);
        return "/customer/" + url;
       }
       
-      // 회원 가입
+      // 회원 가입 아이디 중복일때 :9 /  회원가입 완료: 1
       @RequestMapping(value = "insertCustomer.do", method = RequestMethod.POST)
       public String insertCustomer(UserMemberVO vo, HttpSession session, HttpServletRequest request) throws IOException {
          System.out.println("=>UserController.java::insertCustomer.do");
         if (userService.checkId(vo) != null) {
            // id exists in DB. Make customer input different id
            session.setAttribute("sok", 9);
-           return "/customer/login"; 
+           return "/customer/index"; 
         }
         int insertResult = userService.insertCustomer(vo);
         System.out.println("  USER INSERTED::" + insertResult);
         request.setAttribute("ok", insertResult);
-        session.setAttribute("sok", insertResult);
-        return "/customer/login";
+        session.setAttribute("sok",1);
+        return "/customer/index";
       }
-      @RequestMapping(value = "logout.do")
+      
+      // 로그아웃
+      @RequestMapping(value="logout.do")
      public String logout(HttpServletRequest request) {
+         System.out.println("logout.do-------------------------------");
         HttpSession session = request.getSession(true);
         session.invalidate();
-        return "redirect:index.do";
+        return "/customer/index";
      }
+      
+      // 로그인
       @RequestMapping(value = "loginCustomer.do")
      public String loginCustomer(UserMemberVO vo, HttpSession session) {
         System.out.println("=>UserController.java::loginCustomer.do :"+ vo   );
@@ -60,10 +65,11 @@ public class UserMemberController {
         if (loginResult != null) { // login success!
            session.setAttribute("loginId", vo.getUserid());
            session.setAttribute("loginPass",vo.getPass() );
-           return "redirect:index.do";
+           return "/customer/index";
         }
+        // 로그인 실패
         session.setAttribute("sok", 5);
-        return "/customer/login";
+        return "/customer/index";
      }
      // ---user login end
       

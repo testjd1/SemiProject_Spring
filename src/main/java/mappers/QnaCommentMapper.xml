@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="QnaCommentVO">
+
+	<insert id="insertReply2" parameterType="kosmo.javassem.domain.QnaCommentVO">
+		<!-- 오라클-->
+		INSERT INTO QnaComment(SEQ, USERID, COMM, bno, commtime)
+		VALUES(QnAComment_seq.nextval,
+			#{userid}, #{comm}, #{bno}, sysdate)
+	</insert>
+
+
+	<select id='selectAllReply2' parameterType='int' resultType='kosmo.javassem.domain.QnaCommentVO'>
+		SELECT * FROM QnaComment where bno = #{seq} order by seq desc
+	</select>
+	
+	<delete id='deleteReply2' parameterType='kosmo.javassem.domain.QnaCommentVO' >
+		DELETE FROM QnaComment WHERE seq = #{seq}
+		</delete>
+ 
+</mapper>

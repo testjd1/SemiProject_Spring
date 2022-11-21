@@ -1,5 +1,6 @@
 package kosmo.javassem.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import kosmo.javassem.domain.QnaVO;
@@ -13,5 +14,5 @@ public interface QnaDAO {
 
 	public QnaVO getBoard(QnaVO vo) ;
 
-	public List<QnaVO> getBoardList(QnaVO vo) ;
+	public List<QnaVO> getBoardList(HashMap map) ;
 }

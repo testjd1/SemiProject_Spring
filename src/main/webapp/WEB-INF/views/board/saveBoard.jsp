@@ -1,6 +1,7 @@
 <%@page contentType="text/html; charset=UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
-<html>
 <html>
       <title>S.o.S escape</title>
       <% String pjName = "/sosBoard"; %>
@@ -26,6 +27,23 @@
        
        <!-- Favicon -->
         <link rel="icon" href='<%=pjName%>/resources/images/favicon.ico'> 
+        
+        <!-- 로그인 script -->
+
+<script>
+ 
+   var t = '${sessionScope.sok}';
+   if (t == '1') {
+      alert('회원 가입이 완료되었습니다! 로그인창을 통해 로그인해주세요');
+   } else if (t == '9') {
+      alert('중복된 아이디입니다. 다른 아이디를 입력해주세요!')
+   } else if (t == '5') {
+      alert('로그인 오류! 다시 입력해주세요')
+   }
+      
+</script>
+        
+        
    </head>
    <body class="is-preload">
       <div id="page-wrapper">
@@ -80,6 +98,7 @@
    </div>
          </div>
       </div>
+      </div>
       <!-- 모달 끝!!! -->
 
          <!-- Nav -->
@@ -100,13 +119,13 @@
                   <li><a href="../customer/anyang.do">안양</a></li>
                   <li><a href="../customer/gumi.do">구미</a></li>
                </ul></li>
-            <li><a href="../customer/theme.do">Theme</a>
+          <li><a href="../theme/theme.do">Theme</a>
                <ul>
-                  <li><a href="../customer/theme.do">공포</a></li>
-                  <li><a href="../customer/infiltration.do">잠입</a></li>
-                  <li><a href="../customer/comic.do">코믹</a></li>
-                  <li><a href="../customer/fantasy.do">판타지</a></li>
-                  <li><a href="../customer/emotion.do">감성</a></li>
+                  <li><a href="../theme/theme.do?themegenre=horror">공포</a></li>
+                  <li><a href="../theme/theme.do?themegenre=infiltration">잠입</a></li>
+                  <li><a href="../theme/theme.do?themegenre=comic">코믹</a></li>
+                  <li><a href="../theme/theme.do?themegenre=fantasy">판타지</a></li>
+                  <li><a href="../theme/theme.do?themegenre=emotion">감성</a></li>
                   <li><a href="../customer/error.do">에러페이지</a></li>
                </ul></li>
             <li><a href="../qna/getQnaList.do">Q&A</a></li>
@@ -116,7 +135,7 @@
             </c:if>
             <c:if test="${sessionScope.loginId!=null}">
                <li><a href="../customer/mypage.do">Mypage</a></li>
-               <li><a class="btn trigger" href="logout.do">Logout</a></li>
+               <li><a class="btn" href="../customer/logout.do">Logout</a></li>
                
             </c:if>
 
@@ -152,10 +171,6 @@
             </tr>
             <!-- 추가항목 시작 -->
             <tr>
-               <td>이메일</td>
-               <td align="left"><input type="text" / name='email'></td>
-            </tr>
-            <tr>
                <td>비밀번호</td>
                <td align="left"><input type="text" name='pass'/></td>
             </tr>
@@ -167,7 +182,7 @@
          </table>
       </form>
       <hr>
-      <a href="getBoardList.do">글 목록 가기</a>
+      <a href="../board/getBoardList.do">글 목록 가기</a>
       </div>
       
       <!-- Scripts -->
@@ -178,7 +193,6 @@
          <script src="<%=pjName%>/resources/assets/js/breakpoints.min.js"></script>
          <script src="<%=pjName%>/resources/assets/js/util.js"></script>
          <script src="<%=pjName%>/resources/assets/js/main.js"></script>
-		 <script src='<%=pjName%>/resources/assets/js/reply.js' type="text/javascript"></script>
       <script
       src="<%=pjName%>/resources/https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!-- login  js 추가-->

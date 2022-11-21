@@ -21,8 +21,8 @@ public class BoardCommentServiceImpl implements BoardCommentService {
    }   
 
    // 댓글 목록
-   public List<BoardCommentVO> selectAllReply() {
-      return boardCommentDAO.selectAllReply();
+   public List<BoardCommentVO> selectAllReply(Integer seq) {
+      return boardCommentDAO.selectAllReply(seq);
    }
 
    // 댓글 삭제

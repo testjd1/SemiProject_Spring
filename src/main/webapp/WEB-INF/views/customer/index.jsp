@@ -48,6 +48,7 @@
 <link rel="stylesheet" href='<%=pjName%>/resources/assets/css/modal.css'>
 
 
+
 <!-- bxSlider -->
 
 <link rel="stylesheet"
@@ -58,11 +59,32 @@
 
 
 
+
+
 <!-- 로그인, 모달  jquery-->
 <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
 
 <!-- modal js -->
 <script src="<%=pjName%>/resources/assets/js/modal.js"></script>
+
+
+<!-- 로그인 script -->
+
+<script>
+ 
+   var t = '${sessionScope.sok}';
+   if (t == '1') {
+      alert('회원 가입이 완료되었습니다! 로그인창을 통해 로그인해주세요');
+   } else if (t == '9') {
+      alert('중복된 아이디입니다. 다른 아이디를 입력해주세요!')
+   } else if (t == '5') {
+      alert('로그인 오류! 다시 입력해주세요')
+   }
+      
+</script>
+
+
+
 
 </head>
 
@@ -90,23 +112,23 @@
                   <li><a href="../customer/anyang.do">안양</a></li>
                   <li><a href="../customer/gumi.do">구미</a></li>
                </ul></li>
-            <li><a href="../customer/theme.do">Theme</a>
+            <li><a href="../theme/theme.do">Theme</a>
                <ul>
-                  <li><a href="../customer/theme.do">공포</a></li>
-                  <li><a href="../customer/infiltration.do">잠입</a></li>
-                  <li><a href="../customer/comic.do">코믹</a></li>
-                  <li><a href="../customer/fantasy.do">판타지</a></li>
-                  <li><a href="../customer/emotion.do">감성</a></li>
+                  <li><a href="../theme/theme.do?themegenre=horror">공포</a></li>
+                  <li><a href="../theme/theme.do?themegenre=infiltration">잠입</a></li>
+                  <li><a href="../theme/theme.do?themegenre=comic">코믹</a></li>
+                  <li><a href="../theme/theme.do?themegenre=fantasy">판타지</a></li>
+                  <li><a href="../theme/theme.do?themegenre=emotion">감성</a></li>
                   <li><a href="../customer/error.do">에러페이지</a></li>
                </ul></li>
             <li><a href="../qna/getQnaList.do">Q&A</a></li>
             <li><a href="../board/getBoardList.do">Board</a></li>
             <c:if test="${sessionScope.loginId==null}">
-               <li><a class="btn trigger" href="../customer/login.do">Login</a></li>
+               <li><a id="gologin" class="btn trigger" href="../customer/login.do">Login</a></li>
             </c:if>
             <c:if test="${sessionScope.loginId!=null}">
                <li><a href="../customer/mypage.do">Mypage</a></li>
-               <li><a class="btn trigger" href="logout.do">Logout</a></li>
+               <li><a class="btn" href="../customer/logout.do">Logout</a></li>
                
             </c:if>
 
@@ -140,8 +162,8 @@
 
 
       <!-- login Modal -->
-      <div class="modal-wrapper">
-         <a class="btn-close trigger" href="#">Close</a>
+      <div class="modal-wrapper"  >
+         <a  id="close" class="btn-close trigger" href="#">Close</a>
          <div class="modal">
             <!--모달에 넣고싶은 내용 넣기-->
 
@@ -195,9 +217,7 @@
 
 
       <!-- 모달 끝!!! -->
-
-
-
+       
 
 
 
@@ -213,7 +233,7 @@
                   <!-- Blog -->
                   <section class="box blog">
                      <h2 class="major">
-                        <span>What about S.o.S?</span>
+                        <span style="font-family: GangwonEdu_OTFBoldA;">What about S.o.S?</span>
                      </h2>
                      <div>
                         <div class="row">
@@ -223,8 +243,8 @@
                                     <!-- Featured Post -->
                                     <article class="box post">
                                        <header>
-                                          <h3>
-                                             <a>ABOUT S.o.S</a>
+                                          <h3 style="font-family: GangwonEdu_OTFBoldA;">
+                                             <a >ABOUT S.o.S</a>
                                           </h3>
                                           <p style="font-family: GangwonEdu_OTFBoldA;">"준비에 관계
                                              없이, 열망을 실현하기 위한 명확한 계획을 세우고 즉시 착수하여 그 계획을 실행에 옮겨라."</p>
@@ -232,7 +252,7 @@
                                        </header>
                                        <a class="image featured"><img
                                           src="<%=pjName%>/resources/images/pado.png" height="600" /></a>
-                                       <p>Story설명설명</p>
+                                       <p style="font-family: GangwonEdu_OTFBoldA;">Story설명설명</p>
                                        <a href="story.do" class="button">Story</a>
                                     </article>
                                  </div>
@@ -250,7 +270,7 @@
 
                   <section class="box features">
                      <h2 class="major">
-                        <span>연속된 이야기를 함께 즐겨보세요!!</span>
+                        <span style="font-family: GangwonEdu_OTFBoldA;">연속된 이야기를 함께 즐겨보세요!</span>
                      </h2>
                      <div>
                         <div class="row">
@@ -262,13 +282,13 @@
                                     난이도 : ★★★ </br> 장르 : 판타지/감성</br> 시간 : 75m
                                  </p>
                                  <a class="image featured"><img
-                                    src="<%=pjName%>/resources/images/emotion_1.PNG" alt="" /></a>
+                                    src="<%=pjName%>/resources/images/emotion_1.jpg" alt="" /></a>
 
 
-                                 <h3>
+                                 <h3 style="font-family: GangwonEdu_OTFBoldA;">
                                     <a>[Ep1] Memory Company </a>
                                  </h3>
-                                 <p>Ep1 : 메모리 컴퍼니의 시작</p>
+                                 <p style="font-family: GangwonEdu_OTFBoldA;">Ep1 : 메모리 컴퍼니의 시작</p>
                               </section>
 
                            </div>
@@ -280,12 +300,12 @@
                                     난이도 : ★★★☆ </br> 장르 : 판타지/감성</br> 시간 : 75m
                                  </p>
                                  <a class="image featured"><img
-                                    src="<%=pjName%>/resources/images/emotion_2.png" alt="" /></a>
+                                    src="<%=pjName%>/resources/images/emotion_2.jpg" alt="" /></a>
 
-                                 <h3>
+                                 <h3 style="font-family: GangwonEdu_OTFBoldA;">
                                     <a>[Ep2] Film By Steve</a>
                                  </h3>
-                                 <p>Ep2 : 스티브의 한마디</p>
+                                 <p style="font-family: GangwonEdu_OTFBoldA;">Ep2 : 스티브의 한마디</p>
                               </section>
 
                            </div>
@@ -297,11 +317,11 @@
                                     난이도 : ★★★★☆ </br> 장르 : 판타지/감성</br> 시간 : 75m
                                  </p>
                                  <a class="image featured"><img
-                                    src="<%=pjName%>/resources/images/emotion_3.png" alt="" /></a>
-                                 <h3>
+                                    src="<%=pjName%>/resources/images/emotion_3.jpg" alt="" /></a>
+                                 <h3 style="font-family: GangwonEdu_OTFBoldA;">
                                     <a>[Ep3] Film By Eddy</a>
                                  </h3>
-                                 <p>Ep3 : 에디의 한마디</p>
+                                 <p style="font-family: GangwonEdu_OTFBoldA;">Ep3 : 에디의 한마디</p>
                               </section>
 
                            </div>
@@ -313,17 +333,17 @@
                                     난이도 : ★★★☆ </br> 장르 : 판타지/감성</br> 시간 : 75m
                                  </p>
                                  <a class="image featured"><img
-                                    src="<%=pjName%>/resources/images/emotion_4.png" alt="" /></a>
-                                 <h3>
+                                    src="<%=pjName%>/resources/images/emotion_4.jpg" alt="" /></a>
+                                 <h3 style="font-family: GangwonEdu_OTFBoldA;">
                                     <a>[Ep4] Film By Bob</a>
                                  </h3>
-                                 <p>Ep4 : 밥의 한마디</p>
+                                 <p style="font-family: GangwonEdu_OTFBoldA;">Ep4 : 밥의 한마디</p>
                               </section>
 
                            </div>
                            <div class="col-12">
                               <ul class="actions">
-                                 <li><a href="theme.do" class="button large">Theme</a></li>
+                                 <li><a href="../theme/theme.do" class="button large">Theme</a></li>
                                  <!--<li><a href="location/location.html" class="button alt large">Where</a></li>-->
                               </ul>
                            </div>
@@ -339,22 +359,22 @@
                      <ul class="special">
                         <li><img src="<%=pjName%>/resources/images/notice1.png"
                            alt="time" /><br />
-                        <p>
+                        <p style="font-family: GangwonEdu_OTFBoldA;">
                               원활한 게임을 위해<br /> 예약시간 10분 전에 도착하여<br /> 사전안내를 받으셔야합니다.
                            </p></li>
                         <li><img src="<%=pjName%>/resources/images/notice2.png"
                            alt="talk" /><br />
-                        <p>
+                        <p style="font-family: GangwonEdu_OTFBoldA;">
                               아직 체험하지 않은<br /> 분들을 위해 문제공유는<br /> 삼가 해주시기 바랍니다.
                            </p></li>
                         <li><img src="<%=pjName%>/resources/images/notice3.png"
                            alt="picture" /><br />
-                        <p>
+                        <p style="font-family: GangwonEdu_OTFBoldA;">
                               컨텐츠 보호를 위해<br /> 촬영을 금지합니다. 입장 전<br /> 소지품을 보관함에 보관해주세요.
                            </p></li>
                         <li><img src="<%=pjName%>/resources/images/notice4.png"
                            alt="knife" /><br />
-                        <p>
+                        <p style="font-family: GangwonEdu_OTFBoldA;">
                               고객님의 안전을 위해<br /> 라이터, 칼 등 위험물품은<br /> 반입이 금지됩니다.
                            </p>
                      </ul>
@@ -444,9 +464,6 @@
    <!-- login  js 추가-->
    <script src="<%=pjName%>/resources/assets/js/login.js"></script>
 
-
-
-
    <script>
          $( document ).ready( function() {
            $( '.slider' ).bxSlider( {
@@ -466,27 +483,12 @@
             maxSlides: 1,
             margin: 0 
          
-
-
-                 
-
            } );
          } );
         </script>
-        <script>
-   var t = $
-   {
-      sessionScope.sok
-   };
 
-   if (t == '1') {
-      alert('회원 가입이 완료되었습니다! 로그인창을 통해 로그인해주세요');
-   } else if (t == '9') {
-      alert('아이디 중복입니다. 다른 아이디를 입력해주세요!')
-   } else if (5 == '5') {
-      alert('로그인 오류! 다시 입력해주세요')
-   }
-</script>
+
+  
 </body>
-</html>
+
 </html>

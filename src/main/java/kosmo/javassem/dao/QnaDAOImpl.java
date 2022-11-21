@@ -1,5 +1,6 @@
 package kosmo.javassem.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -17,26 +18,26 @@ public class QnaDAOImpl implements QnaDAO{
 
 	public void insertBoard(QnaVO vo) {
 		System.out.println("===> Mybatis insertBoard() 호출");	
-		mybatis.insert("BoardDAO.insertBoard", vo);
+		mybatis.insert("QnaDAO.insertBoard", vo);
 	}
 
 	public void updateBoard(QnaVO vo) {
 		System.out.println("===> Mybatis updateBoard() 호출");
-		mybatis.update("BoardDAO.updateBoard", vo);
+		mybatis.update("QnaDAO.updateBoard", vo);
 	}
 
 	public void deleteBoard(QnaVO vo) {
 		System.out.println("===> Mybatis deleteBoard() 호출");
-		mybatis.delete("BoardDAO.deleteBoard", vo);
+		mybatis.delete("QnaDAO.deleteBoard", vo);
 	}
 
 	public QnaVO getBoard(QnaVO vo) {
 		System.out.println("===> Mybatis getBoard() 호출");
-		return (QnaVO) mybatis.selectOne("BoardDAO.getBoard", vo);
+		return (QnaVO) mybatis.selectOne("QnaDAO.getBoard", vo);
 	}
 
-	public List<QnaVO> getBoardList(QnaVO vo) {
+	public List<QnaVO> getBoardList(HashMap map) {
 		System.out.println("===> Mybatis getBoardList() 호출");
-		return mybatis.selectList("BoardDAO.getBoardList", vo);
+		return mybatis.selectList("QnaDAO.getBoardList", map);
 	}
 }

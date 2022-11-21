@@ -1,15 +1,15 @@
 <%@page contentType="text/html; charset=UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
-<html>
-<title>S.o.S escape</title>
-<% String pjName = "/sosBoard"; %>
-<head>
-<meta charset="utf-8" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, user-scalable=no" />
-
-<!-- 로그인, 모달  jquery-->
+      <title>S.o.S escape</title>
+      <% String pjName = "/sosBoard"; %>
+   <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+      
+      <!-- 로그인, 모달  jquery-->
 <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
 
 <!-- modal js -->
@@ -22,16 +22,32 @@
 <link rel="stylesheet" href='<%=pjName%>/resources/assets/css/modal.css'>
 
 <!-- main css -->
-<link rel="stylesheet" href='<%=pjName%>/resources/assets/css/main.css' />
-<link rel="stylesheet" href='<%=pjName%>/resources/assets/css/qna.css' />
+      <link rel="stylesheet" href='<%=pjName%>/resources/assets/css/main.css' />
+      <link rel="stylesheet" href='<%=pjName%>/resources/assets/css/qna.css' />
+       
+       <!-- Favicon -->
+        <link rel="icon" href='<%=pjName%>/resources/images/favicon.ico'>
+        
+        <!-- 로그인 script -->
 
-<!-- Favicon -->
-<link rel="icon" href='<%=pjName%>/resources/images/favicon.ico'>
-</head>
-<body class="is-preload">
-	<div id="page-wrapper">
+<script>
+ 
+   var t = '${sessionScope.sok}';
+   if (t == '1') {
+      alert('회원 가입이 완료되었습니다! 로그인창을 통해 로그인해주세요');
+   } else if (t == '9') {
+      alert('중복된 아이디입니다. 다른 아이디를 입력해주세요!')
+   } else if (t == '5') {
+      alert('로그인 오류! 다시 입력해주세요')
+   }
+      
+</script>
+         
+   </head>
+   <body class="is-preload">
+      <div id="page-wrapper">
 
-	<!-- login Modal -->
+         <!-- login Modal -->
       <div class="modal-wrapper">
          <a class="btn-close trigger" href="#">Close</a>
          <div class="modal">
@@ -81,100 +97,94 @@
    </div>
          </div>
       </div>
+      </div>
       <!-- 모달 끝!!! -->
 
-		<!-- Nav -->
+         <!-- Nav -->
+         
+                  <nav id="nav">
+         <div id="navImage">
+            <a href="../customer/index.do"><img
+               src="<%=pjName%>/resources/images/logo2.png" height="138px"></a>
+         </div>
 
-		<nav id="nav">
-			<div id="navImage">
-				<a href="../customer/index.do"><img
-					src="<%=pjName%>/resources/images/logo2.png" height="138px"></a>
-			</div>
+         <ul>
+            <li class="current"><a href="../customer/index.do">Home</a></li>
 
-			<ul>
-				<li class="current"><a href="../customer/index.do">Home</a></li>
+            <li><a href="../customer/story.do">Story</a></li>
+            <li><a href="../customer/location.do">Location</a>
+               <ul>
+                  <li><a href="../customer/hongdae.do">홍대</a></li>
+                  <li><a href="../customer/anyang.do">안양</a></li>
+                  <li><a href="../customer/gumi.do">구미</a></li>
+               </ul></li>
+            <li><a href="../theme/theme.do">Theme</a>
+               <ul>
+                  <li><a href="../theme/theme.do?themegenre=horror">공포</a></li>
+                  <li><a href="../theme/theme.do?themegenre=infiltration">잠입</a></li>
+                  <li><a href="../theme/theme.do?themegenre=comic">코믹</a></li>
+                  <li><a href="../theme/theme.do?themegenre=fantasy">판타지</a></li>
+                  <li><a href="../theme/theme.do?themegenre=emotion">감성</a></li>
+                  <li><a href="../customer/error.do">에러페이지</a></li>
+               </ul></li>
+            <li><a href="../qna/getQnaList.do">Q&A</a></li>
+            <li><a href="../board/getBoardList.do">Board</a></li>
+            <c:if test="${sessionScope.loginId==null}">
+               <li><a class="btn trigger" href="../customer/login.do">Login</a></li>
+            </c:if>
+            <c:if test="${sessionScope.loginId!=null}">
+               <li><a href="../customer/mypage.do">Mypage</a></li>
+               <li><a class="btn" href="../customer/logout.do">Logout</a></li>
+               
+            </c:if>
 
-				<li><a href="../customer/story.do">Story</a></li>
-				<li><a href="../customer/location.do">Location</a>
-					<ul>
-						<li><a href="../customer/hongdae.do">홍대</a></li>
-						<li><a href="../customer/anyang.do">안양</a></li>
-						<li><a href="../customer/gumi.do">구미</a></li>
-					</ul></li>
-				<li><a href="../customer/theme.do">Theme</a>
-					<ul>
-						<li><a href="../customer/horror.do">공포</a></li>
-						<li><a href="../customer/infiltration.do">잠입</a></li>
-						<li><a href="../customer/comic.do">코믹</a></li>
-						<li><a href="../customer/fantasy.do">판타지</a></li>
-						<li><a href="../customer/emotion.do">감성</a></li>
-						<li><a href="../customer/error.do">에러페이지</a></li>
-					</ul></li>
-				<li><a href="../qna/getQnaList.do">Q&A</a></li>
-				<li><a href="../board/getBoardList.do">Board</a></li>
-				<c:if test="${sessionScope.loginId==null}">
-					<li><a class="btn trigger" href="../customer/login.do">Login</a></li>
-				</c:if>
-				<c:if test="${sessionScope.loginId!=null}">
-					<li><a href="../customer/mypage.do">Mypage</a></li>
-					<li><a class="btn trigger" href="logout.do">Logout</a></li>
-
-				</c:if>
-
-
-
-			</ul>
-		</nav>
-		<header>
-			<br /> <br /> <br /> <br /> <br />
-		</header>
-		<div class='container'>
-			<h1>글 등록</h1>
-			<hr>
-			<!-- 1. 폼태그에 속성 추가  -->
-			<form action="saveBoard.do" method='post'
-				enctype="multipart/form-data">
-				<table border="1" cellpadding="0" cellspacing="0">
-					<!-- 2. 각 항목에  name 맞추기 -->
-					<tr>
-						<td width="70">제목</td>
-						<td align="left"><input type="text" name='b_title' /></td>
-					</tr>
-					<tr>
-						<td>작성자</td>
-						<td align="left"><input type="text" size="10" name='b_name' /></td>
-					</tr>
-					<tr>
-						<td>내용</td>
-						<td align="left"><textarea cols="40" rows="10"
-								name='b_content'></textarea></td>
-					</tr>
-					<!-- 추가항목 시작 -->
-					<tr>
-						<td>이메일</td>
-						<td align="left"><input type="text" / name='b_email'></td>
-					</tr>
-					<tr>
-						<td>비밀번호</td>
-						<td align="left"><input type="text" name='b_pwd' /></td>
-					</tr>
-					<tr>
-						<td width="70">파일추가</td>
-						<td align="left"><input type="file" name='file'
-							maxlength="60" size="40"></td>
-					</tr>
-					<!-- 추가항목 끝 -->
-					<tr>
-						<td colspan="2" align="center"><input type="submit"
-							value=" 새글 등록 " /></td>
-					</tr>
-				</table>
-			</form>
-			<hr>
-			<a href="board.do">글 목록 가기</a>
-		</div>
-		
-		<!-- Scripts -->
+            
+            
+         </ul>
+            </nav>
+            <header>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+         </header>   
+      <div class='container'>
+      <h1>글 등록</h1>      
+      <hr>
+      <!-- 1. 폼태그에 속성 추가  -->
+      <form action="insertQna.do" id = "insertboard" method='post' enctype="multipart/form-data"> 
+         <table border="1" cellpadding="0" cellspacing="0">
+            <!-- 2. 각 항목에  name 맞추기 -->
+            <tr>
+               <td width="70">제목</td>
+               <td align="left"><input type="text" name='title'/></td>
+            </tr>
+            <tr>
+               <td>작성자</td>
+               <td align="left"><input type="text" size="10" name='userid'/></td>
+            </tr>
+            <tr>
+               <td>내용</td>
+               <td align="left"><textarea cols="40" rows="10" name='content'></textarea></td>
+            </tr>
+            <!-- 추가항목 시작 -->
+            <tr>
+               <td>비밀번호</td>
+               <td align="left"><input type="text" name='pass'/></td>
+            </tr>
+            
+            <!-- 추가항목 끝 -->
+            <tr>
+               <td colspan="2" align="center"><input type="submit"   value=" 새글 등록 " /></td>
+            </tr>
+         </table>
+      </form>
+      <hr>
+      <a href="../qna/getQnaList.do">글 목록 가기</a>
+      </div>
+      
+      <!-- Scripts -->
          <script src="<%=pjName%>/resources/assets/js/jquery.min.js"></script>
          <script src="<%=pjName%>/resources/assets/js/jquery.dropotron.min.js"></script>
          <script src="<%=pjName%>/resources/assets/js/jquery.scrolly.min.js"></script>
@@ -182,11 +192,9 @@
          <script src="<%=pjName%>/resources/assets/js/breakpoints.min.js"></script>
          <script src="<%=pjName%>/resources/assets/js/util.js"></script>
          <script src="<%=pjName%>/resources/assets/js/main.js"></script>
-		 <script src='<%=pjName%>/resources/assets/js/reply.js' type="text/javascript"></script>
-		 <script
+      <script
       src="<%=pjName%>/resources/https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!-- login  js 추가-->
-   <script src="<%=pjName%>/resources/assets/js/login.js"></script>
-		
+   <script src="<%=pjName%>/resources/assets/js/login.js"></script>      
 </body>
 </html>

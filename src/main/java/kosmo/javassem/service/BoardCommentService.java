@@ -10,7 +10,7 @@ public interface BoardCommentService {
    int insertReply(BoardCommentVO vo);
 
    // 댓글 목록
-   List<BoardCommentVO> selectAllReply();
+   List<BoardCommentVO> selectAllReply(Integer seq);
 
    // 댓글 삭제
    void deleteReply(Integer rno);

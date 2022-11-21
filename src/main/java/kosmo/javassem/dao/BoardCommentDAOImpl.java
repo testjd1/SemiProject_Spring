@@ -16,18 +16,18 @@ public class BoardCommentDAOImpl implements BoardCommentDAO{
 
 	public Integer insertReply(BoardCommentVO vo) {
 		System.out.println("===> Mybatis insertReply() 호출");	
-		return mybatis.insert("ReplyDAO.insertReply", vo);
+		return mybatis.insert("BoardCommentVO.insertReply", vo);
 	}
 
-	public List<BoardCommentVO> selectAllReply() {
-		System.out.println("===> Mybatis selectAllReply() 호출");	
-		return mybatis.selectList("ReplyDAO.selectAllReply");
+	public List<BoardCommentVO> selectAllReply(Integer seq) {
+		System.out.println("===> Mybatis selectAllReply() 호출:" + seq);	
+		return mybatis.selectList("BoardCommentVO.selectAllReply", seq);
 	}
 
 	@Override
 	public int deleteReply(Integer rno) {
 		System.out.println("===> Mybatis deleteReply() 호출");	
-		return mybatis.delete("ReplyDAO.deleteReply", rno);
+		return mybatis.delete("BoardCommentVO.deleteReply", rno);
 	}
 
 }

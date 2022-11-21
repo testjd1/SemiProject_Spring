@@ -42,14 +42,13 @@ $(function(){
   replyList();
   
   function replyList(){
+  		//alert($('#boardSeq').val());
      $.ajax({
         type : 'get',
         url : '../replies',    //상대경로
-        // data : 보내는 데이터 없음
+        data : {seq : $('#boardSeq').val()},
         dataType : 'json',      // 라이브러리 필요
         success : function(result){
-              //alert(result);
-              //console.log(result);
               
              let replyTbl = $('#replyList'); 
              replyTbl.empty();   //미리 비워버리기~!
@@ -65,7 +64,7 @@ $(function(){
                tr.append($('<td/>').html(row['comm']));
                tr.append( $('<td/>').html(row['commtime']) );
 
-               tr.append('<td><button class="delete">삭쩨</button></td>');
+               tr.append('<td><button class="delete">delete</button></td>');
                
                replyTbl.append(tr); 
              }

@@ -1,5 +1,6 @@
 package kosmo.javassem.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class QnaServiceImpl implements QnaService {
 		return boardDAO.getBoard(vo);
 	}
 
-	public List<QnaVO> getBoardList(QnaVO vo) {
-		return boardDAO.getBoardList(vo);
+	public List<QnaVO> getBoardList(HashMap map) {
+		return boardDAO.getBoardList(map);
 	}
 }

@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<meta name="referrer" content="no-referrer-when-downgrade" />
 
 <!DOCTYPE>
 <html>
@@ -55,6 +56,20 @@
        <!-- Favicon -->
         <link rel="icon" href='<%=pjName%>/resources/images/favicon.ico'> 
 
+<!-- 로그인 script -->
+
+<script>
+ 
+   var t = '${sessionScope.sok}';
+   if (t == '1') {
+      alert('회원 가입이 완료되었습니다! 로그인창을 통해 로그인해주세요');
+   } else if (t == '9') {
+      alert('중복된 아이디입니다. 다른 아이디를 입력해주세요!')
+   } else if (t == '5') {
+      alert('로그인 오류! 다시 입력해주세요')
+   }
+      
+</script>
 
 
 
@@ -138,13 +153,13 @@
                   <li><a href="../customer/anyang.do">안양</a></li>
                   <li><a href="../customer/gumi.do">구미</a></li>
                </ul></li>
-            <li><a href="../customer/theme.do">Theme</a>
+            <li><a href="../theme/theme.do">Theme</a>
                <ul>
-                  <li><a href="../customer/theme.do">공포</a></li>
-                  <li><a href="../customer/infiltration.do">잠입</a></li>
-                  <li><a href="../customer/comic.do">코믹</a></li>
-                  <li><a href="../customer/fantasy.do">판타지</a></li>
-                  <li><a href="../customer/emotion.do">감성</a></li>
+                  <li><a href="../theme/theme.do?themegenre=horror">공포</a></li>
+                  <li><a href="../theme/theme.do?themegenre=infiltration">잠입</a></li>
+                  <li><a href="../theme/theme.do?themegenre=comic">코믹</a></li>
+                  <li><a href="../theme/theme.do?themegenre=fantasy">판타지</a></li>
+                  <li><a href="../theme/theme.do?themegenre=emotion">감성</a></li>
                   <li><a href="../customer/error.do">에러페이지</a></li>
                </ul></li>
             <li><a href="../qna/getQnaList.do">Q&A</a></li>
@@ -154,7 +169,7 @@
             </c:if>
             <c:if test="${sessionScope.loginId!=null}">
                <li><a href="../customer/mypage.do">Mypage</a></li>
-               <li><a class="btn trigger" href="logout.do">Logout</a></li>
+               <li><a class="btn" href="../customer/logout.do">Logout</a></li>
                
             </c:if>
 
@@ -163,11 +178,13 @@
          </ul>
             </nav>
 
+		<!-- 보드 메인 파트 -->
+		
       <div class='container' style='font-family:GangwonEdu_OTFBoldA;'>
       <h1 style='font-family:GangwonEdu_OTFBoldA;' align="center">글 상세</h1>      
       <hr>
       <form action="updateBoard.do" method="post">
-         <input name="seq" type="hidden" value="${board.seq}" />
+         <input name="seq" id='boardSeq' type="hidden" value="${board.seq}" />
          <table border="1" cellpadding="0" cellspacing="0">
             <tr>
                <td width="70" align="center">제목</td>
@@ -190,26 +207,31 @@
             <tr>
                <td colspan="2" align="center"><input type="submit"
                   value="글 수정" style='font-family:GangwonEdu_OTFBoldA;' />
-            <a href='board.do'>
-            <input type = 'button' value='목록보기' id='listBoard' style='font-family:GangwonEdu_OTFBoldA;'>
-            </a>
+                  &nbsp;&nbsp;
                   </td>
             </tr>
          </table>
+            <a href='../board/getBoardList.do'>
+			  <input type = 'button' value='목록보기' id='listBoard' style='font-family:GangwonEdu_OTFBoldA;'>
+            </a>
       </form>
-      <hr/>
-      <hr/>
-      <!-- 댓글 입력창 -->
-      <form action="" method='post' id ='replyFrm' name='replyFrm'>
-     <input type='hidden' name='seq' id ="seq" value='${board.seq}'>
-      <input type='text' name ='userid' id ='userid' value='홍길동'>
-      <!-- 추후에는 세션에서 얻어온 사용자명 추가 -->
-      <input type = 'text' name = 'comm' id =''comm''>
-      <input type = 'button' value='댓글추가' id='replyConfirm' style='font-family:GangwonEdu_OTFBoldA;'>
-      </form>
+      <br/>
+      <br/>
+      
       
       <!-- 댓글 목록보기 -->
       <table id='replyList' border='2'/>
+      
+      <!-- 댓글 입력창 -->
+      <form action="" method='post' id ='replyFrm' name='replyFrm'>
+     <input type='hidden' name='bno' id ="bno" value='${board.seq}'>
+      <input type='text' name ='userid' id ='userid' value='sosUser'>
+      &nbsp;&nbsp;
+      <!-- 추후에는 세션에서 얻어온 사용자명 추가 -->
+      <input type = 'text' name = 'comm' id ='comm' style="width :500">
+      &nbsp;&nbsp;
+      <input type = 'button' value='댓글추가' id='replyConfirm' style='font-family:GangwonEdu_OTFBoldA;'>
+      </form>
       
       </div>
       </div>
