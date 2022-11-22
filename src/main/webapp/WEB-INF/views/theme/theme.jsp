@@ -65,20 +65,6 @@
 <!-- modal js -->
 <script src="<%=pjName%>/resources/assets/js/modal.js"></script>
 
-<!-- 로그인 script -->
-
-<script>
- 
-   var t = '${sessionScope.sok}';
-   if (t == '1') {
-      alert('회원 가입이 완료되었습니다! 로그인창을 통해 로그인해주세요');
-   } else if (t == '9') {
-      alert('중복된 아이디입니다. 다른 아이디를 입력해주세요!')
-   } else if (t == '5') {
-      alert('로그인 오류! 다시 입력해주세요')
-   }
-</script>
-
 
 
 
@@ -239,7 +225,7 @@
             selected='selected'
             <%} %>
             >감성 (Emotion)</option>
-            </select><i class="fa-sharp fa-solid fa-caret-down"></i>
+            </select>
          <!-- select   finish -->
             <!-- 테마 이미지 Section-->
             <section class="py-5">
@@ -256,11 +242,14 @@
                   <c:forEach items="${themeList}" var="theme">
                      <div class="col mb-2 ">
                         <div class="card h-100 " >
-                           <!-- 테마 image-->
+           
+                         <!-- 테마 image-->
+                        
                            <img class="card-img-top"
                               
                               src="<%=pjName%>/resources/images/${theme.themegenre}_${theme.picture}.jpg"
                               alt="..." />
+                              
                            <!-- 테마 details-->
                            <div class="card-body p-5">
                               <div class="text-center">
@@ -274,8 +263,10 @@
                            <!-- Product actions-->
                            <div class="card-footer p-5 pt-0 border-top-0 bg-transparent">
                               <div class="text-center">
-                                 <a class="btn btn-outline-dark mt-auto" onclick="openPop()">View
+                                             
+                                 <a href="../theme/theme_sangse.do?picture=${theme.picture}" >View
                                     options</a>
+                                    
                               </div>
                            </div>
                         </div>
@@ -295,7 +286,13 @@
       <footer id="footer">
          <div class="container">
             <div class="row gtr-200">
+               <div class="col-12">
 
+                  <!-- About -->
+                 
+                     
+
+               </div>
                <div class="col-12">
 
                   <!-- Contact -->
@@ -310,10 +307,7 @@
                               class="label">Twitter</span></a></li>
                         <li><a class="icon brands fa-instagram" href="#"><span
                               class="label">Instagram</span></a></li>
-                        <li><a class="icon brands fa-dribbble" href="#"><span
-                              class="label">Dribbble</span></a></li>
-                        <li><a class="icon brands fa-linkedin-in" href="#"><span
-                              class="label">LinkedIn</span></a></li>
+                     
                      </ul>
                   </section>
 
@@ -323,13 +317,14 @@
             <!-- Copyright -->
             <div id="copyright">
                <ul class="menu">
-                  <li>&copy; Untitled. All rights reserved</li>
-                  <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                  <li>&copy; S.o.S escape</li>
+                  <li>Design by: <a>Kosmo 1조 </a></li>
                </ul>
             </div>
 
          </div>
       </footer>
+
 
 
 
@@ -347,10 +342,5 @@
       <script src="<%=pjName%>/resources/assets/js/login.js"></script>
 
 
-      <script type="text/javascript">
-             function openPop(){
-              var popup = window.open('theme_sangse.do', '테마_상세보기', 'width=600px,height=700px,scrollbars=yes');
-              }
-         </script>
 </body>
 </html>

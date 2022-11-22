@@ -12,43 +12,35 @@ import kosmo.javassem.service.ThemeService;
 @Controller
 @RequestMapping("/theme")
 public class ThemeController {
-	@Autowired
-	private ThemeService themeService;
-	
+   @Autowired
+   private ThemeService themeService;
+   
 
-	  @RequestMapping("/{step}.do")
+     @RequestMapping("/{step}.do")
       public String viewPage(@PathVariable String step) {
          return "/theme/"+step;
       }
-	
-	
+   
+   
 // 전체 목록 출력
-	 @RequestMapping("/theme.do")
+    @RequestMapping("/theme.do")
      public void theme(ThemeVO vo, Model model) {
-        System.out.println("themeAll.do 요청 : themegenre =" + vo);
+        System.out.println("theme.do 요청 : themegenre =" + vo);
         model.addAttribute("themeList", themeService.themeAll(vo));
         // ViewResolver를 지정하지 않으면 아래처럼 페이지명 지정
         // return "views/getBoardList.jsp"; // View 이름 리턴
      }
-	
-// 공포 목록 출력
-	
-
-// 잠입 목록 출력 	
-	
-	
-	
-// 코믹 목록 출력 	
-	
-
-	
-// 감성 목록 출력 	
-	
-	
-	
-//  판타지 목록 출력 	
-	
-	
-// 주제 입력	
-	
+   
+// 테마 상세페이지
+    @RequestMapping("/theme_sangse.do")
+     public void themesang(ThemeVO vo, Model model) {
+        System.out.println("theme_sangse.do 요청 : themepicture =" + vo);
+        model.addAttribute("theme", themeService.themeSang(vo));
+        // ViewResolver를 지정하지 않으면 아래처럼 페이지명 지정
+        // return "views/getBoardList.jsp"; // View 이름 리턴
+     }
+   
+   
+// 주제 입력   
+   
 }

@@ -59,8 +59,9 @@ public class BoardController {
       // 글 삭제
       @RequestMapping("/deleteBoard.do")
       public String deleteBoard(BoardVO vo) {
+    	  System.out.println("호호출:"+vo);
          boardService.deleteBoard(vo);
-         return "redirect:/getBoardList.do";
+         return "redirect:/board/getBoardList.do";
       }
 
       // 글 상세 조회

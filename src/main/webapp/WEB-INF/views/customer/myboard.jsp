@@ -69,19 +69,7 @@
 <!-- modal js -->
 <script src="<%=pjName%>/resources/assets/js/modal.js"></script>
 
-<!-- 로그인 script -->
 
-<script>
- 
-   var t = '${sessionScope.sok}';
-   if (t == '1') {
-      alert('회원 가입이 완료되었습니다! 로그인창을 통해 로그인해주세요');
-   } else if (t == '9') {
-      alert('중복된 아이디입니다. 다른 아이디를 입력해주세요!')
-   } else if (t == '5') {
-      alert('로그인 오류! 다시 입력해주세요')
-   }
-</script>
 
 
 
@@ -374,46 +362,51 @@
 
 						<!-- 모달 끝!!! -->
 
-						<!-- Contact -->
-						<section>
-							<h2 class="major">
-								<span>Get in touch</span>
-							</h2>
-							<ul class="contact">
-								<li><a class="icon brands fa-facebook-f" href="#"><span
-										class="label">Facebook</span></a></li>
-								<li><a class="icon brands fa-twitter" href="#"><span
-										class="label">Twitter</span></a></li>
-								<li><a class="icon brands fa-instagram" href="#"><span
-										class="label">Instagram</span></a></li>
-								<li><a class="icon brands fa-dribbble" href="#"><span
-										class="label">Dribbble</span></a></li>
-								<li><a class="icon brands fa-linkedin-in" href="#"><span
-										class="label">LinkedIn</span></a></li>
-							</ul>
-						</section>
+					 <!-- Footer -->
+          <footer id="footer">
+         <div class="container">
+            <div class="row gtr-200">
+               <div class="col-12">
 
-					</div>
-				</div>
+                  <!-- About -->
+                 
+                     
 
-				<!-- Copyright -->
-				<div id="copyright">
-					<ul class="menu">
-						<li>&copy; Untitled. All rights reserved</li>
-						<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
-				</div>
+               </div>
+               <div class="col-12">
 
-			</div>
+                  <!-- Contact -->
+                  <section>
+                     <h2 class="major">
+                        <span>Get in touch</span>
+                     </h2>
+                     <ul class="contact">
+                        <li><a class="icon brands fa-facebook-f" href="#"><span
+                              class="label">Facebook</span></a></li>
+                        <li><a class="icon brands fa-twitter" href="#"><span
+                              class="label">Twitter</span></a></li>
+                        <li><a class="icon brands fa-instagram" href="#"><span
+                              class="label">Instagram</span></a></li>
+                     
+                     </ul>
+                  </section>
 
+               </div>
+            </div>
 
-
-
-
-
-		</footer>
-
+            <!-- Copyright -->
+            <div id="copyright">
+               <ul class="menu">
+                  <li>&copy; S.o.S escape</li>
+                  <li>Design by: <a>Kosmo 1조 </a></li>
+               </ul>
+            </div>
+      </div>
+         </div>
+      </footer>
+					
 	</div>
+	
 
 	<!-- Scripts -->
 	<script src="<%=pjName%>/resources/assets/js/jquery.min.js"></script>

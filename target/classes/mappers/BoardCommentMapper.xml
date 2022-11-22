@@ -3,8 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="BoardCommentVO">
 
-	<insert id="insertReply" parameterType="kosmo.javassem.domain.BoardCommentVO">
-	
+	<insert id="insertReply" parameterType="kosmo.javassem.domain.BoardCommentVO" >
 		<!-- 오라클-->
 		INSERT INTO BoardComment(SEQ, USERID, COMM, bno, commtime)
 		VALUES(BoardComment_seq.nextval,
@@ -13,10 +12,10 @@
 
 
 	<select id='selectAllReply' parameterType='int' resultType='kosmo.javassem.domain.BoardCommentVO'>
-		SELECT * FROM BoardComment where bno = #{seq} order by seq desc
+		SELECT * FROM BoardComment where bno = #{bno} order by seq desc
 	</select>
 	
-	<delete id='deleteReply' parameterType='kosmo.javassem.domain.BoardCommentVO'>
+	<delete id='deleteReply' parameterType='kosmo.javassem.domain.BoardCommentVO' >
 		DELETE FROM BoardComment WHERE seq = #{seq}
 		</delete>
  

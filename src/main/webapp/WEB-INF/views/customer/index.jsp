@@ -72,7 +72,7 @@
 
 <script>
  
-   var t = '${sessionScope.sok}';
+   var t = '${sok}';
    if (t == '1') {
       alert('회원 가입이 완료되었습니다! 로그인창을 통해 로그인해주세요');
    } else if (t == '9') {
@@ -278,8 +278,8 @@
 
                               <!-- Feature -->
                               <section class="box feature">
-                                 <p id="bx-text">
-                                    난이도 : ★★★ </br> 장르 : 판타지/감성</br> 시간 : 75m
+                                 <p id="bx-text"  style="font-family: GangwonEdu_OTFBoldA;">
+                                    난이도 : ★★★ </br> 장르 : Emotion</br> 시간 : 60m
                                  </p>
                                  <a class="image featured"><img
                                     src="<%=pjName%>/resources/images/emotion_1.jpg" alt="" /></a>
@@ -296,8 +296,8 @@
 
                               <!-- Feature -->
                               <section class="box feature">
-                                 <p id="bx-text">
-                                    난이도 : ★★★☆ </br> 장르 : 판타지/감성</br> 시간 : 75m
+                                 <p id="bx-text"  style="font-family: GangwonEdu_OTFBoldA;">
+                                    난이도 : ★★★☆ </br> 장르 : Emotion</br> 시간 : 60m
                                  </p>
                                  <a class="image featured"><img
                                     src="<%=pjName%>/resources/images/emotion_2.jpg" alt="" /></a>
@@ -312,9 +312,9 @@
                            <div class="col-3 col-6-medium col-12-small">
 
                               <!-- Feature -->
-                              <section class="box feature">
-                                 <p id="bx-text">
-                                    난이도 : ★★★★☆ </br> 장르 : 판타지/감성</br> 시간 : 75m
+                              <section class="box feature"  style="font-family: GangwonEdu_OTFBoldA;">
+                                 <p id="bx-text"  style="font-family: GangwonEdu_OTFBoldA;">
+                                    난이도 : ★★★★☆ </br> 장르 : Emotion</br> 시간 : 65m
                                  </p>
                                  <a class="image featured"><img
                                     src="<%=pjName%>/resources/images/emotion_3.jpg" alt="" /></a>
@@ -328,9 +328,9 @@
                            <div class="col-3 col-6-medium col-12-small">
 
                               <!-- Feature -->
-                              <section class="box feature">
-                                 <p id="bx-text">
-                                    난이도 : ★★★☆ </br> 장르 : 판타지/감성</br> 시간 : 75m
+                              <section class="box feature"  style="font-family: GangwonEdu_OTFBoldA;">
+                                 <p id="bx-text" >
+                                    난이도 : ★★★☆ </br> 장르 : Emotion</br> 시간 : 60m
                                  </p>
                                  <a class="image featured"><img
                                     src="<%=pjName%>/resources/images/emotion_4.jpg" alt="" /></a>
@@ -396,20 +396,8 @@
                <div class="col-12">
 
                   <!-- About -->
-                  <section>
-                     <h2 class="major">
-                        <span>What's this about?</span>
-                     </h2>
-                     <p>
-                        This is <strong>TXT</strong>, yet another free responsive site
-                        template designed by <a href="http://twitter.com/ajlkn">AJ</a>
-                        for <a href="http://html5up.net">HTML5 UP</a>. It's released
-                        under the <a href="http://html5up.net/license/">Creative
-                           Commons Attribution</a> license so feel free to use it for whatever
-                        you're working on (personal or commercial), just be sure to give
-                        us credit for the design. That's basically it :)
-                     </p>
-                  </section>
+                 
+                     
 
                </div>
                <div class="col-12">
@@ -426,10 +414,7 @@
                               class="label">Twitter</span></a></li>
                         <li><a class="icon brands fa-instagram" href="#"><span
                               class="label">Instagram</span></a></li>
-                        <li><a class="icon brands fa-dribbble" href="#"><span
-                              class="label">Dribbble</span></a></li>
-                        <li><a class="icon brands fa-linkedin-in" href="#"><span
-                              class="label">LinkedIn</span></a></li>
+                     
                      </ul>
                   </section>
 
@@ -439,8 +424,8 @@
             <!-- Copyright -->
             <div id="copyright">
                <ul class="menu">
-                  <li>&copy; Untitled. All rights reserved</li>
-                  <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                  <li>&copy; S.o.S escape</li>
+                  <li>Design by: <a>Kosmo 1조 </a></li>
                </ul>
             </div>
 

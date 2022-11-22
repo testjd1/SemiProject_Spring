@@ -14,7 +14,19 @@
          </if>
 
       ORDER BY picture asc    
-   </select>   
+   </select>  
+
+   <select id="themeSang"  resultType="kosmo.javassem.domain.ThemeVO">
+      SELECT * 
+      FROM Theme    
+        <where>
+           picture = #{picture}
+        </where>
+     
+   </select>  
+ 
+   
+    
   <!-- 
   
     --> 

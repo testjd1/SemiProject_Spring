@@ -66,7 +66,7 @@ public class QnaController {
 		@RequestMapping("/deleteBoard.do")
 		public String deleteBoard(QnaVO vo) {
 			boardService.deleteBoard(vo);
-			return "redirect:/getQnaList.do";
+			return "redirect:/qna/getQnaList.do";
 		}
 
 		// 글 상세 조회

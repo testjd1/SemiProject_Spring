@@ -33,9 +33,6 @@
 <title>S.o.S escape</title>
 
 
-<!--  select icon -->
-<link rel="stylesheet"
-   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
 <%
    String pjName = "/sosBoard";
 %>
@@ -71,18 +68,6 @@
 <!-- modal js -->
 <script src="<%=pjName%>/resources/assets/js/modal.js"></script>
 
-<!-- 로그인 script -->
-
-<script>
-   var t = '${sessionScope.sok}';
-   if (t == '1') {
-      alert('회원 가입이 완료되었습니다! 로그인창을 통해 로그인해주세요');
-   } else if (t == '9') {
-      alert('중복된 아이디입니다. 다른 아이디를 입력해주세요!')
-   } else if (t == '5') {
-      alert('로그인 오류! 다시 입력해주세요')
-   }
-</script>
 
 
 
@@ -139,10 +124,10 @@
          </ul>
       </nav>
 
-      <br> <br> <br>
+      <br> <br> <br> <br>
       <form method='post'>
          <div class='container'>
-
+    
             <!-- 테이블 div -->
             <div class="tablesize ">
                <section class='revsec' >
@@ -150,7 +135,7 @@
                      <span>예약 정보 입력</span>
                   </h1>
 
-                  <a href="reservationcheck.do" class="button">예약확인</a>
+                
 
 
                   <table class="tablesize2 ">
@@ -177,8 +162,8 @@
                         </tr>
                         <tr>
                            <td>성함</td>
-                           <td><input type="text" class="inputname" style="width:220px; height:30px;" 
-                              placeholder="성함을 입력해 주세요" name="name"></td>
+                           <td ><input type="text" class="inputname" style="width:220px; height:30px;" 
+                              placeholder="성함을 입력해 주세요" name="name"   > </td>
                         </tr>
                         <tr>
                            <td>연락처</td>
@@ -189,12 +174,12 @@
                         </tr>
                            <td>예약 인원</td>
                            <td><select style="width:220px; height:40px;">
-                           		 <option value="two">2명</option>
+                                 <option value="two">2명</option>
                                  <option value="three">3명</option>
                                  <option value="four">4명</option>
                                  <option value="five">5명</option>
                                  <option value="six">6명</option>
-                           </select><i class="fa-sharp fa-solid fa-caret-down"></i></td>
+                           </select></td>
                         </tr>
                         <tr>
                            <td>결제 비용</td>
@@ -216,7 +201,7 @@
                   <h1 style="font-family: GangwonEdu_OTFBoldA;">주의 사항</h1>
                   <p style="font-family: GangwonEdu_OTFBoldA;">
                      *S.o.S 방탈출의 경우, 계속된 NO-SHOW 방지를 위해 선결제 진행 하고 있습니다. <br> 1)
-                     아래 '예약하기' 누르신 후, 예약이 확인 되시면 아래 계좌로 전액 계좌송금 부탁드립니다. 계좌번호: 토스뱅크
+                     아래 '예약하기' 누르신 후, 예약이 확인 되시면 아래 계좌로 전액 계좌송금 부탁드립니다.  <br> 계좌번호: 토스뱅크
                      1116-0222-0711 예소동 <br> 2) 예약후 게임 전날 오후 8시까지 입금 확인이 되지 않을시,
                      예약은 자동 취소처리 됩니다. <br> 3) 예약자 성함과 송금자 성함이 다를 시 홍대 본점
                      02-1234-5678으로 전화 부탁 드립니다. <br> 4) 카드 결제는 게임 당일 방문시 요구하시면,
@@ -243,11 +228,11 @@
 
          </div>
          
-         <br/><br/>
+         <br/><br/> 
          
-         <div  class="submits">
-               <input type="submit" class="submit" value="이전으로" name="submit">
-               <input type="submit" class="submit" value="예약하기" name="submit">
+           <div  class="submits">
+<!--            <input type="submit" class="submit" value="이전으로" name="submit"> -->
+                <input type = 'submit' value='예약하기' id='reservation' style="font-family: GangwonEdu_OTFBoldA;">
 
             </div>
       </form>
@@ -257,7 +242,13 @@
       <footer id="footer">
          <div class="container">
             <div class="row gtr-200">
+               <div class="col-12">
 
+                  <!-- About -->
+                 
+                     
+
+               </div>
                <div class="col-12">
 
                   <!-- Contact -->
@@ -272,10 +263,7 @@
                               class="label">Twitter</span></a></li>
                         <li><a class="icon brands fa-instagram" href="#"><span
                               class="label">Instagram</span></a></li>
-                        <li><a class="icon brands fa-dribbble" href="#"><span
-                              class="label">Dribbble</span></a></li>
-                        <li><a class="icon brands fa-linkedin-in" href="#"><span
-                              class="label">LinkedIn</span></a></li>
+                     
                      </ul>
                   </section>
 
@@ -285,13 +273,14 @@
             <!-- Copyright -->
             <div id="copyright">
                <ul class="menu">
-                  <li>&copy; Untitled. All rights reserved</li>
-                  <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                  <li>&copy; S.o.S escape</li>
+                  <li>Design by: <a>Kosmo 1조 </a></li>
                </ul>
             </div>
 
          </div>
       </footer>
+
 
 
 
@@ -374,6 +363,14 @@
       src="<%=pjName%>/resources/https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
    <!-- login  js 추가-->
    <script src="<%=pjName%>/resources/assets/js/login.js"></script>
+   <!-- Scripts -->
+         <script src="<%=pjName%>/resources/assets/js/jquery.min.js"></script>
+  		 <script type="text/javascript">
+       $("#reservation").click(function(){
+           alert("예약이 완료 되었습니다!");
+         })
+   </script>
+
 
 
 </body>

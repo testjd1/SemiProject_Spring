@@ -17,5 +17,10 @@ public class ThemeDAOImpl implements ThemeDAO {
       System.out.println("===> Mybatis themeAll() 호출");
       return mybatis.selectList("ThemeDAO.themeAll", vo);
    }
+   
+   public ThemeVO themeSang(ThemeVO vo) {
+         System.out.println("===> Mybatis themeSang() 호출");
+         return mybatis.selectOne("ThemeDAO.themeSang", vo);
+      }
 
 }

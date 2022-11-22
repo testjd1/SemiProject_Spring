@@ -20,8 +20,13 @@ public class BoardCommentController {
 	private BoardCommentService replyService;
    
    @PostMapping("replies/new")
-   public String insert(BoardCommentVO vo) {
-      System.out.println("입력 요청 : " + vo);
+   public String insert(String bno, String userid, String comm) {
+      BoardCommentVO vo = new BoardCommentVO();
+	  vo.setBno(bno);
+	  vo.setComm(comm);
+	  vo.setUserid(userid);      
+	   
+	  System.out.println("-------->입력 요청 : " + vo);
       int result= replyService.insertReply(vo);
       if(result==1) return "success";
       return "fail";

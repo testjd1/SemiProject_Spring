@@ -15,7 +15,7 @@ h1 {
   font-weight: 300;
   line-height:1em;
   text-align: center;
-  color: #4DC3FA;
+  color: #000000;
 }
 
 
@@ -56,19 +56,19 @@ h1 {
 
 /* Background-color of the odd rows */
 .container tr:nth-child(odd) {
-    background-color: #323C50;
+    background-color: #ffffd0;
 }
 
 /* Background-color of the even rows */
 .container tr:nth-child(even) {
-    background-color: #2C3446;
+    background-color: #c0c0c0;
 }
 
 .container th {
     background-color: #1F2739;
 }
 
-.container td:first-child { color: #ffffff; }
+.container td:first-child { color: #000000; }
 
 .container tr:hover {
    background-color: #464A52;
@@ -97,15 +97,15 @@ h1 {
 }
 
 .alertsec{
-	width:80%;
+   width:80%;
 }
 
 .submits{
-	padding-left: 700px;
+   padding-left: 700px;
 }
 
 .inputname{
-	width : 300px;
+   width : 300px;
 }
 
 

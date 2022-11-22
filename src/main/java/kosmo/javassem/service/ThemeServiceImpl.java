@@ -10,13 +10,17 @@ import kosmo.javassem.domain.ThemeVO;
 
 @Service("themeService")
 public class ThemeServiceImpl implements ThemeService {
-	
-	@Autowired
-	private ThemeDAO themeDAO;
-	
-	
-	public List<ThemeVO> themeAll(ThemeVO vo) {
-		return themeDAO.themeAll(vo);
-	}
+   
+   @Autowired
+   private ThemeDAO themeDAO;
+   
+   
+   public List<ThemeVO> themeAll(ThemeVO vo) {
+      return themeDAO.themeAll(vo);
+   }
+   
+   public ThemeVO themeSang(ThemeVO vo) {
+      return themeDAO.themeSang(vo);
+   }
 
 }

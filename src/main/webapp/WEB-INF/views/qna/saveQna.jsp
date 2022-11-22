@@ -28,21 +28,7 @@
        <!-- Favicon -->
         <link rel="icon" href='<%=pjName%>/resources/images/favicon.ico'>
         
-        <!-- 로그인 script -->
 
-<script>
- 
-   var t = '${sessionScope.sok}';
-   if (t == '1') {
-      alert('회원 가입이 완료되었습니다! 로그인창을 통해 로그인해주세요');
-   } else if (t == '9') {
-      alert('중복된 아이디입니다. 다른 아이디를 입력해주세요!')
-   } else if (t == '5') {
-      alert('로그인 오류! 다시 입력해주세요')
-   }
-      
-</script>
-         
    </head>
    <body class="is-preload">
       <div id="page-wrapper">
@@ -171,7 +157,7 @@
             <!-- 추가항목 시작 -->
             <tr>
                <td>비밀번호</td>
-               <td align="left"><input type="text" name='pass'/></td>
+               <td align="left"><input type="text" name='pass'  placeholder="글 삭제시 사용되니 본인만 아는 비밀번호로 설정하세요!"/></td>
             </tr>
             
             <!-- 추가항목 끝 -->

@@ -1,11 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
    <!DOCTYPE html>
 <html>
 <head>
    <style>
       /*
-      °­¿ø±³À° ¸ğµÎÃ¼
+      ê°•ì›êµìœ¡ ëª¨ë‘ì²´
       */
       @font-face {
        font-family: 'GangwonEdu_OTFBoldA';
@@ -17,39 +18,44 @@
       </style>
 
 <meta charset="UTF-8">
-<title> °Ô½Ã±Û »ó¼¼º¸±â </title>
+<title> ê²Œì‹œê¸€ ìƒì„¸ë³´ê¸° </title>
 <% String pjName = "/sosBoard"; %>
 </head>
 <body>
 
 
+
    <div style="text-align : center;">
-   		<img src="<%=pjName%>/resources/images/comic_14.jpg" width="300" height="400" >
+         <img src="<%=pjName%>/resources/images/${theme.themegenre}_${theme.picture}.jpg" width="300" height="400" >
    
-   <h3 class="title" style="font-family: GangwonEdu_OTFBoldA;">FILM BY BOB</h3>
+   <h3 class="title" style="font-family: GangwonEdu_OTFBoldA;">${theme.themename}</h3>
    
    
    <div class="popIn" style="font-family: GangwonEdu_OTFBoldA;">
 
          <ul class="topCaption">
-            <li><span class="title">Àå¸£</span> : ÄÚ¹Í</li>
-            <li><span class="title">ÇÃ·¹ÀÌ½Ã°£</span> : 60ºĞ</li>
-            <li><span class="title">³­ÀÌµµ</span>
-               <span class="star">¡Ú¡Ú¡Ú¡Ú¡Ú</span>
-               </li>
+            <li><span class="title">ì¥ë¥´</span> : ${theme.themegenre}</li>
+            <li><span class="title">í”Œë ˆì´ì‹œê°„</span> : ${theme.runtime}ë¶„</li>
+            <li><span class="title">ë‚œì´ë„ :</span> 
+               <span class="star">${theme.thlevel}</span>
+              </li>
+           <li><span class = "title">ê°€ê²© </span> : ${theme.thcost}ì› ( 1ì¸ë‹¹ ) </li>
+           <li><span class="title">ê¶Œì¥ ì¸ì›</span> : ${theme.peoplecount}ëª…</li>
+           <li><span class="title">ì´ìš© ì§€ì—­ </span> : ${theme.branch}</li>
+           <li><span class="title">ì„¤ëª… </span> : ${theme.content}</li>  
             </ul>
-            <p class="exp">¿ÀÇÂ¿¹Á¤ÀÏ : 2023³â ¿¹Á¤</p>
+            
 
-      <input type = 'button' value='¿¹¾àÇÏ±â' id='reserve' style="font-family: GangwonEdu_OTFBoldA;">
+      <input type = 'button' value='ì˜ˆì•½í•˜ê¸°' id='reserve' style="font-family: GangwonEdu_OTFBoldA;">
    </div><!-- end : class : popIn -->
    </div><!-- center -->
 
 
-	 <!-- Scripts -->
+    <!-- Scripts -->
          <script src="<%=pjName%>/resources/assets/js/jquery.min.js"></script>
-  		 <script type="text/javascript">
+         <script type="text/javascript">
        $("#reserve").click(function(){
-           alert("¿¹¾à ÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.");
+           alert("ì˜ˆì•½ í˜ì´ì§€ë¡œ ì´ë™í•©ë‹ˆë‹¤.");
            opener.parent.location='reservation.do'; 
            window.close();
          })

@@ -21,14 +21,14 @@
       WHERE SEQ = #{seq}
       ]]>
    </update>
+ -->   
    
    <delete id="deleteBoard" parameterType="kosmo.javassem.domain.BoardVO">
       <![CDATA[
-      DELETE BOARD1
-      WHERE SEQ = #{seq}
+      DELETE BOARD
+      WHERE SEQ = #{seq} AND pass=#{pass}
       ]]>
    </delete>
- -->   
    
    <select id="getBoard" resultType="kosmo.javassem.domain.BoardVO">
       <![CDATA[

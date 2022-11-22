@@ -20,8 +20,17 @@ public class qnaCommentController {
 	private QnaCommentService replyService;
    
    @PostMapping("qnareplies/new")
-   public String insert(QnaCommentVO vo) {
-      System.out.println("입력 요청 : " + vo);
+   public String insert(String bno, String userid, String comm ) {
+	  // System.out.println(bno);
+	  // System.out.println(userid);
+	  // System.out.println(comm);
+	   
+	  QnaCommentVO vo = new QnaCommentVO(); 
+	  vo.setBno(bno);
+	  vo.setComm(comm);
+	  vo.setUserid(userid);
+	  
+      System.out.println("입력 요청2 : " + vo);
       int result= replyService.insertQnaReply(vo);
       if(result==1) return "success";
       return "fail";

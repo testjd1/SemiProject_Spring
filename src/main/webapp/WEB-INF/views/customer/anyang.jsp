@@ -37,20 +37,7 @@
 <!-- Favicon -->
 <link rel="icon" href='<%=pjName%>/resources/images/favicon.ico'>	
 	
-<!-- 로그인 script -->
 
-<script>
- 
-   var t = '${sessionScope.sok}';
-   if (t == '1') {
-      alert('회원 가입이 완료되었습니다! 로그인창을 통해 로그인해주세요');
-   } else if (t == '9') {
-      alert('중복된 아이디입니다. 다른 아이디를 입력해주세요!')
-   } else if (t == '5') {
-      alert('로그인 오류! 다시 입력해주세요')
-   }
-</script>
-	
 
 </head>
 <body class="is-preload">
@@ -278,33 +265,51 @@
 
 				</div>
 			</div>
-	</div>
+	
 	</section>
 
-	<!-- Footer -->
-	<footer id="footer">
-		<div class="container">
-			<div class="row gtr-200">
-				<div class="col-12">
+	   <!-- Footer -->
+      <footer id="footer">
+         <div class="container">
+            <div class="row gtr-200">
+               <div class="col-12">
 
-					<!-- About -->
+                  <!-- About -->
+               
+                     
 
+               </div>
+               <div class="col-12">
 
+                  <!-- Contact -->
+                  <section>
+                     <h2 class="major">
+                        <span>Get in touch</span>
+                     </h2>
+                     <ul class="contact">
+                        <li><a class="icon brands fa-facebook-f" href="#"><span
+                              class="label">Facebook</span></a></li>
+                        <li><a class="icon brands fa-twitter" href="#"><span
+                              class="label">Twitter</span></a></li>
+                        <li><a class="icon brands fa-instagram" href="#"><span
+                              class="label">Instagram</span></a></li>
+                     
+                     </ul>
+                  </section>
 
-				</div>
-				<div class="col-12">
+               </div>
+            </div>
 
-					<!-- Contact -->
+            <!-- Copyright -->
+            <div id="copyright">
+               <ul class="menu">
+                  <li>&copy; S.o.S escape</li>
+                  <li>Design by: <a>Kosmo 1조 </a></li>
+               </ul>
+            </div>
 
-
-				</div>
-			</div>
-
-			<!-- Copyright -->
-			<div id="copyright"></div>
-
-		</div>
-	</footer>
+         </div>
+      </footer>
 
 	</div>
 

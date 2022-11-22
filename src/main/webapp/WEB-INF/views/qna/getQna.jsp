@@ -23,15 +23,6 @@
 			 font-weight: normal;
 			 font-style: normal;
 			  }
-			/*
-			마포꽃섬
-			*/
-			@font-face {
-			font-family: 'MapoFlowerIsland';
-			src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoFlowerIslandA.woff') format('woff');
-			font-weight: normal;
-			font-style: normal;
-			}
 
 			</style>
 	  
@@ -56,20 +47,6 @@
        <!-- Favicon -->
         <link rel="icon" href='<%=pjName%>/resources/images/favicon.ico'> 
 
-		<!-- 로그인 script -->
-
-<script>
- 
-   var t = '${sessionScope.sok}';
-   if (t == '1') {
-      alert('회원 가입이 완료되었습니다! 로그인창을 통해 로그인해주세요');
-   } else if (t == '9') {
-      alert('중복된 아이디입니다. 다른 아이디를 입력해주세요!')
-   } else if (t == '5') {
-      alert('로그인 오류! 다시 입력해주세요')
-   }
-      
-</script>
 
 
 </head>
@@ -182,13 +159,12 @@
       <div class='container' style='font-family:GangwonEdu_OTFBoldA;'>
       <h1 style='font-family:GangwonEdu_OTFBoldA;' align="center">글 상세</h1>      
       <hr>
-      <form action="updateBoard.do" method="post">
+      <form action="../qna/checkPassQna.do?seq=${board.seq}" method="post">
          <input name="seq" id='qnaSeq' type="hidden" value="${board.seq}" />
          <table border="1" cellpadding="0" cellspacing="0">
             <tr>
-               <td width="70" align="center">제목</td>
-               <td align="left"><input name="title" type="text"
-                  value="${board.title }" /></td>
+                <td width="70" align="center">제목</td>
+				<td align="left">${board.title}</td>
             </tr>
             <tr>
                <td align="center">작성자</td>
@@ -196,7 +172,7 @@
             </tr>
             <tr>
                <td align="center">내용</td>
-               <td align="left"><textarea name="content" cols="40" rows="10">
+               <td align="left"><textarea name="content" readonly cols="40" rows="10">
                   ${board.content }</textarea></td>
             </tr>
             <tr>
@@ -205,7 +181,7 @@
             </tr>
             <tr>
                <td colspan="2" align="center"><input type="submit"
-                  value="글 수정" style='font-family:GangwonEdu_OTFBoldA;' />
+                  value="글 삭제" style='font-family:GangwonEdu_OTFBoldA;' />
                   </td>
             </tr>
          </table>
@@ -221,12 +197,11 @@
       <table id='replyList' border='2'/>
       
       <!-- 댓글 입력창 -->
-      <form action="" method='post' id ='replyFrm' name='replyFrm'>
-     <input type='hidden' name='bno' id ="bno" value='${board.seq}'>
-      <input type='text' name ='userid' id ='userid' value='User'>
+      <form id ='replyFrm' name='replyFrm'>
+      <input type='text' size='2' readonly name='bno' id="bno" value='${board.seq}'>
+      <input type='text' name ='userid' id ='userid' placeholder="사용자명">
       &nbsp;&nbsp;
-      <!-- 추후에는 세션에서 얻어온 사용자명 추가 -->
-      <input type = 'text' name = 'comm' id ='comm' style="width :500">
+      <input type = 'text' name = 'comm' id ='comm' style="width :500" placeholder="댓글 입력">
       &nbsp;&nbsp;
       <input type = 'button' value='댓글추가' id='replyConfirm' style='font-family:GangwonEdu_OTFBoldA;'>
       </form>
