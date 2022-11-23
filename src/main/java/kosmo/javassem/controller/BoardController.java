@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import kosmo.javassem.domain.BoardVO;
+import kosmo.javassem.domain.PageMaker;
+import kosmo.javassem.domain.SearchCriteria;
 import kosmo.javassem.service.BoardService;
 
 @Controller
@@ -30,14 +32,15 @@ public class BoardController {
 
       // 글 목록 검색
       @RequestMapping("/getBoardList.do")
-      public void getBoardList(String searchCondition, String searchKeyword, Model m) {
+      public void getBoardList(@ModelAttribute("scri") SearchCriteria scri, Model m) {
     	  
-    	HashMap map=new HashMap();
-    	map.put("searchKeyword", searchKeyword);
-    	map.put("searchCondition", searchCondition);
-    	
-    	List<BoardVO> list=boardService.getBoardList(map);
-        m.addAttribute("boardList", list);
+    	m.addAttribute("list", boardService.getBoardList(scri));
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(scri);
+		pageMaker.setTotalCount(boardService.listCount(scri));
+		
+		m.addAttribute("pageMaker", pageMaker);     
          // ViewResolver를 지정하지 않으면 아래처럼 페이지명 지정
          // return "views/getBoardList.jsp"; // View 이름 리턴
       }
@@ -59,9 +62,15 @@ public class BoardController {
       // 글 삭제
       @RequestMapping("/deleteBoard.do")
       public String deleteBoard(BoardVO vo) {
-    	  System.out.println("호호출:"+vo);
          boardService.deleteBoard(vo);
          return "redirect:/board/getBoardList.do";
+      }
+      
+      // 관리자 글 삭제
+      @RequestMapping("/deleteBoardm.do")
+      public String deleteBoardm(BoardVO vo) {
+    	  boardService.deleteBoardm(vo);
+    	  return "redirect:/board/getBoardList.do";
       }
 
       // 글 상세 조회

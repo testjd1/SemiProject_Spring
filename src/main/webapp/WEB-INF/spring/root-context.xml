@@ -24,6 +24,7 @@
            <value>kosmo.javassem.domain.QnaVO</value>
            <value>kosmo.javassem.domain.BoardCommentVO</value>
            <value>kosmo.javassem.domain.QnaCommentVO</value>
+           <value>kosmo.javassem.domain.ReservationVO</value>
         </list>
     </property>
 

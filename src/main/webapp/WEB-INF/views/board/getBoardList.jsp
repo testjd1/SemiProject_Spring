@@ -18,6 +18,7 @@
 <!-- modal js -->
 <script src="<%=pjName%>/resources/assets/js/modal.js"></script>
 
+<!-- 페이징 관련 js -->
 <script>
 	function selChange() {
 		var sel = document.getElementById('cntPerPage').value;
@@ -37,9 +38,11 @@
       
       <!-- Favicon -->
         <link rel="icon" href='<%=pjName%>/resources/images/favicon.ico'> 
-      
 
-
+<!-- 페이징 가로로 정렬 -->
+<style type="text/css">
+			li {list-style: none; float: left; padding: 6px;}
+</style>
 
 </head>
 <body class="is-preload">
@@ -97,7 +100,7 @@
       <!-- 모달 끝!!! -->
       
       
-      <div id="page-wrapper">
+      <div id="page-wrapper" style="background : white;">
 
          
 
@@ -151,6 +154,7 @@
             
          </header>   
 
+<div class="container">
                <!-- Main -->
          <section class="notice">
             <div class="page-title">
@@ -159,20 +163,27 @@
                  </div>
               </div>
            
-              <!-- board seach area -->
+              <!-- 검색 창 부분 -->
               <div id="board-search">
                  <div class="container">
-                    <div class="search-window">
-                       <form action="../board/getBoardList.do" method='post'>
+                    <div class="search-window" style="background : white;">
+                       <form action="../board/getBoardList.do" method='get'>
                           <div class="search-wrap">
-                          	<select name='searchCondition'>
-								<option value='title'>제목</option>
-								<option value="userid">작성자</option>
-								<option value="content">내용</option>
+                          	<select name='searchType'>
+								<option value='n'>----</option>
+								<option value='t'>제목</option>
+								<option value="c">내용</option>
+								<option value="w">작성자</option>
 							</select>
-
-                             <input id="search" type="text" name="searchKeyword" placeholder="검색어를 입력해주세요." >
-                             <button type="submit" class="btn btn-dark">search</button>
+                             <input id="keywordInput" type="text" name="keywordInput" placeholder="검색어를 입력해주세요." >
+                            <button id="searchBtn" type="button">search</button>
+							    <script>
+							      $(function(){
+							        $('#searchBtn').click(function() {
+							          self.location = "../board/getBoardList.do" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
+							        });
+							      });   
+							    </script>
                           </div>
                        </form>
                     </div>
@@ -181,7 +192,7 @@
              
             <!-- board list area -->
               <div id="board-list">
-                 <div class="container">
+                 <div>
                     <table class="board-table">
                        <thead>
                        <tr>
@@ -192,14 +203,18 @@
                        </tr>
                        </thead>
                        <tbody>
-                          <c:forEach items="${boardList }" var="board">
+                          <c:forEach items="${list}" var="board">
                            <!-- 프라퍼티이름 변경 -->
                        <tr>
                           <td>${board.seq }</td>
                            <td align="left"><a href="getBoard.do?seq=${board.seq}">
-                                    ${board.userid }</a></td>
-                          <td>${board.title }</td>
+                                    ${board.title }</a></td>
+                          <td>${board.userid }</td>
                           <td>${board.regdate }</td>
+                          <c:if test="${sessionScope.loginId=='admin'}">
+                          <td><a href="../board/deleteBoardm.do?seq=${board.seq}">
+                          <input type="button" value="delete"></a></td>
+                          </c:if>
                        </tr>
                           </c:forEach>
 
@@ -209,16 +224,28 @@
                      <input type="button" id="insertBoard" name='insertBoard' value="write">
                      </a>              
                  </div>
-                 <div style='text-align : center;'>
-                <a href="">[◀◀]</a>
-				<a href="">[◀]</a>
-
-				<a href="">[▶]</a>
-				<a href="">[▶▶]</a>
-                 </div>
               </div>
-           
+                 
+               <!-- 페이징 -->  
+               
+                <div class='container'>
+				  <ul class='container'  style="text-align: right;">
+				    <c:if test="${pageMaker.prev}">
+				    	<li><a href="../board/getBoardList.do${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
+				    </c:if> 
+				
+				    <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+				    	<li><a href="../board/getBoardList.do${pageMaker.makeSearch(idx)}">${idx}</a></li>
+				    </c:forEach>
+				
+				    <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+				    	<li><a href="../board/getBoardList.do${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
+				    </c:if> 
+				  </ul>
+				</div>
+                 
            </section>
+</div>
       
                <!-- Footer -->
       <footer id="footer">

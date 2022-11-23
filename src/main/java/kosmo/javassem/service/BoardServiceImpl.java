@@ -1,6 +1,5 @@
 package kosmo.javassem.service;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kosmo.javassem.dao.BoardDAO;
 import kosmo.javassem.domain.BoardVO;
+import kosmo.javassem.domain.SearchCriteria;
 
 
 @Service("boardService")
@@ -26,13 +26,22 @@ public class BoardServiceImpl implements BoardService {
 	public void deleteBoard(BoardVO vo) {
 		boardDAO.deleteBoard(vo);
 	}
+	
+	public void deleteBoardm(BoardVO vo) {
+		boardDAO.deleteBoardm(vo);
+	}
 
 	public BoardVO getBoard(BoardVO vo) {
 		return boardDAO.getBoard(vo);
 	}
 
-	public List<BoardVO> getBoardList(HashMap map) {
-		return boardDAO.getBoardList(map);
+	public List<BoardVO> getBoardList(SearchCriteria scri) {
+		return boardDAO.getBoardList(scri);
+	}
+
+	@Override
+	public int listCount(SearchCriteria scri) {
+		return boardDAO.listCount(scri);
 	}
 
 }

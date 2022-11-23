@@ -146,7 +146,7 @@
             <!-- 2. 각 항목에  name 맞추기 -->
             <tr>
                <td width="70">제목</td>
-               <td align="left"><input type="text" name='title'/></td>
+               <td align="left"><input type="text" name='title' placeholder="15자 이내로 설정해주세요."/></td>
             </tr>
             <tr>
                <td>작성자</td>

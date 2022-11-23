@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ReservationDAO">
+
+
+  <!-- 
+   <insert id="insertReservation"  resultType="kosmo.javassem.domain.ThemeVO">
+     insert into Reservation ()
+     values ()   
+   </insert>  
+ --> 
+ <select id="threv" parameterType="ReservationVO" resultType="hashmap">
+
+ select r.themename as themename, r.branch as branch, t.thcost as thcost
+ from reservetheme r full join theme t
+ on r.picture = t.picture
+ where  r.picture = #{picture}
+		
+
+</select> 
+ 
+
+    
+  <!-- 
+  
+    --> 
+   
+<!--  
+   <select id="getBoardList" resultType="BoardVO">
+      <![CDATA[
+      SELECT * FROM uploadtemp ORDER BY b_id DESC
+      ]]>
+   </select>
+
+   <update id="updateBoard"  parameterType="BoardVO">
+      UPDATE uploadtemp SET
+      b_title = #{b_title},
+      b_content = #{b_content}
+      WHERE b_id = #{b_id}
+   </update>
+   
+   <delete id="deleteBoard"  parameterType="BoardVO">
+      DELETE FROM uploadtemp
+      WHERE b_id = #{b_id}
+   </delete>
+   
+   <select id="getBoard"  parameterType="BoardVO" resultType="BoardVO">
+      SELECT *
+      FROM uploadtemp
+      WHERE b_id = #{b_id}
+   </select>
+-->   
+
+</mapper>

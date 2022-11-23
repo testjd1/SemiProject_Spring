@@ -247,7 +247,7 @@
                         
                            <img class="card-img-top"
                               
-                              src="<%=pjName%>/resources/images/${theme.themegenre}_${theme.picture}.jpg"
+                              src="<%=pjName%>/resources/images/${theme.picture}"
                               alt="..." />
                               
                            <!-- 테마 details-->

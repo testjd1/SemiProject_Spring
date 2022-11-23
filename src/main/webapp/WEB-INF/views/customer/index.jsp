@@ -282,7 +282,7 @@
                                     난이도 : ★★★ </br> 장르 : Emotion</br> 시간 : 60m
                                  </p>
                                  <a class="image featured"><img
-                                    src="<%=pjName%>/resources/images/emotion_1.jpg" alt="" /></a>
+                                    src="<%=pjName%>/resources/images/1.jpg" alt="" /></a>
 
 
                                  <h3 style="font-family: GangwonEdu_OTFBoldA;">
@@ -300,7 +300,7 @@
                                     난이도 : ★★★☆ </br> 장르 : Emotion</br> 시간 : 60m
                                  </p>
                                  <a class="image featured"><img
-                                    src="<%=pjName%>/resources/images/emotion_2.jpg" alt="" /></a>
+                                    src="<%=pjName%>/resources/images/2.jpg" alt="" /></a>
 
                                  <h3 style="font-family: GangwonEdu_OTFBoldA;">
                                     <a>[Ep2] Film By Steve</a>
@@ -317,7 +317,7 @@
                                     난이도 : ★★★★☆ </br> 장르 : Emotion</br> 시간 : 65m
                                  </p>
                                  <a class="image featured"><img
-                                    src="<%=pjName%>/resources/images/emotion_3.jpg" alt="" /></a>
+                                    src="<%=pjName%>/resources/images/3.jpg" alt="" /></a>
                                  <h3 style="font-family: GangwonEdu_OTFBoldA;">
                                     <a>[Ep3] Film By Eddy</a>
                                  </h3>
@@ -333,7 +333,7 @@
                                     난이도 : ★★★☆ </br> 장르 : Emotion</br> 시간 : 60m
                                  </p>
                                  <a class="image featured"><img
-                                    src="<%=pjName%>/resources/images/emotion_4.jpg" alt="" /></a>
+                                    src="<%=pjName%>/resources/images/4.jpg" alt="" /></a>
                                  <h3 style="font-family: GangwonEdu_OTFBoldA;">
                                     <a>[Ep4] Film By Bob</a>
                                  </h3>

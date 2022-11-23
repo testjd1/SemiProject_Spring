@@ -3,58 +3,114 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ThemeDAO">
 
+	<!-- 테마 전체 보기 -->
 
-   
-   <select id="themeAll"  resultType="kosmo.javassem.domain.ThemeVO">
-      SELECT * FROM Theme    
-         <if test="themegenre != null"> 
-         <where>
-            themegenre = #{themegenre}
-         </where>
-         </if>
+	<select id="themeAll" resultType="kosmo.javassem.domain.ThemeVO">
+		SELECT * FROM Theme
+		<if test="themegenre != null">
+			<where>
+				themegenre = #{themegenre}
+			</where>
+		</if>
 
-      ORDER BY picture asc    
-   </select>  
+		ORDER BY picture asc
+	</select>
 
-   <select id="themeSang"  resultType="kosmo.javassem.domain.ThemeVO">
-      SELECT * 
-      FROM Theme    
-        <where>
-           picture = #{picture}
-        </where>
-     
-   </select>  
- 
-   
+	<!-- 테마 상세 보기 -->
+
+	<select id="themeSang"
+		resultType="kosmo.javassem.domain.ThemeVO">
+		SELECT *
+		FROM Theme
+		<where>
+			picture = #{picture}
+		</where>
+
+	</select>
+
+
+	<!-- 테마 등록 -->
+
+	<insert id="register"
+		parameterType="kosmo.javassem.domain.ThemeVO">
+
+		insert into theme(seq, themename, themegenre, thlevel, runtime,
+		thcost, peoplecount, branch, content
+		<if test="picture != null">
+			, picture, b_fsize
+		</if>
+		)
+
+		values (Theme_seq.nextval, #{themename}, #{themegenre},#{thlevel},
+		#{runtime},#{thcost}, #{peoplecount}, #{branch}, #{content}
+		<if test="picture != null">
+			, #{picture}, #{b_fsize}
+		</if>
+		)
+
+
+	</insert>
+
+
+	<!-- 테마 등록 수정 -->
+
+	<update id="update"
+		parameterType="kosmo.javassem.domain.ThemeVO">
+		UPDATE theme SET
+		
+		themename = #{themename},
+		themegenre = #{themegenre},
+		thlevel = #{thlevel},
+		runtime = #{runtime},
+		thcost = #{thcost},
+		peoplecount = #{peoplecount},
+		branch = #{branch},
+		content = #{content}
+		
+		
+		<if test="picture != null">
+			, picture = #{picture}
+		</if>
+		
+		WHERE seq= #{seq}
+		
+		
+	</update>
     
-  <!-- 
-  
-    --> 
-   
-<!--  
-   <select id="getBoardList" resultType="BoardVO">
-      <![CDATA[
-      SELECT * FROM uploadtemp ORDER BY b_id DESC
-      ]]>
-   </select>
 
-   <update id="updateBoard"  parameterType="BoardVO">
-      UPDATE uploadtemp SET
-      b_title = #{b_title},
-      b_content = #{b_content}
-      WHERE b_id = #{b_id}
-   </update>
-   
-   <delete id="deleteBoard"  parameterType="BoardVO">
-      DELETE FROM uploadtemp
-      WHERE b_id = #{b_id}
+
+
+	<!-- 테마 등록 삭제 -->
+
+   <delete id="delete"  parameterType="kosmo.javassem.domain.ThemeVO">
+      DELETE FROM theme
+      WHERE seq = #{seq}
    </delete>
-   
-   <select id="getBoard"  parameterType="BoardVO" resultType="BoardVO">
-      SELECT *
-      FROM uploadtemp
-      WHERE b_id = #{b_id}
-   </select>
--->   
+
+
+
+	<!-- 테마 목록 보기 -->
+	<select id="getthemelist"
+		resultType="kosmo.javassem.domain.ThemeVO">
+      <![CDATA[
+      SELECT * FROM theme ORDER BY picture DESC
+      ]]>
+	</select>
+
+
+
+
+	<!-- 테마 목록 상세 보기 -->
+
+	<select id="gettheme"
+		parameterType="kosmo.javassem.domain.ThemeVO"
+		resultType="kosmo.javassem.domain.ThemeVO">
+		SELECT *
+		FROM theme
+		WHERE seq = #{seq}
+	</select>
+
+
+
 
 </mapper>

@@ -4,9 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>save theme</title>
 </head>
 <body>
+
+<h1>테마 등록 수정이 완료 되었습니다!</h1>		
+		
+<a href="getthemelist.do">테마 목록 가기</a> 
+
+
 
 </body>
 </html>

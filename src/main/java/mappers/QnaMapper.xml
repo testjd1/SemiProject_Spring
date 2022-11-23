@@ -22,14 +22,23 @@
 		]]>
 	</update>
  -->	
-	
-	<delete id="deleteBoard" parameterType="kosmo.javassem.domain.BoardVO">
+	<!--글 삭제 -->
+	<delete id="deleteBoard" parameterType="kosmo.javassem.domain.QnaVO">
 		<![CDATA[
 		DELETE Qna
 		WHERE SEQ = #{seq} AND pass=#{pass}
 		]]>
 	</delete>
 	
+	 <!-- 관리자 글 삭제 -->
+   <delete id="deleteBoardm" parameterType="kosmo.javassem.domain.QnaVO">
+      <![CDATA[
+      DELETE QNA
+      WHERE SEQ = #{seq}
+      ]]>
+   </delete>
+	
+	<!-- 글 상세 -->
 	<select id="getBoard" resultType="kosmo.javassem.domain.QnaVO">
 		<![CDATA[
 		SELECT seq, userid, title, regdate, content, pass
@@ -38,7 +47,7 @@
 		]]>
 	</select>
 	
-		
+	<!-- 
    	<select id="getBoardList" parameterType="hashmap" resultType="kosmo.javassem.domain.QnaVO"  >
 			
 			SELECT *
@@ -50,6 +59,46 @@
 				</where>
 			ORDER BY SEQ DESC
 	</select> 
+	 -->	
+	
+	<!-- 게시판 목록 보기+검색기능+페이징기능 -->
+	<select id="getBoardList" resultType="kosmo.javassem.domain.QnaVO" parameterType="kosmo.javassem.domain.SearchCriteria">
+		SELECT  SEQ, 
+		        TITLE, 
+		        CONTENT, 
+		        USERID, 
+		        REGDATE
+		 FROM ( 
+		        SELECT SEQ, 
+		               TITLE, 
+		               CONTENT, 
+		               USERID, 
+		               REGDATE, 
+		               ROW_NUMBER() OVER(ORDER BY SEQ DESC) AS RNUM
+		         FROM QNA
+		         WHERE 1=1 
+		         	<include refid="search"></include>
+		                       ) MP
+		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
+		ORDER BY SEQ DESC
+	</select>
+	
+	<!-- 게시물 총 갯수 -->
+	<select id="listCount" parameterType="kosmo.javassem.domain.SearchCriteria" resultType="int">
+		SELECT COUNT(SEQ)
+		   FROM QNA
+		   WHERE 1=1
+		<include refid="search"></include>	
+		   AND SEQ > 0
+	</select>
+	
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 't'.toString()">AND TITLE LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'c'.toString()">AND CONTENT LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'w'.toString()">AND USERID LIKE '%' || #{keyword} || '%'</if>
+		</if>
+	</sql>
 	
 	
 </mapper>

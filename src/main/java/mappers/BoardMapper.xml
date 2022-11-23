@@ -4,7 +4,7 @@
 <mapper namespace="BoardDAO">
 
    
-   <!-- oracle 인 경우    -->
+   <!-- oracle 인 경우 새 글 입력 -->
    <insert id="insertBoard" parameterType="kosmo.javassem.domain.BoardVO">
       INSERT INTO Board(SEQ, USERID, TITLE, REGDATE, CONTENT, PASS)
       VALUES(Board_seq.nextval,
@@ -23,13 +23,23 @@
    </update>
  -->   
    
+   <!-- 글 삭제+비번 확인 -->
    <delete id="deleteBoard" parameterType="kosmo.javassem.domain.BoardVO">
       <![CDATA[
       DELETE BOARD
       WHERE SEQ = #{seq} AND pass=#{pass}
       ]]>
    </delete>
+
+   <!-- 관리자 글 삭제 -->
+   <delete id="deleteBoardm" parameterType="kosmo.javassem.domain.BoardVO">
+      <![CDATA[
+      DELETE BOARD
+      WHERE SEQ = #{seq}
+      ]]>
+   </delete>
    
+   <!-- 글 상세 보기 -->
    <select id="getBoard" resultType="kosmo.javassem.domain.BoardVO">
       <![CDATA[
       SELECT seq, userid, title, regdate, content, pass
@@ -38,44 +48,60 @@
       ]]>
    </select>
    
-      
-<!--    <select id="getBoardList" resultType="kosmo.javassem.domain.BoardVO" > -->
-         
-<!--          SELECT * -->
-<!--          FROM BOARD -->
-<!--          ORDER BY SEQ DESC -->
-      
-<!--    </select>  -->
-   <!-- 게시글 리스트 가져오기+검색기능 추가 -->
+   <!-- 
    	<select id="getBoardList" parameterType="hashmap" resultType="kosmo.javassem.domain.BoardVO"  >
 			
-			SELECT *
-			FROM BOARD
+			SELECT * FROM  board  WHERE  seq in (SELECT seq FROM 
+      		(SELECT rownum AS rnum ,seq FROM (select rownum, seq from board  order by seq desc))
 				<where>
 				<if test="searchCondition != null">
 					${searchCondition} like '%${searchKeyword}%'
 				</if>
+					 <![CDATA[and RNUM BETWEEN #{criteria.rowStart} AND #{criteria.rowEnd}]]> 
+
 				</where>
+				)
 			ORDER BY SEQ DESC
 	</select> 
+    -->
+	<!-- 게시판 목록 보기+검색기능+페이징기능 -->
+	<select id="getBoardList" resultType="kosmo.javassem.domain.BoardVO" parameterType="kosmo.javassem.domain.SearchCriteria">
+		SELECT  SEQ, 
+		        TITLE, 
+		        CONTENT, 
+		        USERID, 
+		        REGDATE
+		 FROM ( 
+		        SELECT SEQ, 
+		               TITLE, 
+		               CONTENT, 
+		               USERID, 
+		               REGDATE, 
+		               ROW_NUMBER() OVER(ORDER BY SEQ DESC) AS RNUM
+		         FROM BOARD
+		         WHERE 1=1 
+		         	<include refid="search"></include>
+		                       ) MP
+		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
+		ORDER BY SEQ DESC
+	</select>
 	
-	<!-- 총 게시글 갯수 출력 -->
-<select id="countBoard" resultType="int">
-	SELECT COUNT(*) FROM BOARD
-</select>
+	<!-- 게시물 총 갯수 -->
+	<select id="listCount" parameterType="kosmo.javassem.domain.SearchCriteria" resultType="int">
+		SELECT COUNT(SEQ)
+		   FROM BOARD
+		   WHERE 1=1
+		<include refid="search"></include>	
+		   AND SEQ > 0
+	</select>
+	
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 't'.toString()">AND TITLE LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'c'.toString()">AND CONTENT LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'w'.toString()">AND USERID LIKE '%' || #{keyword} || '%'</if>
+		</if>
+	</sql>
 
-<!-- 페이징 처리 후 게시글 조회 -->
-<select id="selectBoard" resultType="kosmo.javassem.domain.BoardVO">
-	SELECT * 
-		FROM (
-			SELECT ROWNUM RN, A.* 
-				FROM (
-						SELECT * 
-						FROM BOARD 
-						ORDER BY SEQ DESC 
-						) A
-				)
-	WHERE RN BETWEEN #{start} AND #{end}
-</select>
    
 </mapper>

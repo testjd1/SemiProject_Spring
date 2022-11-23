@@ -26,7 +26,7 @@
 
 
    <div style="text-align : center;">
-         <img src="<%=pjName%>/resources/images/${theme.themegenre}_${theme.picture}.jpg" width="300" height="400" >
+         <img src="<%=pjName%>/resources/images/${theme.picture}" width="300" height="400" >
    
    <h3 class="title" style="font-family: GangwonEdu_OTFBoldA;">${theme.themename}</h3>
    
@@ -42,24 +42,20 @@
            <li><span class = "title">가격 </span> : ${theme.thcost}원 ( 1인당 ) </li>
            <li><span class="title">권장 인원</span> : ${theme.peoplecount}명</li>
            <li><span class="title">이용 지역 </span> : ${theme.branch}</li>
-           <li><span class="title">설명 </span> : ${theme.content}</li>  
+           <li><span class="title">설명 </span> : ${theme.content}</li> 
+           
+           <li><a href = "../reservation/reservation.do?picture=${theme.picture}" style="font-family: GangwonEdu_OTFBoldA;">예약하기</a></li> 
             </ul>
             
 
-      <input type = 'button' value='예약하기' id='reserve' style="font-family: GangwonEdu_OTFBoldA;">
+      
    </div><!-- end : class : popIn -->
    </div><!-- center -->
 
 
     <!-- Scripts -->
          <script src="<%=pjName%>/resources/assets/js/jquery.min.js"></script>
-         <script type="text/javascript">
-       $("#reserve").click(function(){
-           alert("예약 페이지로 이동합니다.");
-           opener.parent.location='reservation.do'; 
-           window.close();
-         })
-   </script>
+       
    
 </body>
 </html>

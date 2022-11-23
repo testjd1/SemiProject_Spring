@@ -18,6 +18,14 @@
 <!-- modal js -->
 <script src="<%=pjName%>/resources/assets/js/modal.js"></script>
 
+<!-- 페이징 관련 js -->
+<script>
+	function selChange() {
+		var sel = document.getElementById('cntPerPage').value;
+		location.href="boardList?nowPage=${paging.nowPage}&cntPerPage="+sel;
+	}
+</script>
+
 <!-- login css -->
 <link rel="stylesheet" href='<%=pjName%>/resources/assets/css/login.css'>
 
@@ -30,7 +38,11 @@
 		
 		<!-- Favicon -->
         <link rel="icon" href='<%=pjName%>/resources/images/favicon.ico'> 
-		
+
+<!-- 페이징 가로로 정렬 -->
+<style type="text/css">
+			li {list-style: none; float: left; padding: 6px;}
+</style>		
 
 		
 </head>
@@ -88,6 +100,9 @@
          </div>
       </div>
       <!-- 모달 끝!!! -->
+      
+      <div id="page-wrapper" style="background : white;">
+      
 
 			<!-- Nav -->
          
@@ -147,20 +162,27 @@
 					  </div>
 				  </div>
 			  
-				  <!-- board seach area -->
+			<!-- 검색 창 부분 -->
               <div id="board-search">
                  <div class="container">
-                    <div class="search-window">
-                       <form action="../qna/getQnaList.do" method='post'>
+                    <div class="search-window" style="background : white;" >
+                       <form action="../qna/getQnaList.do" method='get'>
                           <div class="search-wrap">
-                          	<select name='searchCondition'>
-								<option value='title'>제목</option>
-								<option value="userid">작성자</option>
-								<option value="content">내용</option>
+                          	<select name='searchType'>
+								<option value='n'>----</option>
+								<option value='t'>제목</option>
+								<option value="c">내용</option>
+								<option value="w">작성자</option>
 							</select>
-
-                             <input id="search" type="text" name="searchKeyword" placeholder="검색어를 입력해주세요." >
-                             <button type="submit" class="btn btn-dark">search</button>
+                             <input id="keywordInput" type="text" name="keywordInput" placeholder="검색어를 입력해주세요." >
+                            <button id="searchBtn" type="button">search</button>
+							    <script>
+							      $(function(){
+							        $('#searchBtn').click(function() {
+							          self.location = "../qna/getQnaList.do" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
+							        });
+							      });   
+							    </script>
                           </div>
                        </form>
                     </div>
@@ -180,14 +202,18 @@
 							  </tr>
 							  </thead>
 							  <tbody>
-								  <c:forEach items="${qnaList }" var="qnaList">
+								  <c:forEach items="${list }" var="qnaList">
 									<!-- 프라퍼티이름 변경 -->
 							  <tr>
 								  <td>${qnaList.seq }</td>
 									<td align="left"><a href="../qna/getQna.do?seq=${qnaList.seq}">
-												${qnaList.userid }</a></td>
-								  <td>${qnaList.title }</td>
+												${qnaList.title }</a></td>
+								  <td>${qnaList.userid }</td>
 								  <td>${qnaList.regdate }</td>
+								  <c:if test="${sessionScope.loginId=='admin'}">
+			                          <td><a href="../qna/deleteBoardm.do?seq=${qnaList.seq}">
+			                          <input type="button" value="delete"></a></td>
+			                      </c:if>
 							  </tr>
 								  </c:forEach>
 
@@ -196,19 +222,29 @@
 			  					<a href='../qna/saveQna.do'>
 			  					<input type="button" id="saveQna" name='saveQna' value="write">
 			  					</a>
-					  </div>
-				<div style='text-align : center;'>
-                <a href="">[◀◀]</a>
-				<a href="">[◀]</a>
-
-				<a href="">[▶]</a>
-				<a href="">[▶▶]</a>
-                </div>
-				  </div>
+			  					
+			  					
+			  	 <!-- 페이징 -->  
+               
+                <div class='container'>
+				  <ul class='container'  style="text-align: right;">
+				    <c:if test="${pageMaker.prev}">
+				    	<li><a href="../qna/getQnaList.do${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
+				    </c:if> 
+				
+				    <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+				    	<li><a href="../qna/getQnaList.do${pageMaker.makeSearch(idx)}">${idx}</a></li>
+				    </c:forEach>
+				
+				    <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+				    	<li><a href="../qna/getQnaList.do${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
+				    </c:if> 
+				  </ul>
+				</div>
 			  
 			  </section>
 
-
+	</div>
 
 
 

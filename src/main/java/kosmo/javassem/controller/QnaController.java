@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import kosmo.javassem.domain.BoardVO;
+import kosmo.javassem.domain.PageMaker;
 import kosmo.javassem.domain.QnaVO;
+import kosmo.javassem.domain.SearchCriteria;
 import kosmo.javassem.service.QnaService;
 
 @Controller
@@ -34,20 +35,23 @@ public class QnaController {
 	   	System.out.println("cc경로:" + url);
 	   	return "/qna/" + url;
 	    }
-	
+
 		// 글 목록 검색
-		@RequestMapping("/getQnaList.do")
-		public void getQnaList(String searchCondition, String searchKeyword, Model m) {
-			HashMap map=new HashMap();
-	    	map.put("searchKeyword", searchKeyword);
-	    	map.put("searchCondition", searchCondition);
-	    	
-	    	List<QnaVO> list=boardService.getBoardList(map);
-			m.addAttribute("qnaList", list);
-			// ViewResolver를 지정하지 않으면 아래처럼 페이지명 지정
-			// return "views/getBoardList.jsp"; // View 이름 리턴 
-		}
-	
+	      @RequestMapping("/getQnaList.do")
+	      public void getBoardList(@ModelAttribute("scri") SearchCriteria scri, Model m) {
+	    	  
+	    	m.addAttribute("list", boardService.getBoardList(scri));
+			
+			PageMaker pageMaker = new PageMaker();
+			pageMaker.setCri(scri);
+			pageMaker.setTotalCount(boardService.listCount(scri));
+			
+			m.addAttribute("pageMaker", pageMaker);     
+	         // ViewResolver를 지정하지 않으면 아래처럼 페이지명 지정
+	         // return "views/getBoardList.jsp"; // View 이름 리턴
+	      }
+		
+		
 		// 글 등록
 	    @RequestMapping(value = "/insertQna.do" , method = RequestMethod.POST)
 		public String insertBoard(QnaVO vo) throws IOException {
@@ -69,6 +73,13 @@ public class QnaController {
 			return "redirect:/qna/getQnaList.do";
 		}
 
+		// 관리자 글 삭제
+		@RequestMapping("/deleteBoardm.do")
+		public String deleteBoardm(QnaVO vo) {
+			boardService.deleteBoardm(vo);
+			return "redirect:/qna/getQnaList.do";
+		}
+		
 		// 글 상세 조회
 		@RequestMapping("/getQna.do")
 		public void getBoard(QnaVO vo, Model model) {

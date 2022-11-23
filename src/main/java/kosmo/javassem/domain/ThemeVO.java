@@ -107,6 +107,7 @@ public class ThemeVO {
       // 업로드 파일이 있는 경우
       if(!file.isEmpty()) {
          this.picture = file.getOriginalFilename();
+         
          this.b_fsize = file.getSize();
          // 추 후에 파일 저장 위치를 서버의 경로를 얻어서 상대경로로 수정
          File f = new File("D:\\springweb\\sosBoard\\src\\main\\webapp\\resources\\images\\"+ picture);
