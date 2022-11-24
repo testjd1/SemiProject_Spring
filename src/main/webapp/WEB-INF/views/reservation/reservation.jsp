@@ -4,6 +4,7 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
 <style>
 /*
@@ -30,22 +31,21 @@
 }
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>S.o.S escape</title>
+<title id='logo'>S.o.S escape</title>
 
 
 <%
    String pjName = "/sosBoard";
+
 %>
 <link rel="stylesheet" href='<%=pjName%>/resources/assets/css/main.css'>
-<link rel="stylesheet"
-   href="<%=pjName%>/resources/assets/css/reservation.css" />
+<link rel="stylesheet" href="<%=pjName%>/resources/assets/css/reservation.css" />
 <!-- <link rel ="stylesheet" href='resources/css/test.css'> -->
 
 
 <!-- bxSlider -->
 
-<link rel="stylesheet"
-   href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<link rel="stylesheet"  href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 
 
 <!-- Favicon -->
@@ -62,18 +62,14 @@
 
 
 
-<!-- 로그인, 모달  jquery-->
+<!-- 로그인, 모달  jquery
 <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
-
+-->
 <!-- modal js -->
 <script src="<%=pjName%>/resources/assets/js/modal.js"></script>
 
+<!--  날짜 스크립트 -->
 
-<!--  달력 파일 -->
-<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css" />
-<link rel="stylesheet" href="https://code.jquery.com/jquery-3.6.0.js" />
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/jquery-ui.js" />
-<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css" />
 
 </head>
 <body class="homepage is-preload">
@@ -163,38 +159,38 @@
                         
                         <tr>
                            <td>예약일</td>
-                           <td><input class="regdate" id="regdate" name = "regdate" type="date" min="today" 
-                               style="font-family: GangwonEdu_OTFBoldA;"></td>
+                           <td><input type="date" class="regdate" id="regdate" name = "regdate" required ></td>
                         </tr>
                         <tr>
                            <td>시간</td>
                            <td>
-                           <input type="radio" name="time" value="10:00">10:00 
-                              <input type="radio" name="time" value="12:00">12:00 
-                              <input type="radio" name="time" value="14:00">14:00 
-                              <input type="radio" name="time" value="16:00">16:00 
-                              <input type="radio" name="time" value="18:00">18:00 
-                              <input type="radio" name="time" value="20:00">20:00
+                           <input type="radio" name="time" value="10:00" class ="time">10:00 
+                              <input type="radio" name="time" value="12:00" class ="time">12:00 
+                              <input type="radio" name="time" value="14:00" class ="time">14:00 
+                              <input type="radio" name="time" value="16:00" class ="time">16:00 
+                              <input type="radio" name="time" value="18:00" class ="time">18:00 
+                              <input type="radio" name="time" value="20:00" class ="time">20:00
                               </td>
                         </tr>
                         <tr>
                            <td>성함</td>
                            <td><input type="text" class="inputname" id="name"
                               style="width: 220px; height: 30px;" placeholder="성함을 입력해 주세요"
-                              name="name" minlength="2" maxlength="5"></td>
+                              name="name" minlength="2" maxlength="5" required></td>
                         </tr>
                         <tr>
                            <td>연락처</td>
                            <td><input type="text" class="inputtel" id="tel"
                               style="width: 350px; height: 30px;"
                               placeholder="하이픈(-)을 포함해 입력해 주세요" name="tel" minlength="13"
-                              maxlength="13"></td>
+                              maxlength="13" required></td>
                         </tr>
                         
                         <tr>
                         <td>예약 인원</td>
                         <td><select name="peoplecount" id ="peoplecount" 
                            style="width: 220px; height: 40px;">
+                           <option value="1" name="peoplecount" id="1">1명</option>
                               <option value="2" name="peoplecount" id="2">2명</option>
                               <option value="3"  name="peoplecount" id="3">3명</option>
                               <option value="4"  name="peoplecount" id="4">4명</option>
@@ -202,6 +198,7 @@
                               <option value="6"  name="peoplecount" id="6">6명</option>
                         </select></td>
                         </tr>
+                        <td><input type="hidden" name="userid" value= "${sessionScope.loginId}"></td>
                         <tr>
                            <td>결제 비용</td>
                            <td><input value="${reservation.THCOST}" id="total" name="total" readonly></td>
@@ -322,7 +319,7 @@
                      <span>or</span>Sign up
                   </h2>
                   <div class="form-holder">
-                     <form method="POST" id="insert-customer" action="insertCustomer.do">
+                     <form method="POST" id="insert-customer" action="<%=pjName%>/customer/insertCustomer.do">
 
                         <input type="text" class="input" placeholder="id" name="userid">
                         <input type="text" class="input" placeholder="Name" name="name" />
@@ -345,7 +342,7 @@
                         <span>or</span>Log in
                      </h2>
                      <form method="POST" id="insert-customer"
-                        action="loginCustomer.do">
+                        action="<%=pjName%>/customer/loginCustomer.do">
                         <div class="form-holder">
                            <input type="text" class="input" placeholder="id" name="userid" />
                            <!--  ${sessionScope.loginId}-->
@@ -381,8 +378,10 @@
    <script src="<%=pjName%>/resources/assets/js/breakpoints.min.js"></script>
    <script src="<%=pjName%>/resources/assets/js/util.js"></script>
    <script src="<%=pjName%>/resources/assets/js/main.js"></script>
+ 
+   <!--  
    <script
-      src="<%=pjName%>/resources/https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      src="<%=pjName%>/resources/https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
    <!-- login  js 추가-->
    <script src="<%=pjName%>/resources/assets/js/login.js"></script>
    <!-- Scripts -->
@@ -391,24 +390,58 @@
 <!--       type="text/javascript"></script> -->
 
    <script type="text/javascript">
-      $("#reservation").click(function() {
-         alert("예약이 완료 되었습니다!");
-      })
-     
-      $("#peoplecount").on("change",function(){
-    	  
-    	  var total = parseInt(${reservation.THCOST});
-    	  var count = $(this).val();
-    	 
-    	  $("#total").val(count*total);
-    	  
-      })
+      $("#reservation").click(function() { // 예약하기 버튼 클릭시 function
+         
+         var date = new Date(new Date().setDate(new Date().getDate()));      // 현재 시간
+         var datecheck = new Date($("#regdate").val());
+         var diftime = Math.floor((date.getTime() - datecheck.getTime())/(1000*60*60*24)); // 오늘 날짜 - 선택한 값 , 0>= 일경우 정상, +일경우 부적합
+         
+         if(diftime>0){
+            alert("날짜를 똑바로 입력해주세요 ! ");            
+            return false;
+         }
+       /* 유효성 검사 ( 시간 ) */
+       var time = $("input[type=radio][name=time]:checked").val();        // 클릭한 시간
+      // alert(time);
+       if(time==null){
+          alert("시간을 선택해주세요");
+          return false;
+       }
+      }) // 예약하기 버튼 end
+     $("#insert-reservation").submit(function(event){
+        alert("예약 완료 되었습니다.")
+     })
       
-     
-    	 
+      
+      $("#peoplecount").on("change",function(){ // 인원 수 변경시 total값 바로 변경
+         
+         var total = parseInt(${reservation.THCOST});
+         var count = $(this).val();
+        
+         $("#total").val(count*total);
+         
+      }) // 인원수 변경 event end
+      
+      
+      $(".time").click(function(){ // 시간 버튼 클릭시 function
+         var date = new Date($("#regdate").val());   // 클릭한 달력
+         var time = $(this).val();        // 클릭한 시간
+         // alert(time);
+         // alert(date);
+         
+         if(date=="Invalid Date"){
+            alert("날짜를 먼저 선택해주세요.")
+            return false;
+         }
+      }) // 시간 버튼 event end
+      
+   
+      
+   
+        
    </script>
 
 
 
 </body>
-</html>
+</html>s

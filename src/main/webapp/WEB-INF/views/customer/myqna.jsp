@@ -30,7 +30,7 @@
 }
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>S.o.S escape</title>
+<title id='logo'>S.o.S escape</title>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
 <%
@@ -89,7 +89,7 @@
 			</div>
 
 			<ul>
-				<li class="current"><a href="../customer/index.do">Home</a></li>
+				<li><a href="../customer/index.do">Home</a></li>
 
 				<li><a href="../customer/story.do">Story</a></li>
 				<li><a href="../customer/location.do">Location</a>
@@ -114,7 +114,7 @@
 						href="../customer/login.do">Login</a></li>
 				</c:if>
 				<c:if test="${sessionScope.loginId!=null}">
-					<li><a href="../customer/mypage.do">Mypage</a></li>
+					<li class="current"><a href="../customer/mypage.do">Mypage</a></li>
 					<li><a class="btn" href="../customer/logout.do">Logout</a></li>
 
 				</c:if>

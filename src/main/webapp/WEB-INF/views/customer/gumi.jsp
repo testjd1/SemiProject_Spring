@@ -9,7 +9,7 @@
 <html>
 <head>
 
-<title>S.o.S escape</title>
+<title id='logo'>S.o.S escape</title>
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -111,10 +111,10 @@
 			</div>
 
 			<ul>
-				<li class="current"><a href="../customer/index.do">Home</a></li>
+				<li><a href="../customer/index.do">Home</a></li>
 
 				<li><a href="../customer/story.do">Story</a></li>
-				<li><a href="../customer/location.do">Location</a>
+				<li class="current"><a href="../customer/location.do">Location</a>
 					<ul>
 						<li><a href="../customer/hongdae.do">홍대</a></li>
 						<li><a href="../customer/anyang.do">안양</a></li>

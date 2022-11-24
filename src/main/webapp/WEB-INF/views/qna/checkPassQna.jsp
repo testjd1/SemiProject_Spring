@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>글 삭제- 비밀번호 확인</title>
+<title id='logo'>글 삭제- 비밀번호 확인</title>
 </head>
 <body>
 	<form action="../qna/deleteBoard.do">

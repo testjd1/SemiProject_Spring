@@ -39,15 +39,15 @@ table {
     outline: 0;
     border-width: 1px;
   }
-  #board-search .search-window .search-wrap .btn {
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: 108px;
-    padding: 0;
-    font-size: 16px;
-  }
+/*   #board-search .search-window .search-wrap .btn { */
+/*     position: absolute; */
+/*     right: 0; */
+/*     top: 0; */
+/*     bottom: 0; */
+/*     width: 108px; */
+/*     padding: 0; */
+/*     font-size: 16px; */
+/*   } */
   
   .board-table {
     font-size: 13px;
@@ -97,6 +97,12 @@ table {
   
   .board-table tbody th p{
     display: none;
+  }
+  
+  #paging li{
+    list-style: none;
+    float: left;
+    padding: 6px;
   }
   
 /*   .btn { */

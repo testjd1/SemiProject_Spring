@@ -7,12 +7,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>글 목록</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<% String pjName = "/sosBoard"; %>
-		
-		<!-- 로그인, 모달  jquery-->
+<title id='logo'>S.o.S escape</title>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+      <% String pjName = "/sosBoard"; %>
+      
+      <!-- 로그인, 모달  jquery-->
 <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
 
 <!-- modal js -->
@@ -20,10 +20,10 @@
 
 <!-- 페이징 관련 js -->
 <script>
-	function selChange() {
-		var sel = document.getElementById('cntPerPage').value;
-		location.href="boardList?nowPage=${paging.nowPage}&cntPerPage="+sel;
-	}
+   function selChange() {
+      var sel = document.getElementById('cntPerPage').value;
+      location.href="boardList?nowPage=${paging.nowPage}&cntPerPage="+sel;
+   }
 </script>
 
 <!-- login css -->
@@ -33,23 +33,19 @@
 <link rel="stylesheet" href='<%=pjName%>/resources/assets/css/modal.css'>
 
 <!-- main css -->
-		<link rel="stylesheet" href='<%=pjName%>/resources/assets/css/main.css' />
-		<link rel="stylesheet" href='<%=pjName%>/resources/assets/css/qna.css' />
-		
-		<!-- Favicon -->
+      <link rel="stylesheet" href='<%=pjName%>/resources/assets/css/main.css' />
+      <link rel="stylesheet" href='<%=pjName%>/resources/assets/css/qna.css' />
+      
+      <!-- Favicon -->
         <link rel="icon" href='<%=pjName%>/resources/images/favicon.ico'> 
+   
 
-<!-- 페이징 가로로 정렬 -->
-<style type="text/css">
-			li {list-style: none; float: left; padding: 6px;}
-</style>		
-
-		
+      
 </head>
 <body class="is-preload">
-		<div id="page-wrapper">
+      <div id="page-wrapper">
 
-			<!-- login Modal -->
+         <!-- login Modal -->
       <div class="modal-wrapper">
          <a class="btn-close trigger" href="#">Close</a>
          <div class="modal">
@@ -61,7 +57,7 @@
             <span>or</span>Sign up
          </h2>
          <div class="form-holder">
-            <form method="POST" id="insert-customer" action="insertCustomer.do">
+            <form method="POST" id="insert-customer" action="<%=pjName%>/customer/insertCustomer.do">
 
                <input type="text" class="input" placeholder="id" name="userid">
                <input type="text" class="input" placeholder="Name" name="name" />
@@ -83,7 +79,7 @@
             <h2 class="form-title" id="login">
                <span>or</span>Log in
             </h2>
-            <form method="POST" id="insert-customer" action="loginCustomer.do">
+            <form method="POST" id="insert-customer" action="<%=pjName%>/customer/loginCustomer.do">
                <div class="form-holder">
                   <input type="text" class="input" placeholder="id" name="userid" />
                   <!--  ${sessionScope.loginId}-->
@@ -104,25 +100,25 @@
       <div id="page-wrapper" style="background : white;">
       
 
-			<!-- Nav -->
+         <!-- Nav -->
          
             <nav id="nav">
-			<div id="navImage">
-				<a href="../customer/index.do"><img
-					src="<%=pjName%>/resources/images/logo2.png" height="138px"></a>
-			</div>
+         <div id="navImage">
+            <a href="../customer/index.do"><img
+               src="<%=pjName%>/resources/images/logo2.png" height="138px"></a>
+         </div>
 
-			<ul>
-				<li class="current"><a href="../customer/index.do">Home</a></li>
+         <ul>
+            <li><a href="../customer/index.do">Home</a></li>
 
-				<li><a href="../customer/story.do">Story</a></li>
-				<li><a href="../customer/location.do">Location</a>
-					<ul>
-						<li><a href="../customer/hongdae.do">홍대</a></li>
-						<li><a href="../customer/anyang.do">안양</a></li>
-						<li><a href="../customer/gumi.do">구미</a></li>
-					</ul></li>
-				 <li><a href="../theme/theme.do">Theme</a>
+            <li><a href="../customer/story.do">Story</a></li>
+            <li><a href="../customer/location.do">Location</a>
+               <ul>
+                  <li><a href="../customer/hongdae.do">홍대</a></li>
+                  <li><a href="../customer/anyang.do">안양</a></li>
+                  <li><a href="../customer/gumi.do">구미</a></li>
+               </ul></li>
+             <li><a href="../theme/theme.do">Theme</a>
                <ul>
                   <li><a href="../theme/theme.do?themegenre=horror">공포</a></li>
                   <li><a href="../theme/theme.do?themegenre=infiltration">잠입</a></li>
@@ -131,129 +127,129 @@
                   <li><a href="../theme/theme.do?themegenre=emotion">감성</a></li>
                   <li><a href="../customer/error.do">에러페이지</a></li>
                </ul></li>
-				<li><a href="../qna/getQnaList.do">Q&A</a></li>
-				<li><a href="../board/getBoardList.do">Board</a></li>
-				<c:if test="${sessionScope.loginId==null}">
-					<li><a class="btn trigger" href="../customer/login.do">Login</a></li>
-				</c:if>
-				<c:if test="${sessionScope.loginId!=null}">
-					<li><a href="../customer/mypage.do">Mypage</a></li>
+            <li class="current"><a href="../qna/getQnaList.do">Q&A</a></li>
+            <li><a href="../board/getBoardList.do">Board</a></li>
+            <c:if test="${sessionScope.loginId==null}">
+               <li><a class="btn trigger" href="../customer/login.do">Login</a></li>
+            </c:if>
+            <c:if test="${sessionScope.loginId!=null}">
+               <li><a href="../customer/mypage.do">Mypage</a></li>
                <li><a class="btn" href="../customer/logout.do">Logout</a></li>
 
-				</c:if>
+            </c:if>
 
 
 
-			</ul>
+         </ul>
             </nav>
-			<header>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				
-			</header>	
+         <header>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            
+         </header>   
 
-					<!-- Main -->
-			<section class="notice">
-				<div class="page-title">
-					  <div class="container">
-						  <h3>Q&A</h3>
-					  </div>
-				  </div>
-			  
-			<!-- 검색 창 부분 -->
+               <!-- Main -->
+         <section class="notice">
+            <div class="page-title">
+                 <div class="container">
+                    <h3>Q&A</h3>
+                 </div>
+              </div>
+           
+         <!-- 검색 창 부분 -->
               <div id="board-search">
                  <div class="container">
                     <div class="search-window" style="background : white;" >
                        <form action="../qna/getQnaList.do" method='get'>
                           <div class="search-wrap">
-                          	<select name='searchType'>
-								<option value='n'>----</option>
-								<option value='t'>제목</option>
-								<option value="c">내용</option>
-								<option value="w">작성자</option>
-							</select>
+                             <select name='searchType'>
+                        <option value='n'>----</option>
+                        <option value='t'>제목</option>
+                        <option value="c">내용</option>
+                        <option value="w">작성자</option>
+                     </select>
                              <input id="keywordInput" type="text" name="keywordInput" placeholder="검색어를 입력해주세요." >
                             <button id="searchBtn" type="button">search</button>
-							    <script>
-							      $(function(){
-							        $('#searchBtn').click(function() {
-							          self.location = "../qna/getQnaList.do" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
-							        });
-							      });   
-							    </script>
+                         <script>
+                           $(function(){
+                             $('#searchBtn').click(function() {
+                               self.location = "../qna/getQnaList.do" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
+                             });
+                           });   
+                         </script>
                           </div>
                        </form>
                     </div>
                  </div>
               </div>
-				 
-				<!-- board list area -->
-				  <div id="board-list">
-					  <div class="container">
-						  <table class="board-table">
-							  <thead>
-							  <tr>
-								  <th scope="col" class="th-num">번호</th>
-								  <th scope="col" class="th-title">제목</th>
-								  <th scope="col" class="th-id">작성자</th>
-								  <th scope="col" class="th-date">등록일</th>
-							  </tr>
-							  </thead>
-							  <tbody>
-								  <c:forEach items="${list }" var="qnaList">
-									<!-- 프라퍼티이름 변경 -->
-							  <tr>
-								  <td>${qnaList.seq }</td>
-									<td align="left"><a href="../qna/getQna.do?seq=${qnaList.seq}">
-												${qnaList.title }</a></td>
-								  <td>${qnaList.userid }</td>
-								  <td>${qnaList.regdate }</td>
-								  <c:if test="${sessionScope.loginId=='admin'}">
-			                          <td><a href="../qna/deleteBoardm.do?seq=${qnaList.seq}">
-			                          <input type="button" value="delete"></a></td>
-			                      </c:if>
-							  </tr>
-								  </c:forEach>
+             
+            <!-- board list area -->
+              <div id="board-list">
+                 <div class="container">
+                    <table class="board-table">
+                       <thead>
+                       <tr>
+                          <th scope="col" class="th-num">번호</th>
+                          <th scope="col" class="th-title">제목</th>
+                          <th scope="col" class="th-id">작성자</th>
+                          <th scope="col" class="th-date">등록일</th>
+                       </tr>
+                       </thead>
+                       <tbody>
+                          <c:forEach items="${list }" var="qnaList">
+                           <!-- 프라퍼티이름 변경 -->
+                       <tr>
+                          <td>${qnaList.seq }</td>
+                           <td align="left"><a href="../qna/getQna.do?seq=${qnaList.seq}">
+                                    ${qnaList.title }</a></td>
+                          <td>${qnaList.userid }</td>
+                          <td>${qnaList.regdate }</td>
+                          <c:if test="${sessionScope.loginId=='admin'}">
+                                   <td><a href="../qna/deleteBoardm.do?seq=${qnaList.seq}">
+                                   <input type="button" value="delete"></a></td>
+                               </c:if>
+                       </tr>
+                          </c:forEach>
 
-							  </tbody>
-						  </table>
-			  					<a href='../qna/saveQna.do'>
-			  					<input type="button" id="saveQna" name='saveQna' value="write">
-			  					</a>
-			  					
-			  					
-			  	 <!-- 페이징 -->  
+                       </tbody>
+                    </table>
+                          <a href='../qna/saveQna.do'>
+                          <input type="button" id="saveQna" name='saveQna' value="write">
+                          </a>
+                          
+                          
+               <!-- 페이징 -->  
                
                 <div class='container'>
-				  <ul class='container'  style="text-align: right;">
-				    <c:if test="${pageMaker.prev}">
-				    	<li><a href="../qna/getQnaList.do${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
-				    </c:if> 
-				
-				    <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-				    	<li><a href="../qna/getQnaList.do${pageMaker.makeSearch(idx)}">${idx}</a></li>
-				    </c:forEach>
-				
-				    <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-				    	<li><a href="../qna/getQnaList.do${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
-				    </c:if> 
-				  </ul>
-				</div>
-			  
-			  </section>
+              <ul class='container' id="paging"  style="text-align: right;">
+                <c:if test="${pageMaker.prev}">
+                   <li><a href="../qna/getQnaList.do${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
+                </c:if> 
+            
+                <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+                   <li><a href="../qna/getQnaList.do${pageMaker.makeSearch(idx)}">${idx}</a></li>
+                </c:forEach>
+            
+                <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+                   <li><a href="../qna/getQnaList.do${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
+                </c:if> 
+              </ul>
+            </div>
+           
+           </section>
 
-	</div>
-
-
+   </div>
 
 
 
 
 
-		
-					 <!-- Footer -->
+
+
+      
+                <!-- Footer -->
       <footer id="footer">
          <div class="container">
             <div class="row gtr-200">
@@ -297,9 +293,9 @@
       </footer>
 
 
-		</div>
+      </div>
 
-		<!-- Scripts -->
+      <!-- Scripts -->
          <script src="<%=pjName%>/resources/assets/js/jquery.min.js"></script>
          <script src="<%=pjName%>/resources/assets/js/jquery.dropotron.min.js"></script>
          <script src="<%=pjName%>/resources/assets/js/jquery.scrolly.min.js"></script>

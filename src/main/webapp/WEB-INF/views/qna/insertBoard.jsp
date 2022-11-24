@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <html>
-		<title>S.o.S escape</title>
+		<title id='logo'>S.o.S escape</title>
 		<% String pjName = "/sosBoard"; %>
 	<head>
 		<meta charset="utf-8" />
@@ -28,7 +28,7 @@
                </div>
                               
                <ul>
-                  <li class="current"><a href="index.do">Home</a></li>
+                  <li><a href="index.do">Home</a></li>
                   
                   <li><a href="story.do">Story</a></li>
                   <li><a href="location.do">Location</a>
@@ -49,7 +49,7 @@
                   <li><a href="../theme/theme.do?themegenre=emotion">감성</a></li>
                   <li><a href="../customer/error.do">에러페이지</a></li>
                </ul></li>
-                  <li><a href="qna.do">Q&A</a></li>
+                  <li class="current"><a href="qna.do">Q&A</a></li>
                   <li><a href="board.do">Board</a></li>
               <c:if test="${sessionScope.loginId==null}">
 					<li><a class="btn trigger" href="../customer/login.do">Login</a></li>

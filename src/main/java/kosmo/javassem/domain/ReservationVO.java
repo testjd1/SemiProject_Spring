@@ -1,17 +1,24 @@
 package kosmo.javassem.domain;
 
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 
 @Data
 public class ReservationVO {
 	   private int seq;       // 테마 순서
 	   private String userid;  // 고객 아이디
+	   
+
 	   private String regdate;   // 날짜
+	   
 	   private String time;   // 시간
-	   private String total; // 총액
+	   private int total; // 총액
 	   private String name;   // 사용자 이름
 	   private String tel;   // 전화 번호
-	   private String peoplecount; // 예약 인원
+	   private int peoplecount; // 예약 인원
 	   private String branch;    // 지점 명
 	   private String themeseq;   // 사진 번호
 	   private String themename;	// 테마 명

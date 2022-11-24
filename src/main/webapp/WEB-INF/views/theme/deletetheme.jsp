@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>save theme</title>
+<title id='logo'>S.o.S escape</title>
 </head>
 <body>
 

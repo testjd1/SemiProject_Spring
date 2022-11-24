@@ -13,6 +13,11 @@
 <!-- Favicon -->
 <link rel="icon" href='<%=pjName%>/resources/images/favicon.ico'>
 
+<!-- 로그인, 모달  jquery-->
+<script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+
+<!-- modal js -->
+<script src="<%=pjName%>/resources/assets/js/modal.js"></script>
 
 
 <script>
@@ -91,6 +96,7 @@
 <script
    src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src='<%=pjName%>/resources/assets/js/login.js'></script>
+
 
 
 </html>

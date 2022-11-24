@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>S.o.S escape</title>
+<title id='logo'>S.o.S escape</title>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
 <%
@@ -114,10 +114,10 @@
 			</div>
 
 			<ul>
-				<li class="current"><a href="../customer/index.do">Home</a></li>
+				<li><a href="../customer/index.do">Home</a></li>
 
 				<li><a href="../customer/story.do">Story</a></li>
-				<li><a href="../customer/location.do">Location</a>
+				<li class="current"><a href="../customer/location.do">Location</a>
 					<ul>
 						<li><a href="../customer/hongdae.do">홍대</a></li>
 						<li><a href="../customer/anyang.do">안양</a></li>

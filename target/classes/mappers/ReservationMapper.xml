@@ -4,22 +4,30 @@
 <mapper namespace="ReservationDAO">
 
 
-  <!-- 
-   <insert id="insertReservation"  resultType="kosmo.javassem.domain.ThemeVO">
-     insert into Reservation ()
-     values ()   
+  
+   <insert id="insertReservation"  parameterType="ReservationVO">
+      INSERT INTO Reservation(seq,userid, regdate, time, total, name,tel,peoplecount,branch,themename)
+      VALUES(Reservation_seq.nextval,#{userid},#{regdate}, #{time}, #{total},#{name}, #{tel}, #{peoplecount},#{branch},#{themename})
    </insert>  
- --> 
+ 
  <select id="threv" parameterType="ReservationVO" resultType="hashmap">
 
  select r.themename as themename, r.branch as branch, t.thcost as thcost
  from reservetheme r full join theme t
  on r.picture = t.picture
  where  r.picture = #{picture}
-		
 
 </select> 
  
+ 
+  <select id="checkDate" parameterType="ReservationVO" resultType="hashmap">
+
+ select time 
+ from Reservation
+ where regdate = #{regdate};
+
+
+</select>
 
     
   <!-- 

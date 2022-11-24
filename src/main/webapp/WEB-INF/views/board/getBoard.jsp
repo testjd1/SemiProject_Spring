@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>글 상세</title>
 <% String pjName = "/sosBoard"; %>
-<link rel="stylesheet" href='<%=pjName%>/resources/assets/css/main.css'>
+
 <!-- <link rel ="stylesheet" href='resources/css/test.css'> -->
 
 </head>
@@ -26,7 +26,7 @@
 
 			</style>
 	  
-<title>S.o.S escape</title>
+<title id='logo'>S.o.S escape</title>
 
 <!-- 로그인, 모달  jquery-->
 <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
@@ -71,7 +71,7 @@
             <span>or</span>Sign up
          </h2>
          <div class="form-holder">
-            <form method="POST" id="insert-customer" action="insertCustomer.do">
+            <form method="POST" id="insert-customer" action="<%=pjName%>/customer/insertCustomer.do">
 
                <input type="text" class="input" placeholder="id" name="userid">
                <input type="text" class="input" placeholder="Name" name="name" />
@@ -93,7 +93,7 @@
             <h2 class="form-title" id="login">
                <span>or</span>Log in
             </h2>
-            <form method="POST" id="insert-customer" action="loginCustomer.do">
+            <form method="POST" id="insert-customer" action="<%=pjName%>/customer/loginCustomer.do">
                <div class="form-holder">
                   <input type="text" class="input" placeholder="id" name="userid" />
                   <!--  ${sessionScope.loginId}-->
@@ -120,7 +120,7 @@
          </div>
 
          <ul>
-            <li class="current"><a href="../customer/index.do">Home</a></li>
+            <li ><a href="../customer/index.do">Home</a></li>
 
             <li><a href="../customer/story.do">Story</a></li>
             <li><a href="../customer/location.do">Location</a>
@@ -139,7 +139,7 @@
                   <li><a href="../customer/error.do">에러페이지</a></li>
                </ul></li>
             <li><a href="../qna/getQnaList.do">Q&A</a></li>
-            <li><a href="../board/getBoardList.do">Board</a></li>
+            <li class="current"><a href="../board/getBoardList.do">Board</a></li>
             <c:if test="${sessionScope.loginId==null}">
                <li><a class="btn trigger" href="../customer/login.do">Login</a></li>
             </c:if>

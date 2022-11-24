@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>글 목록</title>
+<title id='logo'>S.o.S escape</title>
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
       <% String pjName = "/sosBoard"; %>
@@ -20,10 +20,10 @@
 
 <!-- 페이징 관련 js -->
 <script>
-	function selChange() {
-		var sel = document.getElementById('cntPerPage').value;
-		location.href="boardList?nowPage=${paging.nowPage}&cntPerPage="+sel;
-	}
+   function selChange() {
+      var sel = document.getElementById('cntPerPage').value;
+      location.href="boardList?nowPage=${paging.nowPage}&cntPerPage="+sel;
+   }
 </script>
 
 <!-- login css -->
@@ -39,10 +39,6 @@
       <!-- Favicon -->
         <link rel="icon" href='<%=pjName%>/resources/images/favicon.ico'> 
 
-<!-- 페이징 가로로 정렬 -->
-<style type="text/css">
-			li {list-style: none; float: left; padding: 6px;}
-</style>
 
 </head>
 <body class="is-preload">
@@ -59,7 +55,7 @@
             <span>or</span>Sign up
          </h2>
          <div class="form-holder">
-            <form method="POST" id="insert-customer" action="insertCustomer.do">
+            <form method="POST" id="insert-customer" action="<%=pjName%>/customer/insertCustomer.do">
 
                <input type="text" class="input" placeholder="id" name="userid">
                <input type="text" class="input" placeholder="Name" name="name" />
@@ -81,7 +77,7 @@
             <h2 class="form-title" id="login">
                <span>or</span>Log in
             </h2>
-            <form method="POST" id="insert-customer" action="loginCustomer.do">
+            <form method="POST" id="insert-customer" action="<%=pjName%>/customer/loginCustomer.do">
                <div class="form-holder">
                   <input type="text" class="input" placeholder="id" name="userid" />
                   <!--  ${sessionScope.loginId}-->
@@ -113,7 +109,7 @@
          </div>
 
          <ul>
-            <li class="current"><a href="../customer/index.do">Home</a></li>
+            <li ><a href="../customer/index.do">Home</a></li>
 
             <li><a href="../customer/story.do">Story</a></li>
             <li><a href="../customer/location.do">Location</a>
@@ -132,7 +128,7 @@
                   <li><a href="../customer/error.do">에러페이지</a></li>
                </ul></li>
             <li><a href="../qna/getQnaList.do">Q&A</a></li>
-            <li><a href="../board/getBoardList.do">Board</a></li>
+            <li class="current"><a href="../board/getBoardList.do">Board</a></li>
             <c:if test="${sessionScope.loginId==null}">
                <li><a class="btn trigger" href="../customer/login.do">Login</a></li>
             </c:if>
@@ -169,21 +165,21 @@
                     <div class="search-window" style="background : white;">
                        <form action="../board/getBoardList.do" method='get'>
                           <div class="search-wrap">
-                          	<select name='searchType'>
-								<option value='n'>----</option>
-								<option value='t'>제목</option>
-								<option value="c">내용</option>
-								<option value="w">작성자</option>
-							</select>
+                             <select name='searchType'>
+                        <option value='n'>----</option>
+                        <option value='t'>제목</option>
+                        <option value="c">내용</option>
+                        <option value="w">작성자</option>
+                     </select>
                              <input id="keywordInput" type="text" name="keywordInput" placeholder="검색어를 입력해주세요." >
                             <button id="searchBtn" type="button">search</button>
-							    <script>
-							      $(function(){
-							        $('#searchBtn').click(function() {
-							          self.location = "../board/getBoardList.do" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
-							        });
-							      });   
-							    </script>
+                         <script>
+                           $(function(){
+                             $('#searchBtn').click(function() {
+                               self.location = "../board/getBoardList.do" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
+                             });
+                           });   
+                         </script>
                           </div>
                        </form>
                     </div>
@@ -229,20 +225,20 @@
                <!-- 페이징 -->  
                
                 <div class='container'>
-				  <ul class='container'  style="text-align: right;">
-				    <c:if test="${pageMaker.prev}">
-				    	<li><a href="../board/getBoardList.do${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
-				    </c:if> 
-				
-				    <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-				    	<li><a href="../board/getBoardList.do${pageMaker.makeSearch(idx)}">${idx}</a></li>
-				    </c:forEach>
-				
-				    <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-				    	<li><a href="../board/getBoardList.do${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
-				    </c:if> 
-				  </ul>
-				</div>
+              <ul class='container'  style="text-align: right;">
+                <c:if test="${pageMaker.prev}">
+                   <li><a href="../board/getBoardList.do${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
+                </c:if> 
+            
+                <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+                   <li><a href="../board/getBoardList.do${pageMaker.makeSearch(idx)}">${idx}</a></li>
+                </c:forEach>
+            
+                <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+                   <li><a href="../board/getBoardList.do${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
+                </c:if> 
+              </ul>
+            </div>
                  
            </section>
 </div>

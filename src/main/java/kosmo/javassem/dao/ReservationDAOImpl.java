@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kosmo.javassem.domain.ReservationVO;
+import kosmo.javassem.domain.UserMemberVO;
 
 
 @Service
@@ -20,6 +21,11 @@ public class ReservationDAOImpl implements ReservationDAO {
 	      System.out.println("=>ReservationDAOImpl.java::UserMapper::insertReservation");
 	      return mybatis.insert("ReservationDAO.insertReservation", vo);
 	   }
+	
+	
+
+	
+	
 	 /*
 	 public List<HashMap> threv(ReservationVO vo){
 		 System.out.println("=>ReservationDAOImpl.java::UserMapper::threv");
@@ -30,4 +36,9 @@ public class ReservationDAOImpl implements ReservationDAO {
 		 System.out.println("=>ReservationDAOImpl.java::UserMapper::threv");
 		 return mybatis.selectOne("ReservationDAO.threv", vo);
 	 }
+	 
+	 public List<HashMap> checkDate(ReservationVO vo) {
+	      System.out.println("=>ReservationDAOImpl.java::UserMapper::checkDate");
+	      return mybatis.selectList("ReservationDAO.checkDate",vo);
+	   }
 }

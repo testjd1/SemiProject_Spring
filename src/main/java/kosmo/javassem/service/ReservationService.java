@@ -9,8 +9,8 @@ public interface ReservationService {
 
 	// 예약 값 디비 연결
 	public int insertReservation(ReservationVO vo); 
-	/*
-	public List<HashMap> threv(ReservationVO vo);
-	*/
+	
+	public List<HashMap> checkDate(ReservationVO vo);
+	
 	public HashMap threv(ReservationVO vo);
 }

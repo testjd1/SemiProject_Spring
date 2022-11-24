@@ -24,7 +24,7 @@
 }
 </style>
 
-<title>S.o.S escape</title>
+<title id='logo'>S.o.S escape</title>
 
 <%
    String pjName = "/sosBoard";
@@ -144,9 +144,9 @@
          </div>
 
          <ul>
-            <li class="current"><a href="../customer/index.do">Home</a></li>
+            <li><a href="../customer/index.do">Home</a></li>
 
-            <li><a href="../customer/story.do">Story</a></li>
+            <li class="current"><a href="../customer/story.do">Story</a></li>
             <li><a href="../customer/location.do">Location</a>
                <ul>
                   <li><a href="../customer/hongdae.do">홍대</a></li>

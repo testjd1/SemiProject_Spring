@@ -18,12 +18,12 @@ public class ReservationServiceImpl implements ReservationService{
 	public int insertReservation(ReservationVO vo) {
 		return reservationDAO.insertReservation(vo);
 	}
-	/*
+	
 	@Override
-	public List<HashMap> threv(ReservationVO vo){
-		return reservationDAO.threv(vo);
+	public List<HashMap> checkDate(ReservationVO vo){
+		return reservationDAO.checkDate(vo);
 	}
-	*/
+	
 	@Override
 	public HashMap threv(ReservationVO vo){
 		return reservationDAO.threv(vo);

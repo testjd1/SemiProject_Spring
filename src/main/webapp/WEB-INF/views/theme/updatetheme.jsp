@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>save theme</title>
+<title id='logo'>S.o.S escape</title>
 </head>
 <body>
 
-<h1>테마 등록 수정이 완료 되었습니다!</h1>		
+<h1>테마 수정이 완료 되었습니다!</h1>		
 		
 <a href="getthemelist.do">테마 목록 가기</a> 
 
