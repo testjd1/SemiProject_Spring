@@ -14,32 +14,26 @@ public class UserMemberServiceImpl implements UserMemberService {
    @Autowired
    private UserMemberDAOImpl UserMemberDAO;
 
+   //회원 가입
    public int insertCustomer(UserMemberVO vo) {
       return UserMemberDAO.insertCustomer(vo);
    }
+   //아이디 중복 체크
    public UserMemberVO checkId(UserMemberVO vo) {
       return UserMemberDAO.checkId(vo);
    }
+   //로그인
    public UserMemberVO loginCustomer(UserMemberVO vo) {
       return UserMemberDAO.loginCustomer(vo); 
    }
-
-   
-/*
-   public void updateBoard(BoardVO vo) {
-      boardDAO.updateBoard(vo);
+   //회원정보 가져오기
+   public UserMemberVO getCustomer(UserMemberVO vo) {
+	   return UserMemberDAO.getCustomer(vo); 	   
    }
+	//회원정보 수정
+	public void customerUpdate(UserMemberVO vo) {
+		UserMemberDAO.customerUpdate(vo);
+	}
 
-   public void deleteBoard(BoardVO vo) {
-      boardDAO.deleteBoard(vo);
-   }
-
-   public BoardVO getBoard(BoardVO vo) {
-      return boardDAO.getBoard(vo);
-   }
-
-   public List<BoardVO> getBoardList(BoardVO vo) {
-      return boardDAO.getBoardList(vo);
-   }
-   */
+ 
 }

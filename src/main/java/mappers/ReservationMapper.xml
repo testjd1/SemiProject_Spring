@@ -4,60 +4,57 @@
 <mapper namespace="ReservationDAO">
 
 
-  
-   <insert id="insertReservation"  parameterType="ReservationVO">
-      INSERT INTO Reservation(seq,userid, regdate, time, total, name,tel,peoplecount,branch,themename)
-      VALUES(Reservation_seq.nextval,#{userid},#{regdate}, #{time}, #{total},#{name}, #{tel}, #{peoplecount},#{branch},#{themename})
-   </insert>  
- 
- <select id="threv" parameterType="ReservationVO" resultType="hashmap">
-
- select r.themename as themename, r.branch as branch, t.thcost as thcost
- from reservetheme r full join theme t
- on r.picture = t.picture
- where  r.picture = #{picture}
-
-</select> 
- 
- 
-  <select id="checkDate" parameterType="ReservationVO" resultType="hashmap">
-
- select time 
- from Reservation
- where regdate = #{regdate};
+     <!-- 예약 db에 입력 -->
+	<insert id="insertReservation" parameterType="ReservationVO">
+		INSERT INTO
+		Reservation(seq,userid, regdate, time, total,
+		name,tel,peoplecount,branch,themename)
+		VALUES(Reservation_seq.nextval,#{userid},#{regdate}, #{time},
+		#{total},#{name}, #{tel}, #{peoplecount},#{branch},#{themename})
+	</insert>
 
 
-</select>
+
+    <!-- 상세페이지 -> 예약페이지 -->
+	<select id="threv" parameterType="ReservationVO"
+		resultType="hashmap">
+
+		select r.themename as themename, r.branch as branch,
+		t.thcost as thcost
+		from reservetheme r full join theme t
+		on r.picture =
+		t.picture
+		where r.picture = #{picture}
+
+	</select>
 
     
-  <!-- 
-  
-    --> 
-   
-<!--  
-   <select id="getBoardList" resultType="BoardVO">
-      <![CDATA[
-      SELECT * FROM uploadtemp ORDER BY b_id DESC
-      ]]>
-   </select>
+    <!-- 날짜, 제목 받아서 중복 시간 계산 -->
+    
+	<select id="checkDate" parameterType="ReservationVO"
+		resultType="String">
 
-   <update id="updateBoard"  parameterType="BoardVO">
-      UPDATE uploadtemp SET
-      b_title = #{b_title},
-      b_content = #{b_content}
-      WHERE b_id = #{b_id}
-   </update>
+		select time
+		from Reservation
+		where regdate = #{regdate} and themename = #{themename}
+
+
+	</select>
+
+
+	<!-- 예약DB MYPAGE에 출력 -->
+
+	<select id="listRev" parameterType="ReservationVO"
+		resultType="ReservationVO">
    
-   <delete id="deleteBoard"  parameterType="BoardVO">
-      DELETE FROM uploadtemp
-      WHERE b_id = #{b_id}
-   </delete>
-   
-   <select id="getBoard"  parameterType="BoardVO" resultType="BoardVO">
-      SELECT *
-      FROM uploadtemp
-      WHERE b_id = #{b_id}
-   </select>
--->   
+    <![CDATA[
+   SELECT name, tel, themename, branch,  regdate, time, peoplecount, total
+   FROM Reservation
+   WHERE userid = #{userid}
+     ]]>
+
+	</select>
+
+
 
 </mapper>

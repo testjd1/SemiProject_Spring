@@ -14,6 +14,8 @@ public interface ThemeService {
 
 	// 테마 등록하기
 	void register(ThemeVO vo);
+	//테마 예약
+	void register2(ThemeVO vo);
 
 	// 테마 등록 수정하기
 	void update(ThemeVO vo);

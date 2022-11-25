@@ -81,39 +81,25 @@ public class UserMemberController {
      }
      // ---user login end
       
-     
+      //회원정보 수정 페이지
+      @RequestMapping(value="/customerUpdateView.do", method = RequestMethod.GET)
+      public String customerUpdateView(UserMemberVO vo,Model m) {
+    	  UserMemberVO list = userService.getCustomer(vo);
+    	  m.addAttribute("customer", list);
+    	  return "/customer/customerUpdateView";
+      }
       
-   /*
-      // 글 목록 검색
-      @RequestMapping("/getBoardList.do")
-      public void getBoardList(BoardVO vo, Model model) {
-         model.addAttribute("boardList",boardService.getBoardList(vo)) ;    
-         
+      //회원정보 수정
+      @RequestMapping(value="customerUpdate.do", method = RequestMethod.GET)
+      public String customerUpdate(UserMemberVO vo, HttpSession session) {
+    	  userService.customerUpdate(vo);
+    	  //로그인 되어있던 세션을 끊고
+    	  session.invalidate();
+    	  //메인으로 돌아감
+    	 return "redirect:/customer/index.do";
       }
-     
-   
-         
-      }
-
-      // 글 수정
-      @RequestMapping("/updateBoard.do")
-      public void updateBoard(BoardVO vo) {
-
-         
-      }
-
-      // 글 삭제
-      @RequestMapping("/deleteBoard.do")
-      public void deleteBoard(BoardVO vo) {
-
-         
-      }
-
-      // 글 상세 조회
-      @RequestMapping("/getBoard.do")
-      public void getBoard(BoardVO vo, Model model) {
-         BoardVO result = boardService.getBoard(vo);
-         model.addAttribute("board",result);
-      }
-*/
-   }
+      
+      
+      
+      
+   }//END UserMemberController

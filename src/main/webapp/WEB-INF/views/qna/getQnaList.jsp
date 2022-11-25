@@ -133,10 +133,11 @@
                <li><a class="btn trigger" href="../customer/login.do">Login</a></li>
             </c:if>
             <c:if test="${sessionScope.loginId!=null}">
-               <li><a href="../customer/mypage.do">Mypage</a></li>
-               <li><a class="btn" href="../customer/logout.do">Logout</a></li>
-
-            </c:if>
+            <li><a
+               href="../reservation/mypage.do?userid=${sessionScope.loginId}">Mypage</a></li>
+            <li><a class="btn" href="../customer/logout.do">Logout</a></li>
+         </c:if>
+          
 
 
 
@@ -202,9 +203,9 @@
                            <!-- 프라퍼티이름 변경 -->
                        <tr>
                           <td>${qnaList.seq }</td>
-                           <td align="left"><a href="../qna/getQna.do?seq=${qnaList.seq}">
-                                    ${qnaList.title }</a></td>
-                          <td>${qnaList.userid }</td>
+                           <td align="left" id="lock"><a href="../qna/checkPassQnaList.do?seq=${qnaList.seq}">
+                                     &#128274; ${qnaList.title }</a></td>
+                          <td id="lockid">${qnaList.userid }</td>
                           <td>${qnaList.regdate }</td>
                           <c:if test="${sessionScope.loginId=='admin'}">
                                    <td><a href="../qna/deleteBoardm.do?seq=${qnaList.seq}">
@@ -307,5 +308,19 @@
       src="<%=pjName%>/resources/https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!-- login  js 추가-->
    <script src="<%=pjName%>/resources/assets/js/login.js"></script> 
+   <!-- 로그인 안했을 시 글 못씀 -->
+      <script type="text/javascript">
+      $("#saveQna").click(function() {
+         var k = "<%=session.getAttribute("loginId")%>" 
+         if(k!="null"){
+            alert(k +"님 글쓰기 페이지로 이동합니다.")
+         }
+         if(k=="null"){
+            alert("로그인 후 이용가능 합니다.")
+            return false;
+         } 
+   
+      })//end
+   </script>  
 </body>
 </html>

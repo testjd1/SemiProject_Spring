@@ -52,7 +52,29 @@
 	</insert>
 
 
-	<!-- 테마 등록 수정 -->
+    <!-- 테마 예약 -->
+    
+     <insert id="register2"
+      parameterType="kosmo.javassem.domain.ThemeVO">
+
+      insert into reservetheme(branch, themename
+      <if test="picture != null">
+         , picture
+      </if>
+      )
+
+      values (#{branch},#{themename}
+      <if test="picture != null">
+         , #{picture}
+      </if>
+      )
+   </insert>
+
+
+
+
+
+    	<!-- 테마 등록 수정 -->
 
 	<update id="update"
 		parameterType="kosmo.javassem.domain.ThemeVO">
@@ -76,7 +98,6 @@
 		
 		
 	</update>
-    
 
 
 

@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +25,7 @@ public class QnaController {
 	@Autowired
 	private QnaService boardService;
 
-		//
+		
 		@RequestMapping("/{step}.do")
 		public String viewPage(@PathVariable String step) {
 			return "/qna/"+step;
@@ -94,5 +95,20 @@ public class QnaController {
 		public void test(String name){
 			System.out.println("/test 요청");
 		}
+		
+		
+		//my qna 값 my page에 출력
+		@GetMapping("/myqna.do")
+		public void listqna (QnaVO vo, Model model) {
+			System.out.println("[/qna/myqna.do 요청]" + vo);
+			List<QnaVO> list = boardService.listqna(vo);
+			System.out.println(list.size());
+			model.addAttribute("listqna", list);
+		}
+		
+		
+		
+		
+		
 
 	}

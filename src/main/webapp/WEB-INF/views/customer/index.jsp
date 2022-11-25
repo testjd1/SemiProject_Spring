@@ -128,7 +128,7 @@
 						href="../customer/login.do">Login</a></li>
 				</c:if>
 				<c:if test="${sessionScope.loginId!=null}">
-					<li><a href="../customer/mypage.do">Mypage</a></li>
+					<li><a href="../reservation/mypage.do?userid=${sessionScope.loginId}">Mypage</a></li>
 					<li><a class="btn" href="../customer/logout.do">Logout</a></li>
 
 				</c:if>
@@ -504,7 +504,7 @@
 						.open(
 								"popUp.do",
 								"pop",
-								"width=400, height=500, history=no, resizable=no, status=no, scrollbar=yes, menubar=no");
+								"width=510, height=620, history=no, resizable=no, status=no, scrollbar=yes, menubar=no");
 			}//if end   
 
 		}//pageload end

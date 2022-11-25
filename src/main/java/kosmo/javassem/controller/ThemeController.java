@@ -45,6 +45,8 @@ public class ThemeController {
 	public void register(ThemeVO vo) throws IOException {
 		System.out.println("save_theme 요청 :" + vo);
 		themeService.register(vo);
+		//테마 예약
+		themeService.register2(vo);
 	}
 
 // 테마 등록 수정

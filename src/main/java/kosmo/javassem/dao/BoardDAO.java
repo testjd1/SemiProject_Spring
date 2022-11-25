@@ -20,4 +20,7 @@ public interface BoardDAO {
 	public List<BoardVO> getBoardList(SearchCriteria scri) ;
 	//게시글 총 갯수
 	public int listCount(SearchCriteria scri);
+	//게시글 목록 mypage에 출력
+	public List<BoardVO> listboard(BoardVO vo);
+	
 }

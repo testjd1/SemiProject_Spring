@@ -14,6 +14,8 @@ public interface ThemeDAO {
 
 	// 테마 등록하기
 	public void register(ThemeVO vo);
+	//테마 예약
+	public void register2(ThemeVO vo);
 
 	// 테마 등록 수정하기
 	public void update(ThemeVO vo);

@@ -14,47 +14,41 @@ public class UserMemberDAOImpl implements UserMemberDAO{
    
    @Autowired
    private SqlSessionTemplate mybatis;
-   // ---user login
+   
+   //회원 가입
    public int insertCustomer(UserMemberVO vo) {
       System.out.println("=>UserDAOImpl.java::UserMapper::insertCustomer");
       return mybatis.insert("UserMemberDAO.insertCustomer", vo);
    }
    
+   //아이디 중복체크
    public UserMemberVO checkId(UserMemberVO vo) {
       System.out.println("=>UserDAOImpl.java::UserMapper::checkId");
       return mybatis.selectOne("UserMemberDAO.checkId",vo);
    }
 
+   // ---로그인
    public UserMemberVO loginCustomer(UserMemberVO vo) {
       System.out.println("=>UserDAOImpl.java::UserMapper::loginCustomer");
       return mybatis.selectOne("UserMemberDAO.loginCustomer", vo);
-   }
+   } // ---user login end
 
+   //회원정보 가져오기
+   public UserMemberVO getCustomer(UserMemberVO vo) {
+	   System.out.println("=>UserDAOImpl.java::UserMapper::getCustomer");
+	   return mybatis.selectOne("UserMemberDAO.getCustomer",vo);
+   }
+   
+	//회원정보 수정
+   //서비스에서 보낸 파라미터들을 customerUpdate()에 담기
+	public void customerUpdate(UserMemberVO vo) {
+		//vo에 담긴 파라미터들은 유저멤버mapper.xml에 UserMemberDAO라는 namespace에
+		//아이디가 customerUpdate인 쿼리에 파라미터들을 넣어줌.
+		System.out.println("=>UserDAOImpl.java::UserMapper::customerUpdate");
+		mybatis.update("UserMemberDAO.customerUpdate",vo);
+	}
 
    
-      // ---user login end
-
       
-   
-/*
-   public void updateBoard(BoardVO vo) {
-      System.out.println("===> Mybatis updateBoard() 호출");
-      mybatis.update("BoardDAO.updateBoard", vo);
-   }
-
-   public void deleteBoard(BoardVO vo) {
-      System.out.println("===> Mybatis deleteBoard() 호출");
-      mybatis.delete("BoardDAO.deleteBoard", vo);
-   }
-
-   public BoardVO getBoard(BoardVO vo) {
-      System.out.println("===> Mybatis getBoard() 호출");
-      return (BoardVO) mybatis.selectOne("BoardDAO.getBoard", vo);
-   }
-
-   public List<BoardVO> getBoardList(BoardVO vo) {
-      System.out.println("===> Mybatis getBoardList() 호출");
-      return mybatis.selectList("BoardDAO.getBoardList", vo);
-   }
-   */
+  
 }

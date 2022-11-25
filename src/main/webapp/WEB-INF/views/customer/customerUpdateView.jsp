@@ -30,15 +30,16 @@
 }
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title id='logo'>S.o.S escape</title>
-<!--  select icon -->
+<title id="logo">S.o.S escape</title>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
 <%
 	String pjName = "/sosBoard";
 %>
 <link rel="stylesheet" href='<%=pjName%>/resources/assets/css/main.css'>
-<link rel="stylesheet" href="<%=pjName%>/resources/assets/css/theme.css" />
+
+<link rel="stylesheet"
+	href="<%=pjName%>/resources/assets/css/mypage.css" />
 <!-- <link rel ="stylesheet" href='resources/css/test.css'> -->
 
 
@@ -73,6 +74,7 @@
 
 
 
+
 </head>
 <body class="homepage is-preload">
 	<div id="page-wrapper">
@@ -98,7 +100,7 @@
 						<li><a href="../customer/anyang.do">안양</a></li>
 						<li><a href="../customer/gumi.do">구미</a></li>
 					</ul></li>
-				<li class="current"><a href="../theme/theme.do">Theme</a>
+				<li><a href="../theme/theme.do">Theme</a>
 					<ul>
 						<li><a href="../theme/theme.do?themegenre=horror">공포</a></li>
 						<li><a href="../theme/theme.do?themegenre=infiltration">잠입</a></li>
@@ -113,8 +115,9 @@
 					<li><a id="gologin" class="btn trigger"
 						href="../customer/login.do">Login</a></li>
 				</c:if>
-					<c:if test="${sessionScope.loginId!=null}">
-					<li><a href="../reservation/mypage.do?userid=${sessionScope.loginId}">Mypage</a></li>
+				<c:if test="${sessionScope.loginId!=null}">
+					<li><a
+						href="../reservation/mypage.do?userid=${sessionScope.loginId}">Mypage</a></li>
 					<li><a class="btn" href="../customer/logout.do">Logout</a></li>
 
 				</c:if>
@@ -122,14 +125,145 @@
 
 
 
-
 			</ul>
 		</nav>
 
+		<!-- Main -->
+		<section id="main">
+			<div class="container">
+				<div class="row">
+					<div class="col-3 col-12-medium">
+
+						<div class="sidebar">
+
+							<div class="wrap">
+								<div class="greenContainer" style="height: auto; width: 1000px">
+									<div>
+										<div class="name">${sessionScope.loginId}님 환영합니다!</div>
+									</div>
+
+								</div>
+
+								<div class="shippingStatusContainer"></div>
+								<div class="listContainer">
+
+
+
+									<a
+										href="../reservation/mypage.do?userid=${sessionScope.loginId}"
+										class="item">
+										<div class="text">예약 내역</div>
+										<div class="right">></div>
+									</a> <a href="../qna/myqna.do?userid=${sessionScope.loginId}"
+										class="item">
+										<div class="text">
+											My QnA
+										</div>
+										<div class="right">></div>
+									</a> <a href="../board/myboard.do?userid=${sessionScope.loginId}"
+										class="item">
+										<div class="text">My Board</div>
+										<div class="right">></div>
+									</a> <a
+										href="../customer/customerUpdateView.do?userid=${sessionScope.loginId}"
+										class="item">
+										<div class="text">회원정보 수정<span class="circle"></span>
+										</div>
+										<div class="right">></div>
+									</a>
 
 
 
 
+
+
+
+
+
+
+								</div>
+								<div class="listContainer"></div>
+								<div class="infoContainer">
+									<a href="#" class="item">
+										<div>
+											<i class="fa-solid fa-circle-info"></i>
+										</div>
+										<div>공지사항</div>
+									</a> <a href="#" class="item">
+										<div>
+											<i class="fa-solid fa-face-smile"></i>
+										</div>
+										<div>이용안내</div>
+									</a> <a href="#" class="item">
+										<div>
+											<i class="fa-solid fa-phone"></i>
+										</div>
+										<div>고객센터</div>
+									</a>
+								</div>
+							</div>
+
+
+						</div>
+					</div>
+					<div class="col-9 col-12-medium imp-medium">
+
+						<div class="container">
+							<section id="container">
+								<form action="../customer/customerUpdate.do" method="get"
+									style="font-family: GangwonEdu_OTFBoldA;">
+									<div class="form-group has-feedback">
+										<label class="control-label" for="userid">아이디</label> <input
+											class="form-control" type="text" id="userid" name="userid"
+											value="${param.userid}" readonly="readonly" />
+									</div>
+									<div class="form-group has-feedback">
+										<label class="control-label" for="pass">패스워드</label> <input
+											class="form-control" type="password" id="pass" name="pass" />
+									</div>
+									<div class="form-group has-feedback">
+										<label class="control-label" for="name">성명</label> <input
+											class="form-control" type="text" id="name" name="name"
+											value="${customer.name}" />
+									</div>
+									<div class="form-group has-feedback">
+										<label class="control-label" for="tel">전화번호</label> <input
+											class="form-control" type="text" id="tel" name="tel"
+											value="${customer.tel}" />
+									</div>
+									<div class="form-group has-feedback">
+										<label class="control-label" for="email">이메일</label> <input
+											class="form-control" type="text" id="email" name="email"
+											value="${customer.email}" />
+									</div>
+									&nbsp;
+									<div class="form-group has-feedback">
+										<button class="btn btn-success" type="submit" id="submit">수정</button>
+										&nbsp;&nbsp; <a href="../customer/mypage.do">
+											<button class="cencle btn btn-danger" id="cancle"
+												type="button">취소</button>
+										</a>
+									</div>
+								</form>
+							</section>
+						</div>
+
+
+					</div>
+					<div class="col-12">
+
+						<!-- Features -->
+
+
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+
+	</div>
+	<div class="col-12">
 		<!-- login Modal -->
 		<div class="modal-wrapper">
 			<a class="btn-close trigger" href="#">Close</a>
@@ -145,7 +279,7 @@
 						</h2>
 						<div class="form-holder">
 							<form method="POST" id="insert-customer"
-								action="<%=pjName%>/customer/insertCustomer.do">
+								action="insertCustomer.do">
 
 								<input type="text" class="input" placeholder="id" name="userid">
 								<input type="text" class="input" placeholder="Name" name="name" />
@@ -168,7 +302,7 @@
 								<span>or</span>Log in
 							</h2>
 							<form method="POST" id="insert-customer"
-								action="<%=pjName%>/customer/loginCustomer.do">
+								action="loginCustomer.do">
 								<div class="form-holder">
 									<input type="text" class="input" placeholder="id" name="userid" />
 									<!--  ${sessionScope.loginId}-->
@@ -189,114 +323,6 @@
 
 
 		<!-- 모달 끝!!! -->
-
-		<section id="main">
-			<div class="container">
-
-
-				
-                
-				<!-- select start -->
-				<%
-					String genre = request.getParameter("themegenre");
-				%>
-
-				<select onchange="if(this.value) location.href=(this.value);">
-					<option value="../theme/theme.do" <%if (genre == null) {%>
-						selected='selected' <%}%>>전체 (All)</option>
-					<option value="../theme/theme.do?themegenre=horror"
-						<%if (genre != null && genre.equals("horror")) {%>
-						selected='selected' <%}%>>공포 (Horror)</option>
-					<option value="../theme/theme.do?themegenre=infiltration"
-						<%if (genre != null && genre.equals("infiltration")) {%>
-						selected='selected' <%}%>>잠입
-						(Infiltration)</option>
-					<option value="../theme/theme.do?themegenre=comic"
-						<%if (genre != null && genre.equals("comic")) {%>
-						selected='selected' <%}%>>코믹 (Comic)</option>
-					<option value="../theme/theme.do?themegenre=fantasy"
-						<%if (genre != null && genre.equals("fantasy")) {%>
-						selected='selected' <%}%>>판타지 (Fantasy)</option>
-					<option value="../theme/theme.do?themegenre=emotion"
-						<%if (genre != null && genre.equals("emotion")) {%>
-						selected='selected' <%}%>>감성 (Emotion)</option>
-				</select>
-	
-				
-				
-				<div align="right">
-				<c:if test="${sessionScope.loginId=='admin'}">
-					<td><a href="../theme/getthemelist.do"> 
-					<input type="button" value="테마 관리"></a></td>
-				</c:if>
-				</div>
-				 
-				
-				
-				<!-- select   finish -->
-				<!-- 테마 이미지 Section-->
-				<section class="py-5">
-					<div class="container px-4 px-lg-5 mt-5">
-						<%
-							if (genre == null) {
-						%>
-						<div
-							class="row gx-5 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-5 justify-content-center">
-							<%
-								}
-							%>
-							<%
-								if (genre != null) {
-							%>
-							<div
-								class="row gx-3 gx-lg-3 row-cols-2 row-cols-md-3 row-cols-xl-3 justify-content-center">
-								<%
-									}
-								%>
-
-
-								<!-- cart start -->
-								<c:forEach items="${themeList}" var="theme">
-									<div class="col mb-2 ">
-										<div class="card h-100 ">
-
-											<!-- 테마 image-->
-
-											<img class="card-img-top"
-												src="<%=pjName%>/resources/images/${theme.picture}"
-												alt="..." />
-
-											<!-- 테마 details-->
-											<div class="card-body p-5">
-												<div class="text-center">
-													<!-- 테마 name-->
-													<h5 class="fw-bolder"
-														style="font-family: GangwonEdu_OTFBoldA;">${theme.themename}</h5>
-													<!-- 테마 난이도-->
-													<h5>${theme.thlevel}</h5>
-												</div>
-											</div>
-											<!-- Product actions-->
-											<div class="card-footer p-5 pt-0 border-top-0 bg-transparent">
-												<div class="text-center">
-
-													<a href="../theme/theme_sangse.do?picture=${theme.picture}">View
-														options</a>
-
-												</div>
-											</div>
-										</div>
-									</div>
-								</c:forEach>
-								<!-- card end -->
-
-							</div>
-						</div>
-				</section>
-
-
-			</div>
-		</section>
 
 		<!-- Footer -->
 		<footer id="footer">
@@ -342,19 +368,29 @@
 		</footer>
 
 
+	</div>
+
+	<!-- Scripts -->
+	<script src="<%=pjName%>/resources/assets/js/jquery.min.js"></script>
+	<script src="<%=pjName%>/resources/assets/js/jquery.dropotron.min.js"></script>
+	<script src="<%=pjName%>/resources/assets/js/jquery.scrolly.min.js"></script>
+	<script src="<%=pjName%>/resources/assets/js/browser.min.js"></script>
+	<script src="<%=pjName%>/resources/assets/js/breakpoints.min.js"></script>
+	<script src="<%=pjName%>/resources/assets/js/util.js"></script>
+	<script src="<%=pjName%>/resources/assets/js/main.js"></script>
+	<script
+		src="<%=pjName%>/resources/https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<!-- login  js 추가-->
+	<script src="<%=pjName%>/resources/assets/js/login.js"></script>
+	<script src="<%=pjName%>/resources/assets/js/customerView.js"></script>
 
 
-		<!-- Scripts -->
-		<script src="<%=pjName%>/resources/assets/js/jquery.min.js"></script>
-		<script src="<%=pjName%>/resources/assets/js/jquery.dropotron.min.js"></script>
-		<script src="<%=pjName%>/resources/assets/js/jquery.scrolly.min.js"></script>
-		<script src="<%=pjName%>/resources/assets/js/browser.min.js"></script>
-		<script src="<%=pjName%>/resources/assets/js/breakpoints.min.js"></script>
-		<script src="<%=pjName%>/resources/assets/js/util.js"></script>
-		<script src="<%=pjName%>/resources/assets/js/main.js"></script>
-		<script
-			src="<%=pjName%>/resources/https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		<!-- login  js 추가-->
-		<script src="<%=pjName%>/resources/assets/js/login.js"></script>
+	<script type="text/javascript">
+		function openPop() {
+			var popup = window.open('theme_sangse.do', '테마_상세보기',
+					'width=600px,height=700px,scrollbars=yes');
+		}
+	</script>
+
 </body>
 </html>

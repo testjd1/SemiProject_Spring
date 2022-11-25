@@ -10,10 +10,7 @@ import lombok.Data;
 public class ReservationVO {
 	   private int seq;       // 테마 순서
 	   private String userid;  // 고객 아이디
-	   
-
 	   private String regdate;   // 날짜
-	   
 	   private String time;   // 시간
 	   private int total; // 총액
 	   private String name;   // 사용자 이름

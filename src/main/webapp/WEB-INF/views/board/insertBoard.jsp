@@ -130,8 +130,8 @@
 					<li><a id="gologin" class="btn trigger"
 						href="../customer/login.do">Login</a></li>
 				</c:if>
-				<c:if test="${sessionScope.loginId!=null}">
-					<li><a href="../customer/mypage.do">Mypage</a></li>
+					<c:if test="${sessionScope.loginId!=null}">
+					<li><a href="../reservation/mypage.do?userid=${sessionScope.loginId}">Mypage</a></li>
 					<li><a class="btn" href="../customer/logout.do">Logout</a></li>
 
 				</c:if>

@@ -14,18 +14,18 @@
 
 </head>
 <style>
-			/*
-			강원교육 모두체
-			*/
-			@font-face {
-			 font-family: 'GangwonEdu_OTFBoldA';
-			 src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
-			 font-weight: normal;
-			 font-style: normal;
-			  }
+         /*
+         강원교육 모두체
+         */
+         @font-face {
+          font-family: 'GangwonEdu_OTFBoldA';
+          src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+          font-weight: normal;
+          font-style: normal;
+           }
 
-			</style>
-	  
+         </style>
+     
 <title>S.o.S escape</title>
 
 <!-- 로그인, 모달  jquery-->
@@ -143,19 +143,19 @@
             <c:if test="${sessionScope.loginId==null}">
                <li><a class="btn trigger" href="../customer/login.do">Login</a></li>
             </c:if>
-            <c:if test="${sessionScope.loginId!=null}">
-               <li><a href="../customer/mypage.do">Mypage</a></li>
-               <li><a class="btn" href="../customer/logout.do">Logout</a></li>
-               
-            </c:if>
+             <c:if test="${sessionScope.loginId!=null}">
+            <li><a
+               href="../reservation/mypage.do?userid=${sessionScope.loginId}">Mypage</a></li>
+            <li><a class="btn" href="../customer/logout.do">Logout</a></li>
+         </c:if>
 
             
             
          </ul>
             </nav>
 
-		<!-- QNA 메인 파트 -->
-		
+      <!-- QNA 메인 파트 -->
+      
       <div class='container' style='font-family:GangwonEdu_OTFBoldA;'>
       <h1 style='font-family:GangwonEdu_OTFBoldA;' align="center">글 상세</h1>      
       <hr>
@@ -164,7 +164,7 @@
          <table border="1" cellpadding="0" cellspacing="0">
             <tr>
                 <td width="70" align="center">제목</td>
-				<td align="left">${board.title}</td>
+            <td align="left">${board.title}</td>
             </tr>
             <tr>
                <td align="center">작성자</td>
@@ -181,7 +181,7 @@
             </tr>
             <tr>
                <td colspan="2" align="center"><input type="submit"
-                  value="글 삭제" style='font-family:GangwonEdu_OTFBoldA;' />
+                  value="글 삭제" id="deleteCheck" style='font-family:GangwonEdu_OTFBoldA;' />
                   </td>
             </tr>
          </table>
@@ -191,25 +191,25 @@
       </form>
       <br/>
       <br/>
-      
-      
       <!-- 댓글 목록보기 -->
       <table id='replyList' border='2'/>
-      
+
+      <c:if test="${sessionScope.loginId!=null}">
       <!-- 댓글 입력창 -->
       <form id ='replyFrm' name='replyFrm'>
       <input type='text' size='2' readonly name='bno' id="bno" value='${board.seq}'>
-      <input type='text' name ='userid' id ='userid' placeholder="사용자명">
+      <input type='text' name ='userid' id ='userid' readonly value='<%=session.getAttribute("loginId")%>'>
       &nbsp;&nbsp;
       <input type = 'text' name = 'comm' id ='comm' style="width :500" placeholder="댓글 입력">
       &nbsp;&nbsp;
       <input type = 'button' value='댓글추가' id='replyConfirm' style='font-family:GangwonEdu_OTFBoldA;'>
       </form>
+      </c:if>
       
       </div>
       </div>
       
-      		<!-- Scripts -->
+            <!-- Scripts -->
          <script src="<%=pjName%>/resources/assets/js/jquery.min.js"></script>
          <script src="<%=pjName%>/resources/assets/js/jquery.dropotron.min.js"></script>
          <script src="<%=pjName%>/resources/assets/js/jquery.scrolly.min.js"></script>
@@ -217,11 +217,22 @@
          <script src="<%=pjName%>/resources/assets/js/breakpoints.min.js"></script>
          <script src="<%=pjName%>/resources/assets/js/util.js"></script>
          <script src="<%=pjName%>/resources/assets/js/main.js"></script>
-		 <script src='<%=pjName%>/resources/assets/js/qnareply.js' type="text/javascript"></script>
-		 <script
+       <script src='<%=pjName%>/resources/assets/js/qnareply.js' type="text/javascript"></script>
+       <script
       src="<%=pjName%>/resources/https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!-- login  js 추가-->
    <script src="<%=pjName%>/resources/assets/js/login.js"></script>
+ <!-- 로그인 안했을 시 삭제 못함 -->
+      <script type="text/javascript">
+      $("#deleteCheck").click(function() {
+         var k = "<%=session.getAttribute("loginId")%>" 
+         if(k=="null"){
+            alert("로그인 후 이용가능 합니다.")
+            return false;
+         } 
+   
+      })//end   
+      </script>
    
 </body>
 </html>

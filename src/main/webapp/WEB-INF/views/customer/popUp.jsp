@@ -23,10 +23,10 @@
 <title id='logo'>COOKIE</title>
 </head>
 <body>
-이미지 띄워야함
-<img alt="" src="<%=pjName%>/resources/images/2.png">
-<form action="">
-   <input type="checkbox" onClick="setPopUpStart(this)"> 오늘 더이상 띄우지 않기
+
+<img alt="" src="<%=pjName%>/resources/images/pop.PNG" style="height:500, width:580">
+<form action=""  >
+   <input type="checkbox" onClick="setPopUpStart(this)" > 오늘 더이상 띄우지 않기
 </form>
 </body>
 </html>

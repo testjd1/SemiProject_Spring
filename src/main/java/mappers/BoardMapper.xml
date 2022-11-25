@@ -3,98 +3,87 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="BoardDAO">
 
-   
-   <!-- oracle 인 경우 새 글 입력 -->
-   <insert id="insertBoard" parameterType="kosmo.javassem.domain.BoardVO">
-      INSERT INTO Board(SEQ, USERID, TITLE, REGDATE, CONTENT, PASS)
-      VALUES(Board_seq.nextval,
-         #{userid}, #{title}, sysdate, #{content}, #{pass})
-   </insert> 
-   
 
-<!-- 
-   <update id="updateBoard" parameterType="kosmo.javassem.domain.BoardVO">
-      <![CDATA[
-      UPDATE BOARD1 SET
-      TITLE = #{title},
-      CONTENT = #{content}
-      WHERE SEQ = #{seq}
-      ]]>
-   </update>
- -->   
-   
-   <!-- 글 삭제+비번 확인 -->
-   <delete id="deleteBoard" parameterType="kosmo.javassem.domain.BoardVO">
+	<!-- oracle 인 경우 새 글 입력 -->
+	<insert id="insertBoard"
+		parameterType="kosmo.javassem.domain.BoardVO">
+		INSERT INTO Board(SEQ, USERID, TITLE, REGDATE, CONTENT, PASS)
+		VALUES(Board_seq.nextval,
+		#{userid}, #{title}, sysdate, #{content}, #{pass})
+	</insert>
+
+
+	<!-- <update id="updateBoard" parameterType="kosmo.javassem.domain.BoardVO"> 
+		<![CDATA[ UPDATE BOARD1 SET TITLE = #{title}, CONTENT = #{content} WHERE 
+		SEQ = #{seq} ]]> </update> -->
+
+	<!-- 글 삭제+비번 확인 -->
+	<delete id="deleteBoard"
+		parameterType="kosmo.javassem.domain.BoardVO">
       <![CDATA[
       DELETE BOARD
       WHERE SEQ = #{seq} AND pass=#{pass}
       ]]>
-   </delete>
+	</delete>
 
-   <!-- 관리자 글 삭제 -->
-   <delete id="deleteBoardm" parameterType="kosmo.javassem.domain.BoardVO">
+	<!-- 관리자 글 삭제 -->
+	<delete id="deleteBoardm"
+		parameterType="kosmo.javassem.domain.BoardVO">
       <![CDATA[
       DELETE BOARD
       WHERE SEQ = #{seq}
       ]]>
-   </delete>
-   
-   <!-- 글 상세 보기 -->
-   <select id="getBoard" resultType="kosmo.javassem.domain.BoardVO">
+	</delete>
+
+	<!-- 글 상세 보기 -->
+	<select id="getBoard" resultType="kosmo.javassem.domain.BoardVO">
       <![CDATA[
       SELECT seq, userid, title, regdate, content, pass
       FROM BOARD
       WHERE SEQ = #{seq}
       ]]>
-   </select>
-   
-   <!-- 
-   	<select id="getBoardList" parameterType="hashmap" resultType="kosmo.javassem.domain.BoardVO"  >
-			
-			SELECT * FROM  board  WHERE  seq in (SELECT seq FROM 
-      		(SELECT rownum AS rnum ,seq FROM (select rownum, seq from board  order by seq desc))
-				<where>
-				<if test="searchCondition != null">
-					${searchCondition} like '%${searchKeyword}%'
-				</if>
-					 <![CDATA[and RNUM BETWEEN #{criteria.rowStart} AND #{criteria.rowEnd}]]> 
+	</select>
 
-				</where>
-				)
-			ORDER BY SEQ DESC
-	</select> 
-    -->
+	<!-- <select id="getBoardList" parameterType="hashmap" resultType="kosmo.javassem.domain.BoardVO" 
+		> SELECT * FROM board WHERE seq in (SELECT seq FROM (SELECT rownum AS rnum 
+		,seq FROM (select rownum, seq from board order by seq desc)) <where> <if 
+		test="searchCondition != null"> ${searchCondition} like '%${searchKeyword}%' 
+		</if> <![CDATA[and RNUM BETWEEN #{criteria.rowStart} AND #{criteria.rowEnd}]]> 
+		</where> ) ORDER BY SEQ DESC </select> -->
 	<!-- 게시판 목록 보기+검색기능+페이징기능 -->
-	<select id="getBoardList" resultType="kosmo.javassem.domain.BoardVO" parameterType="kosmo.javassem.domain.SearchCriteria">
-		SELECT  SEQ, 
-		        TITLE, 
-		        CONTENT, 
-		        USERID, 
-		        REGDATE
-		 FROM ( 
-		        SELECT SEQ, 
-		               TITLE, 
-		               CONTENT, 
-		               USERID, 
-		               REGDATE, 
-		               ROW_NUMBER() OVER(ORDER BY SEQ DESC) AS RNUM
-		         FROM BOARD
-		         WHERE 1=1 
-		         	<include refid="search"></include>
-		                       ) MP
+	<select id="getBoardList"
+		resultType="kosmo.javassem.domain.BoardVO"
+		parameterType="kosmo.javassem.domain.SearchCriteria">
+		SELECT SEQ,
+		TITLE,
+		CONTENT,
+		USERID,
+		REGDATE
+		FROM (
+		SELECT SEQ,
+		TITLE,
+		CONTENT,
+		USERID,
+		REGDATE,
+		ROW_NUMBER() OVER(ORDER BY SEQ DESC) AS RNUM
+		FROM BOARD
+		WHERE 1=1
+		<include refid="search"></include>
+		) MP
 		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
 		ORDER BY SEQ DESC
 	</select>
-	
+
 	<!-- 게시물 총 갯수 -->
-	<select id="listCount" parameterType="kosmo.javassem.domain.SearchCriteria" resultType="int">
+	<select id="listCount"
+		parameterType="kosmo.javassem.domain.SearchCriteria" resultType="int">
 		SELECT COUNT(SEQ)
-		   FROM BOARD
-		   WHERE 1=1
-		<include refid="search"></include>	
-		   AND SEQ > 0
+		FROM BOARD
+		WHERE 1=1
+		<include refid="search"></include>
+		AND SEQ > 0
 	</select>
-	
+
 	<sql id="search">
 		<if test="searchType != null">
 			<if test="searchType == 't'.toString()">AND TITLE LIKE '%' || #{keyword} || '%'</if>
@@ -103,5 +92,20 @@
 		</if>
 	</sql>
 
+
+	<!-- 게시글 목록 mypage에 출력 -->
+
+	<select id="listboard" parameterType="BoardVO"
+		resultType="BoardVO">
    
+    <![CDATA[
+   SELECT seq, title, userid, regdate, content
+   FROM BOARD
+   WHERE userid = #{userid}
+     ]]>
+
+	</select>
+
+
+
 </mapper>

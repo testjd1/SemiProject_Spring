@@ -92,12 +92,14 @@
 			</c:if>
 
 			
-
+                
 
 		</table>
+		    
+		     <input type="submit" id='modiok' value="테마 수정"/>
 	</form>
-	<hr>
-	 <a href="getthemelist.do" id='modiok' class="button">테마 수정</a>
+	<hr> 
+	
      <a href="deletetheme.do?seq=${theme.seq}" id="delok" class="button" align="center">테마 삭제</a>
 	 <a href="getthemelist.do" class="button" style="float: right;">테마 목록</a> <br>  <br>  <br>  <br> 
 	</div>
@@ -112,7 +114,7 @@
     		  }
      })
       
-    $("#modiok").click(function() {
+    $("#modiok").click(function() {  
     	var result = confirm('수정하시겠습니까?');
 
     	  if(!result){

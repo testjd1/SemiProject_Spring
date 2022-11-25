@@ -132,11 +132,12 @@
             <c:if test="${sessionScope.loginId==null}">
                <li><a class="btn trigger" href="../customer/login.do">Login</a></li>
             </c:if>
-            <c:if test="${sessionScope.loginId!=null}">
-               <li><a href="../customer/mypage.do">Mypage</a></li>
-               <li><a class="btn" href="../customer/logout.do">Logout</a></li>
-               
-            </c:if>
+             <c:if test="${sessionScope.loginId!=null}">
+            <li><a
+               href="../reservation/mypage.do?userid=${sessionScope.loginId}">Mypage</a></li>
+            <li><a class="btn" href="../customer/logout.do">Logout</a></li>
+
+         </c:if>
 
             
             
@@ -219,13 +220,14 @@
                      <a href='../board/saveBoard.do'>
                      <input type="button" id="insertBoard" name='insertBoard' value="write">
                      </a>              
+                    
                  </div>
               </div>
                  
                <!-- 페이징 -->  
                
                 <div class='container'>
-              <ul class='container'  style="text-align: right;">
+              <ul class='container' id="paging" style="text-align: right;">
                 <c:if test="${pageMaker.prev}">
                    <li><a href="../board/getBoardList.do${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
                 </c:if> 
@@ -300,5 +302,19 @@
       src="<%=pjName%>/resources/https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!-- login  js 추가-->
    <script src="<%=pjName%>/resources/assets/js/login.js"></script>
+      <!-- 로그인 안했을 시 글 못씀 -->
+   <script type="text/javascript">
+      $("#insertBoard").click(function() {
+         var k = "<%=session.getAttribute("loginId")%>" 
+         if(k!="null"){
+            alert(k +"님 글쓰기 페이지로 이동합니다.")
+         }
+         if(k=="null"){
+            alert("로그인 후 이용가능 합니다.")
+            return false;
+         } 
+   
+      })
+   </script>   
 </body>
 </html>
