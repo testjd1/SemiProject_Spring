@@ -81,8 +81,16 @@
 	} else if (t == '5') {
 		alert('로그인 오류! 다시 입력해주세요')
 	}
+	
+	
+	
+	
+	
 </script>
 
+<!-- alert 창 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
 
 
 
@@ -127,13 +135,14 @@
 					<li><a id="gologin" class="btn trigger"
 						href="../customer/login.do">Login</a></li>
 				</c:if>
-				<c:if test="${sessionScope.loginId!=null}">
+				<c:if test="${sessionScope.loginId!=null && loginId!='admin'}">
 					<li><a href="../reservation/mypage.do?userid=${sessionScope.loginId}">Mypage</a></li>
 					<li><a class="btn" href="../customer/logout.do">Logout</a></li>
-
 				</c:if>
-
-
+				<c:if test='${sessionScope.loginId=="admin"}'>
+					<li><a href="../reservation/mypageM.do?userid=${sessionScope.loginId}">Mypage</a></li>
+					<li><a class="btn" href="../customer/logout.do">Logout</a></li>
+				</c:if>
 
 			</ul>
 

@@ -6,7 +6,7 @@ window.chartColors = {
 	green: '#75c181',
 	gray: '#a9b5c9',
 	text: '#252930',
-	border: '#e7e9ed'
+	border: '#e7e9ed' 
 };
 
 /* Random number generator for demo purpose */
@@ -19,17 +19,14 @@ var lineChartConfig = {
 	type: 'line',
 
 	data: {
-		labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
+		labels: ['홍대', '안양', '구미', '전 지점'],
 		
 		datasets: [{
-			label: 'Current week',
+			label: '지점 별',
 			fill: false,
 			backgroundColor: window.chartColors.green,
 			borderColor: window.chartColors.green,
 			data: [
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
 				randomDataPoint(),
 				randomDataPoint(),
 				randomDataPoint(),
@@ -42,9 +39,6 @@ var lineChartConfig = {
 			borderColor: window.chartColors.gray,
 			
 			data: [
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
 				randomDataPoint(),
 				randomDataPoint(),
 				randomDataPoint(),

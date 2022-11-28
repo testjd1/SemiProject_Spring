@@ -47,10 +47,10 @@
 <body>
 
   <!-- Header -->
-      <header id="header"> </header>
+
 
       <!-- Nav -->
-
+		<br/><br/><br/><br/><br/>
       <nav id="nav">
          <div id="navImage">
             <a href="../customer/index.do"><img
@@ -82,10 +82,13 @@
                <li><a id="gologin" class="btn trigger"
                   href="../customer/login.do">Login</a></li>
             </c:if>
-            	<c:if test="${sessionScope.loginId!=null}">
+            	<c:if test="${sessionScope.loginId!=null && loginId!='admin'}">
 					<li><a href="../reservation/mypage.do?userid=${sessionScope.loginId}">Mypage</a></li>
 					<li><a class="btn" href="../customer/logout.do">Logout</a></li>
-
+				</c:if>
+				<c:if test='${sessionScope.loginId=="admin"}'>
+					<li><a href="../reservation/mypageM.do?userid=${sessionScope.loginId}">Mypage</a></li>
+					<li><a class="btn" href="../customer/logout.do">Logout</a></li>
 				</c:if>
 
 
@@ -159,7 +162,7 @@
 
       <!-- 모달 끝!!! -->
 
-<div class="container">
+<div class="container" >
 <div class="tedoori" id="tedoori">
    <!-- 테마 설명 -->
    <div style="text-align : center;">

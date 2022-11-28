@@ -44,6 +44,15 @@
 		]]>
 	</select>
 
+	<!-- 글 상세(ADMIN) -->
+	<select id="getBoardM" resultType="kosmo.javassem.domain.QnaVO">
+		<![CDATA[
+		SELECT seq, userid, title, regdate, content, pass
+		FROM Qna
+		WHERE SEQ = #{seq}
+		]]>
+	</select>
+
 	<!-- <select id="getBoardList" parameterType="hashmap" resultType="kosmo.javassem.domain.QnaVO" 
 		> SELECT * FROM QNA <where> <if test="searchCondition != null"> ${searchCondition} 
 		like '%${searchKeyword}%' </if> </where> ORDER BY SEQ DESC </select> -->

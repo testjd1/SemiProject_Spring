@@ -42,6 +42,18 @@ public class ReservationDAOImpl implements ReservationDAO {
 		 System.out.println("=>ReservationDAOImpl.java::UserMapper::listRev");
 		 return mybatis.selectList("ReservationDAO.listRev", vo);
 	 }
+
+	 //예약 디비 값 MYPAGE에 매니저 모드로 모두 출력
+	 public List<ReservationVO> listRevM(ReservationVO vo) {
+		 System.out.println("=>ReservationDAOImpl.java::UserMapper::listRevM");
+		 return mybatis.selectList("ReservationDAO.listRevM", vo);
+	 }
+
+	//예약 취소
+	public void deleteReservation(ReservationVO vo) {
+		System.out.println("=>ReservationDAOImpl.java::UserMapper::예약취소");		
+		mybatis.delete("ReservationDAO.deleteReservation", vo);
+	}
 	 
 	 
 }

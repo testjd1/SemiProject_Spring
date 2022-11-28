@@ -115,11 +115,13 @@
 					<li><a id="gologin" class="btn trigger"
 						href="../customer/login.do">Login</a></li>
 				</c:if>
-				<c:if test="${sessionScope.loginId!=null}">
-					<li><a
-						href="../reservation/mypage.do?userid=${sessionScope.loginId}">Mypage</a></li>
+				<c:if test="${sessionScope.loginId!=null && loginId!='admin'}">
+					<li><a href="../reservation/mypage.do?userid=${sessionScope.loginId}">Mypage</a></li>
 					<li><a class="btn" href="../customer/logout.do">Logout</a></li>
-
+				</c:if>
+				<c:if test='${sessionScope.loginId=="admin"}'>
+					<li><a href="../reservation/mypageM.do?userid=${sessionScope.loginId}">Mypage</a></li>
+					<li><a class="btn" href="../customer/logout.do">Logout</a></li>
 				</c:if>
 
 
@@ -152,22 +154,22 @@
 									<a
 										href="../reservation/mypage.do?userid=${sessionScope.loginId}"
 										class="item">
-										<div class="text">예약 내역</div>
+										<div class="text" style="font-family: GangwonEdu_OTFBoldA;">예약 내역</div>
 										<div class="right">></div>
 									</a> <a href="../qna/myqna.do?userid=${sessionScope.loginId}"
 										class="item">
-										<div class="text">
+										<div class="text" style="font-family: GangwonEdu_OTFBoldA;">
 											My QnA
 										</div>
 										<div class="right">></div>
 									</a> <a href="../board/myboard.do?userid=${sessionScope.loginId}"
 										class="item">
-										<div class="text">My Board</div>
+										<div class="text" style="font-family: GangwonEdu_OTFBoldA;">My Board</div>
 										<div class="right">></div>
 									</a> <a
 										href="../customer/customerUpdateView.do?userid=${sessionScope.loginId}"
 										class="item">
-										<div class="text">회원정보 수정<span class="circle"></span>
+										<div class="text" style="font-family: GangwonEdu_OTFBoldA;">회원정보 수정<span class="circle"></span>
 										</div>
 										<div class="right">></div>
 									</a>
@@ -188,17 +190,17 @@
 										<div>
 											<i class="fa-solid fa-circle-info"></i>
 										</div>
-										<div>공지사항</div>
+										<div style="font-family: GangwonEdu_OTFBoldA;">공지사항</div>
 									</a> <a href="#" class="item">
 										<div>
 											<i class="fa-solid fa-face-smile"></i>
 										</div>
-										<div>이용안내</div>
+										<div style="font-family: GangwonEdu_OTFBoldA;">이용안내</div>
 									</a> <a href="#" class="item">
 										<div>
 											<i class="fa-solid fa-phone"></i>
 										</div>
-										<div>고객센터</div>
+										<div style="font-family: GangwonEdu_OTFBoldA;">고객센터</div>
 									</a>
 								</div>
 							</div>
@@ -213,35 +215,35 @@
 								<form action="../customer/customerUpdate.do" method="get"
 									style="font-family: GangwonEdu_OTFBoldA;">
 									<div class="form-group has-feedback">
-										<label class="control-label" for="userid">아이디</label> <input
-											class="form-control" type="text" id="userid" name="userid"
-											value="${param.userid}" readonly="readonly" />
+										<label class="control-label" for="userid" style="font-family: GangwonEdu_OTFBoldA;">아이디</label> <input
+											class="form-control" type="text" id="userid" name="userid" style="font-family: GangwonEdu_OTFBoldA;"
+											value="${param.userid}" readonly />
 									</div>
 									<div class="form-group has-feedback">
-										<label class="control-label" for="pass">패스워드</label> <input
-											class="form-control" type="password" id="pass" name="pass" />
+										<label class="control-label" for="pass" style="font-family: GangwonEdu_OTFBoldA;">패스워드</label> <input
+											class="form-control" type="password" id="pass" name="pass" style="font-family: GangwonEdu_OTFBoldA;" />
 									</div>
 									<div class="form-group has-feedback">
-										<label class="control-label" for="name">성명</label> <input
+										<label class="control-label" for="name" style="font-family: GangwonEdu_OTFBoldA;">성명</label> <input
 											class="form-control" type="text" id="name" name="name"
-											value="${customer.name}" />
+											value="${customer.name}" style="font-family: GangwonEdu_OTFBoldA;" />
 									</div>
 									<div class="form-group has-feedback">
-										<label class="control-label" for="tel">전화번호</label> <input
+										<label class="control-label" for="tel" style="font-family: GangwonEdu_OTFBoldA;">전화번호</label> <input
 											class="form-control" type="text" id="tel" name="tel"
-											value="${customer.tel}" />
+											value="${customer.tel}"  style="font-family: GangwonEdu_OTFBoldA;"/>
 									</div>
 									<div class="form-group has-feedback">
-										<label class="control-label" for="email">이메일</label> <input
+										<label class="control-label" for="email" style="font-family: GangwonEdu_OTFBoldA;">이메일</label> <input
 											class="form-control" type="text" id="email" name="email"
-											value="${customer.email}" />
+											value="${customer.email}"  style="font-family: GangwonEdu_OTFBoldA;"/>
 									</div>
 									&nbsp;
 									<div class="form-group has-feedback">
-										<button class="btn btn-success" type="submit" id="submit">수정</button>
-										&nbsp;&nbsp; <a href="../customer/mypage.do">
+										<button class="btn btn-success" type="submit" id="submit" style="font-family: GangwonEdu_OTFBoldA;">수정</button>
+									
 											<button class="cencle btn btn-danger" id="cancle"
-												type="button">취소</button>
+												type="button" style="font-family: GangwonEdu_OTFBoldA;">취소</button>
 										</a>
 									</div>
 								</form>
@@ -385,12 +387,6 @@
 	<script src="<%=pjName%>/resources/assets/js/customerView.js"></script>
 
 
-	<script type="text/javascript">
-		function openPop() {
-			var popup = window.open('theme_sangse.do', '테마_상세보기',
-					'width=600px,height=700px,scrollbars=yes');
-		}
-	</script>
 
 </body>
 </html>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ManagerDAO">
+
+
+
+   <!-- 일별 매출 토탈 -->
+
+   <select id="totalDateList" parameterType="kosmo.javassem.domain.ManagerVO"
+      resultType="kosmo.javassem.domain.ManagerVO">
+
+  SELECT sum(total) total,regdate 
+from reservation
+ 
+where regdate  between (#{day1}) and  (#{day2})
+group by regdate
+order by regdate asc
+
+
+   </select>
+
+   <!-- 지점별 매출 토탈 -->
+   <select id="totalBranchH" 
+      resultType="kosmo.javassem.domain.ManagerVO">
+   select sum(total) total 
+   from reservation 
+   where regdate like '%-11-%' and branch = '홍대'
+   </select>
+   
+     <select id="totalBranchA" 
+      resultType="kosmo.javassem.domain.ManagerVO">
+   select sum(total) total 
+   from reservation 
+   where regdate like '%-11-%' and branch = '안양'
+   </select>
+   
+     <select id="totalBranchG" 
+      resultType="kosmo.javassem.domain.ManagerVO">
+   select sum(total) total 
+   from reservation 
+   where regdate like '%-11-%' and branch = '구미'
+   </select>
+   
+   <select id="totalBranchT" 
+      resultType="kosmo.javassem.domain.ManagerVO">
+   select sum(total) total 
+   from reservation 
+   where regdate like '%-11-%' 
+   </select>
+ 
+ 
+ <!-- 테마별 매출 토탈 -->  
+   <select id="totalThemeH" 
+      resultType="hashmap">
+   select sum(r.total) as sum 
+ from reservation r full join theme t
+ on r.themename = t.themename
+ where t.THEMEGENRE='horror'
+   </select>
+   <select id="totalThemeI" 
+      resultType="hashmap">
+   select sum(r.total) as sum 
+ from reservation r full join theme t
+ on r.themename = t.themename
+ where t.THEMEGENRE='infiltration'
+   </select>
+   <select id="totalThemeC" 
+      resultType="hashmap">
+   select sum(r.total) as sum 
+ from reservation r full join theme t
+ on r.themename = t.themename
+ where t.THEMEGENRE='comic'
+   </select>
+   <select id="totalThemeF" 
+      resultType="hashmap">
+   select sum(r.total) as sum 
+ from reservation r full join theme t
+ on r.themename = t.themename
+ where t.THEMEGENRE='fantasy'
+   </select>
+   <select id="totalThemeE" 
+      resultType="hashmap">
+   select sum(r.total) as sum 
+ from reservation r full join theme t
+ on r.themename = t.themename
+ where t.THEMEGENRE='emotion'
+   </select>
+   
+   
+ <!-- 시간별 매출 토탈 -->
+   <select id="totalTime10" 
+      resultType="kosmo.javassem.domain.ManagerVO">
+   select sum(total) total 
+   from reservation 
+   where time='10:00'
+   </select>  
+   
+   <select id="totalTime12" 
+      resultType="kosmo.javassem.domain.ManagerVO">
+   select sum(total) total 
+   from reservation 
+   where time='12:00'
+   </select>  
+   
+   <select id="totalTime14" 
+      resultType="kosmo.javassem.domain.ManagerVO">
+   select sum(total) total 
+   from reservation 
+   where time='14:00'
+   </select>  
+   
+   <select id="totalTime16" 
+      resultType="kosmo.javassem.domain.ManagerVO">
+   select sum(total) total 
+   from reservation 
+   where time='16:00'
+   </select>  
+   
+   <select id="totalTime18" 
+      resultType="kosmo.javassem.domain.ManagerVO">
+   select sum(total) total 
+   from reservation 
+   where time='18:00'
+   </select>  
+  
+   <select id="totalTime20" 
+      resultType="kosmo.javassem.domain.ManagerVO">
+   select sum(total) total 
+   from reservation 
+   where time='20:00'
+   </select>  
+
+   
+   
+
+
+
+</mapper>

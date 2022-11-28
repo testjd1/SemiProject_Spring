@@ -21,6 +21,12 @@ public interface ReservationDAO {
 	
 	//예약 디비 값 MYPAGE에 출력
 	public List<ReservationVO> listRev(ReservationVO vo);
+
+	//예약 디비 값 MYPAGE에 매니저모드로 모두 출력
+	public List<ReservationVO> listRevM(ReservationVO vo);
+	
+	//예약 취소
+	public void deleteReservation(ReservationVO vo);
 	
 	
 	

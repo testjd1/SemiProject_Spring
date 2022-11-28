@@ -6,7 +6,7 @@ window.chartColors = {
 	green: '#75c181', // rgba(117,193,129, 1)
 	blue: '#5b99ea', // rgba(91,153,234, 1)
 	gray: '#a9b5c9',
-	text: '#252930',
+	text: '#252930', 
 	border: '#e7e9ed'
 };
 

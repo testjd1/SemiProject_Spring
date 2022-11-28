@@ -42,6 +42,11 @@ public class QnaDAOImpl implements QnaDAO{
 		System.out.println("===> Mybatis getBoard() 호출");
 		return (QnaVO) mybatis.selectOne("QnaDAO.getBoard", vo);
 	}
+	//글 상세보기(ADMIN)
+	public QnaVO getBoardM(QnaVO vo) {
+		System.out.println("===> Mybatis getBoardM() 호출");
+		return (QnaVO) mybatis.selectOne("QnaDAO.getBoardM", vo);
+	}
 	//글 목록보기+검색+게시글 목록 조회
 	public List<QnaVO> getBoardList(SearchCriteria scri) {
 		System.out.println("===> Mybatis getBoardList() 호출");

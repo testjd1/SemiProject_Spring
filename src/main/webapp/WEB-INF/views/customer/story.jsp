@@ -57,19 +57,6 @@
 
 
 
-<!-- 로그인 script -->
-
-<script>
- 
-   var t = '${sessionScope.sok}';
-   if (t == '1') {
-      alert('회원 가입이 완료되었습니다! 로그인창을 통해 로그인해주세요');
-   } else if (t == '9') {
-      alert('중복된 아이디입니다. 다른 아이디를 입력해주세요!')
-   } else if (t == '5') {
-      alert('로그인 오류! 다시 입력해주세요')
-   }
-</script>
 
 
 </head>
@@ -168,10 +155,13 @@
                <li><a id="gologin" class="btn trigger"
                   href="../customer/login.do">Login</a></li>
             </c:if>
-           	<c:if test="${sessionScope.loginId!=null}">
+           <c:if test="${sessionScope.loginId!=null && loginId!='admin'}">
 					<li><a href="../reservation/mypage.do?userid=${sessionScope.loginId}">Mypage</a></li>
 					<li><a class="btn" href="../customer/logout.do">Logout</a></li>
-
+				</c:if>
+				<c:if test='${sessionScope.loginId=="admin"}'>
+					<li><a href="../reservation/mypageM.do?userid=${sessionScope.loginId}">Mypage</a></li>
+					<li><a class="btn" href="../customer/logout.do">Logout</a></li>
 				</c:if>
 
 
@@ -190,46 +180,46 @@
                      <!-- Sidebar -->
 
                      <!-- Recent Posts -->
-                     <section>
-                        <h2 class="major">
-                           <span>Posts</span>
-                        </h2>
-                        <ul class="divided">
-                           <li>
-                              <article class="box post-summary">
-                                 <h3>
-                                    <a href="#content1">VARIETY</a>
-                                 </h3>
-                              </article>
-                           </li>
-                           <li>
-                              <article class="box post-summary">
-                                 <h3>
-                                    <a href="#content2">PLAY</a>
-                                 </h3>
-                              </article>
-                           </li>
-                           <li>
-                              <article class="box post-summary">
-                                 <h3>
-                                    <a href="#content3">ESCAPE</a>
-                                 </h3>
-                              </article>
-                           </li>
-                           <li>
-                              <article class="box post-summary">
-                                 <h3>
-                                    <a href="#content4">STORY</a>
-                                 </h3>
-                              </article>
-                           </li>
-                        </ul>
-                     </section>
+<!--                      <section> -->
+<!--                         <h2 class="major"> -->
+<!--                            <span>Posts</span> -->
+<!--                         </h2> -->
+<!--                         <ul class="divided"> -->
+<!--                            <li> -->
+<!--                               <article class="box post-summary"> -->
+<!--                                  <h3> -->
+<!--                                     <a href="#content1">VARIETY</a> -->
+<!--                                  </h3> -->
+<!--                               </article> -->
+<!--                            </li> -->
+<!--                            <li> -->
+<!--                               <article class="box post-summary"> -->
+<!--                                  <h3> -->
+<!--                                     <a href="#content2">PLAY</a> -->
+<!--                                  </h3> -->
+<!--                               </article> -->
+<!--                            </li> -->
+<!--                            <li> -->
+<!--                               <article class="box post-summary"> -->
+<!--                                  <h3> -->
+<!--                                     <a href="#content3">ESCAPE</a> -->
+<!--                                  </h3> -->
+<!--                               </article> -->
+<!--                            </li> -->
+<!--                            <li> -->
+<!--                               <article class="box post-summary"> -->
+<!--                                  <h3> -->
+<!--                                     <a href="#content4">STORY</a> -->
+<!--                                  </h3> -->
+<!--                               </article> -->
+<!--                            </li> -->
+<!--                         </ul> -->
+<!--                      </section> -->
 
 
                   </div>
                </div>
-               <div class="col-9 col-12-medium imp-medium">
+               <div class="col-12 col-12-medium imp-medium">
                   <div class="content">
 
                      <!-- Content -->
@@ -240,49 +230,54 @@
                            <h2>STORY</h2>
                            <p>Story of Savior</p>
                         </header>
-
-                        <section id="content1" style="font-family: GangwonEdu_OTFBoldA;">
+                             
+                        <br>
+                        <section id="content1" class="box feature" >
+                        <a class="image featured">
                            <img src="<%=pjName%>/resources/images/story1.png" alt=""
-                              width="190" height="190" />
-                           <h4 style="font-family: GangwonEdu_OTFBoldA;">
+                              style="width:190px; height:190px;"  /></a>
+                           <h4 style="font-family: GangwonEdu_OTFBoldA;" align="left">
                               방탈출은 다양한 요소들이 조화를 이뤄 만들어지는 하나의 작품입니다.<br /> SoS의 이야기는 다채롭습니다.
-                              크게 5가지로 나누어진 큰 갈래에 여러가지의 이야기를 담은 가지들을 내려 오랜 시간 저희와 함께 할 수 있게
-                              준비했습니다.<br /> SoS 는 저희가 각자의 분야에서 정성스레 준비한 공간에 여러분이라는 가장 중요한
-                              마지막 조각으로 이야기를 채워 완성시키는 과정을 나누고 싶어 만들어진 브랜드입니다.<br /> 여러분과 SoS,
+                              크게 5가지로 나누어진 큰 갈래에 여러가지의 이야기를 담은 가지들을 내려 <br/>  오랜 시간 저희와 함께 할 수 있게 준비했습니다.<br/> 
+                              SoS 는 저희가 각자의 분야에서 정성스레 준비한 공간에 여러분이라는 가장 중요한
+                              마지막 조각으로 이야기를 채워 <br /> 완성시키는 과정을 나누고 싶어 만들어진 브랜드입니다.<br /> 여러분과 SoS,
                               우리가 만들어낼 온전한 이야기를 기대하며 항상 연구하고 준비하고 있겠습니다.<br />
                            </h4>
                         </section>
 
-                        <section id="content2">
+                        <section id="content2" class="box feature">
+                        <a class="image featured">
                            <img src="<%=pjName%>/resources/images/story2.png" alt=""
-                              width="190" height="190" />
-                           <h3 style="font-family: GangwonEdu_OTFBoldA;">
+                              style="width:190px; height:190px; justify-content: center; align-items: center; display: flex;" /></a>
+                           <h3 style="font-family: GangwonEdu_OTFBoldA;" align="left">
                               SoS는 현재에 안주하지 않고 새로움을 향해 늘 도전합니다. 여러분들의 믿음이 있기에 쉬운 길을 가지 않고
                               더디더라도 제대로 합니다.<br /> 행복을 선사하는 놀이문화를 위해, 우리는 지금도 노력합니다.<br />
                            </h3>
                         </section>
 
-                        <section id="content3">
+                        <section id="content3" class="box feature">
+                        <a class="image featured">
                            <img src="<%=pjName%>/resources/images/story3.png" alt=""
-                              width="190" height="190" />
-                           <h3 style="font-family: GangwonEdu_OTFBoldA;">
+                              style="width:190px; height:190px; justify-content: center; align-items: center; display: flex;" />
+                        </a>
+                           <h3 style="font-family: GangwonEdu_OTFBoldA;" align="left">
                               보편화 되고 상용화 되어 있는 기존의 방탈출에서 새롭게 변화된 방탈출을 만들어 보고 싶었습니다.<br />
                               ‘탈출러에게 조금 더 변화된 조금 더 다른 방탈출을 느끼게 할 수 없을까？’ 라는 물음을 시작해 SoS를 만들게
                               되었습니다.<br /> ‘지금껏 항상 그렇게 해왔어 －그레이스 호퍼－’의 말이 있습니다. 기존의 방탈출에서
-                              머무르지 않겠습니다.<br /> SoS는 ‘변화’ , ‘창조’를 위해 존재합니다. 늘 새롭게 도전하고 연구하고,
-                              발전하는 우리가 되도록 노력하겠습니다．<br />
+                              머무르지 않겠습니다.<br /> SoS는 ‘변화’,‘창조’를 위해 존재합니다. 늘 새롭게 도전하고 연구하고,
+                              발전하는 우리가 되도록 노력하겠습니다.<br />
                            </h3>
                         </section>
 
-                        <section id="content4">
-
+                        <section id="content4" class="box feature">
+                        <a class="image featured">
                            <img src="<%=pjName%>/resources/images/story4.png" alt=""
-                              width="190" height="190" />
-                           <h3 style="font-family: GangwonEdu_OTFBoldA;">
-                              S.tory<br /> o.f<br /> S.avior<br /> 'SoS'는 방탈출을 진심으로 좋아하는
+                              style="width:190px; height:190px; justify-content: center; align-items: center; display: flex;"/></a>
+                           <h3 style="font-family: GangwonEdu_OTFBoldA;" align="left">
+                              S.tory<br /> o.f<br /> S.avior<br /><br /> 'SoS'는 방탈출을 진심으로 좋아하는
                               사람들이 모여 만든 공간입니다.<br /> 구원자의 이야기, 우리가 빠져들게 될 그 이야기의 주인공은 항상
                               여러분입니다.<br /> 여러 차원에서 일어나는 일들을 차곡차곡 하나씩 해결해 나아가는 여러분들의 이야기를
-                              모아, 이 곳에 담아두었습니다. 저희 SoS Escape에서 여러가지 이야기들의 주인공이 되어 각 이야기들의
+                              모아, 이 곳에 담아두었습니다.<br /> 저희 SoS Escape에서 여러가지 이야기들의 주인공이 되어 각 이야기들의
                               구원자가 되시길 바랍니다. <br />
                               <br />
                               <br />
@@ -290,9 +285,7 @@
                               <br />
                               <br />
                               <br />
-                              <br />
-                              <br />
-                              <br />
+                              
                            </h3>
                         </section>
 

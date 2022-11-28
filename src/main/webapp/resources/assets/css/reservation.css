@@ -10,103 +10,103 @@
 /*   background-color:#1F2739; */
 /* } */
 
-h1 {
-  font-size:3em; 
-  font-weight: 300;
-  line-height:1em;
-  text-align: center;
-  color: #000000;
-}
+/* h1 { */
+/*   font-size:3em;  */
+/*   font-weight: 300; */
+/*   line-height:1em; */
+/*   text-align: center; */
+/*   color: #000000; */
+/* } */
 
 
 
 
-.blue { color: #185875; }
+/* .blue { color: #185875; } */
 
 
-.container th h1 {
-    font-weight: bold;
-    font-size: 1em;
-  text-align: left;
-  color: #185875;
-}
+/* .container th h1 { */
+/*     font-weight: bold; */
+/*     font-size: 1em; */
+/*   text-align: left; */
+/*   color: #185875; */
+/* } */
 
-.container td {
-    font-weight: normal;
-    font-size: 1em;
-  -webkit-box-shadow: 0 2px 2px -2px #0E1119;
-     -moz-box-shadow: 0 2px 2px -2px #0E1119;
-          box-shadow: 0 2px 2px -2px #0E1119;
-}
+/* .container td { */
+/*     font-weight: normal; */
+/*     font-size: 1em; */
+/*   -webkit-box-shadow: 0 2px 2px -2px #0E1119; */
+/*      -moz-box-shadow: 0 2px 2px -2px #0E1119; */
+/*           box-shadow: 0 2px 2px -2px #0E1119; */
+/* } */
 
-.container {
-    text-align: left;
-    overflow: hidden;
-    width: 70%;
-    margin: 0 auto;
-  display: table;
+/* .container { */
+/*     text-align: left; */
+/*     overflow: hidden; */
+/*     width: 70%; */
+/*     margin: 0 auto; */
+/*   display: table; */
   
-}
+/* } */
 
-.container td, .container th {
-    padding-bottom: 2%;
-    padding-top: 2%;
-  padding-left:2%;  
-}
+/* .container td, .container th { */
+/*     padding-bottom: 2%; */
+/*     padding-top: 2%; */
+/*   padding-left:2%;   */
+/* } */
 
 /* Background-color of the odd rows */
 .container tr:nth-child(odd) {
-    background-color: #ffffd0;
+    background-color: #f2f5f3;
 }
 
 /* Background-color of the even rows */
 .container tr:nth-child(even) {
-    background-color: #c0c0c0;
+    background-color: #f2f5f3;
 }
 
 .container th {
     background-color: #1F2739;
 }
 
-.container td:first-child { color: #000000; }
+/* .container td:first-child { color: #000000; } */
 
-.container tr:hover {
-   background-color: #464A52;
--webkit-box-shadow: 0 6px 6px -6px #0E1119;
-     -moz-box-shadow: 0 6px 6px -6px #0E1119;
-          box-shadow: 0 6px 6px -6px #0E1119;
-}
-
-
-.tablesize {
-    display: inline-block;
-    width : 50%;
-    float:left;
-}
+/* .container tr:hover { */
+/*    background-color: #464A52; */
+/* -webkit-box-shadow: 0 6px 6px -6px #0E1119; */
+/*      -moz-box-shadow: 0 6px 6px -6px #0E1119; */
+/*           box-shadow: 0 6px 6px -6px #0E1119; */
+/* } */
 
 
+/* .tablesize { */
+/*     display: inline-block; */
+/*     width : 50%; */
+/*     float:left; */
+/* } */
 
-.alertsize {
+
+
+/* .alertsize { */
     
-    width:50%;
-    float:right;
-}
+/*     width:50%; */
+/*     float:right; */
+/* } */
 
-.revsec{
-   width:90%;
-}
+/* .revsec{ */
+/*    width:90%; */
+/* } */
 
-.alertsec{
-   width:80%;
-}
+/* .alertsec{ */
+/*    width:80%; */
+/* } */
 
-.submits{
-   padding-left: 700px;
-}
+/* .submits{ */
+/*    padding-left: 700px; */
+/* } */
 
-.inputname{
-   width : 300px;
-}
+/* .inputname{ */
+/*    width : 300px; */
+/* } */
 
 
 /* .container td:hover { */

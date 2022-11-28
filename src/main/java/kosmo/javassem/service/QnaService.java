@@ -25,6 +25,9 @@ public interface QnaService {
 	// 글 상세 조회
 	QnaVO getBoard(QnaVO vo);
 
+	// 글 상세 조회
+	QnaVO getBoardM(QnaVO vo);
+
 	// 글 목록 조회+게시글 목록 조회
 	List<QnaVO> getBoardList(SearchCriteria scri);
 	

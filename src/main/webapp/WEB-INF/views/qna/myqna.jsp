@@ -115,11 +115,13 @@
 					<li><a id="gologin" class="btn trigger"
 						href="../customer/login.do">Login</a></li>
 				</c:if>
-				<c:if test="${sessionScope.loginId!=null}">
-					<li><a
-						href="../reservation/mypage.do?userid=${sessionScope.loginId}">Mypage</a></li>
+				<c:if test="${sessionScope.loginId!=null && loginId!='admin'}">
+					<li><a href="../reservation/mypage.do?userid=${sessionScope.loginId}">Mypage</a></li>
 					<li><a class="btn" href="../customer/logout.do">Logout</a></li>
-
+				</c:if>
+				<c:if test='${sessionScope.loginId=="admin"}'>
+					<li><a href="../reservation/mypageM.do?userid=${sessionScope.loginId}">Mypage</a></li>
+					<li><a class="btn" href="../customer/logout.do">Logout</a></li>
 				</c:if>
 
 
@@ -152,22 +154,22 @@
 									<a
 										href="../reservation/mypage.do?userid=${sessionScope.loginId}"
 										class="item">
-										<div class="text">예약 내역</div>
+										<div class="text" style="font-family: GangwonEdu_OTFBoldA;">예약 내역</div>
 										<div class="right">></div>
 									</a> <a href="../qna/myqna.do?userid=${sessionScope.loginId}"
 										class="item">
-										<div class="text">
+										<div class="text" style="font-family: GangwonEdu_OTFBoldA;">
 											My QnA<span class="circle"></span>
 										</div>
 										<div class="right">></div>
 									</a> <a href="../board/myboard.do?userid=${sessionScope.loginId}"
 										class="item">
-										<div class="text">My Board</div>
+										<div class="text" style="font-family: GangwonEdu_OTFBoldA;">My Board</div>
 										<div class="right">></div>
 									</a> <a
 										href="../customer/customerUpdateView.do?userid=${sessionScope.loginId}"
 										class="item">
-										<div class="text">회원정보 수정</div>
+										<div class="text" style="font-family: GangwonEdu_OTFBoldA;">회원정보 수정</div>
 										<div class="right">></div>
 									</a>
 
@@ -180,17 +182,17 @@
 										<div>
 											<i class="fa-solid fa-circle-info"></i>
 										</div>
-										<div>공지사항</div>
+										<div style="font-family: GangwonEdu_OTFBoldA;">공지사항</div>
 									</a> <a href="#" class="item">
 										<div>
 											<i class="fa-solid fa-face-smile"></i>
 										</div>
-										<div>이용안내</div>
+										<div style="font-family: GangwonEdu_OTFBoldA;">이용안내</div>
 									</a> <a href="#" class="item">
 										<div>
 											<i class="fa-solid fa-phone"></i>
 										</div>
-										<div>고객센터</div>
+										<div style="font-family: GangwonEdu_OTFBoldA;">고객센터</div>
 									</a>
 								</div>
 							</div>
@@ -201,7 +203,7 @@
 					<div class="col-9 col-12-medium imp-medium">
 
 						<table>
-							<thead>
+							<thead style="height: 65px;">
 								<tr>
 									<th>글번호</th>
 									<th>제목</th>
@@ -214,7 +216,7 @@
 							<tbody>
 
 								<c:forEach items="${listqna}" var="l">
-									<tr>
+									<tr style="font-family: GangwonEdu_OTFBoldA; ">
 										<td>${l.seq}</td>
 										<td>${l.title}</td>
 										<td>${l.userid}</td>
@@ -364,12 +366,7 @@
 	<script src="<%=pjName%>/resources/assets/js/customerView.js"></script>
 
 
-	<script type="text/javascript">
-		function openPop() {
-			var popup = window.open('theme_sangse.do', '테마_상세보기',
-					'width=600px,height=700px,scrollbars=yes');
-		}
-	</script>
+	
 
 </body>
 </html>

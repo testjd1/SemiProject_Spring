@@ -58,9 +58,10 @@
 	<div id="page-wrapper">
 
 		<!-- Header -->
-		<header id="header"> </header>
+
 
 		<!-- login Modal -->
+		<br/><br/><br/><br/><br/>
 		<div class="modal-wrapper">
 			<a class="btn-close trigger" href="#">Close</a>
 			<div class="modal">
@@ -147,9 +148,12 @@
 				<c:if test="${sessionScope.loginId==null}">
 					<li><a class="btn trigger" href="../customer/login.do">Login</a></li>
 				</c:if>
-				<c:if test="${sessionScope.loginId!=null}">
-					<li><a
-						href="../reservation/mypage.do?userid=${sessionScope.loginId}">Mypage</a></li>
+				<c:if test="${sessionScope.loginId!=null && loginId!='admin'}">
+					<li><a href="../reservation/mypage.do?userid=${sessionScope.loginId}">Mypage</a></li>
+					<li><a class="btn" href="../customer/logout.do">Logout</a></li>
+				</c:if>
+				<c:if test='${sessionScope.loginId=="admin"}'>
+					<li><a href="../reservation/mypageM.do?userid=${sessionScope.loginId}">Mypage</a></li>
 					<li><a class="btn" href="../customer/logout.do">Logout</a></li>
 				</c:if>
 
@@ -162,7 +166,7 @@
 		<!-- 보드 메인 파트 -->
 
 		<div class='container' style='font-family: GangwonEdu_OTFBoldA;'>
-			<h1 style='font-family: GangwonEdu_OTFBoldA;' align="center">글
+			<h1 style='font-family: GangwonEdu_OTFBoldA; font-size:20pt;' align="center">글
 				상세</h1>
 			<hr>
 			<form action="../board/checkPassBoard.do?seq=${board.seq}"

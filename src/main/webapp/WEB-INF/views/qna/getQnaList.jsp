@@ -132,11 +132,14 @@
             <c:if test="${sessionScope.loginId==null}">
                <li><a class="btn trigger" href="../customer/login.do">Login</a></li>
             </c:if>
-            <c:if test="${sessionScope.loginId!=null}">
-            <li><a
-               href="../reservation/mypage.do?userid=${sessionScope.loginId}">Mypage</a></li>
-            <li><a class="btn" href="../customer/logout.do">Logout</a></li>
-         </c:if>
+            <c:if test="${sessionScope.loginId!=null && loginId!='admin'}">
+					<li><a href="../reservation/mypage.do?userid=${sessionScope.loginId}">Mypage</a></li>
+					<li><a class="btn" href="../customer/logout.do">Logout</a></li>
+				</c:if>
+				<c:if test='${sessionScope.loginId=="admin"}'>
+					<li><a href="../reservation/mypageM.do?userid=${sessionScope.loginId}">Mypage</a></li>
+					<li><a class="btn" href="../customer/logout.do">Logout</a></li>
+				</c:if>
           
 
 
@@ -203,8 +206,14 @@
                            <!-- 프라퍼티이름 변경 -->
                        <tr>
                           <td>${qnaList.seq }</td>
+                          <c:if test="${sessionScope.loginId=='admin'}">                          	
+                           <td align="left" id="lock"><a href="../qna/getQnaM.do?seq=${qnaList.seq}">
+                                     &#128274; ${qnaList.title }</a></td>
+                          </c:if>
+                          <c:if test="${sessionScope.loginId!='admin'}">
                            <td align="left" id="lock"><a href="../qna/checkPassQnaList.do?seq=${qnaList.seq}">
                                      &#128274; ${qnaList.title }</a></td>
+                          </c:if>
                           <td id="lockid">${qnaList.userid }</td>
                           <td>${qnaList.regdate }</td>
                           <c:if test="${sessionScope.loginId=='admin'}">

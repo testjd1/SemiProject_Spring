@@ -16,6 +16,8 @@ public interface QnaDAO {
 	public void deleteBoardm(QnaVO vo);
 	//글 상세보기
 	public QnaVO getBoard(QnaVO vo) ;
+	//글 상세보기(ADMIN)
+	public QnaVO getBoardM(QnaVO vo) ;
 	//글 목록보기+검색+게시글 목록 조회
 	public List<QnaVO> getBoardList(SearchCriteria scri) ;
 	//게시글 총 갯수

@@ -17,17 +17,6 @@
 	font-weight: normal;
 	font-style: normal;
 }
-/*
-         마포꽃섬
-         */
-@font-face {
-	font-family: 'MapoFlowerIsland';
-	src:
-		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoFlowerIslandA.woff')
-		format('woff');
-	font-weight: normal;
-	font-style: normal;
-}
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title id="logo">S.o.S escape</title>
@@ -40,7 +29,7 @@
 
 <link rel="stylesheet"
 	href="<%=pjName%>/resources/assets/css/mypage.css" />
-<!-- <link rel ="stylesheet" href='resources/css/test.css'> -->
+
 
 
 <!-- bxSlider -->
@@ -132,7 +121,7 @@
 		<section id="main">
 			<div class="container">
 				<div class="row">
-					<div class="col-3 col-12-medium">
+					<div class="col-3 col-12-medium" >
 
 						<div class="sidebar">
 
@@ -152,22 +141,22 @@
 									<a
 										href="../reservation/mypage.do?userid=${sessionScope.loginId}"
 										class="item">
-										<div class="text">
+										<div class="text" style="font-family: GangwonEdu_OTFBoldA;">
 											예약 내역<span class="circle"></span>
 										</div>
 										<div class="right">></div>
 									</a> <a href="../qna/myqna.do?userid=${sessionScope.loginId}"
 										class="item">
-										<div class="text">My QnA</div>
+										<div class="text" style="font-family: GangwonEdu_OTFBoldA;">My QnA</div>
 										<div class="right">></div>
 									</a> <a href="../board/myboard.do?userid=${sessionScope.loginId}"
 										class="item">
-										<div class="text">My Board</div>
+										<div class="text" style="font-family: GangwonEdu_OTFBoldA;" >My Board</div>
 										<div class="right">></div>
 									</a> <a
 										href="../customer/customerUpdateView.do?userid=${sessionScope.loginId}"
 										class="item">
-										<div class="text">회원정보 수정</div>
+										<div class="text" style="font-family: GangwonEdu_OTFBoldA;">회원정보 수정</div>
 										<div class="right">></div>
 									</a>
 
@@ -187,17 +176,17 @@
 										<div>
 											<i class="fa-solid fa-circle-info"></i>
 										</div>
-										<div>공지사항</div>
+										<div style="font-family: GangwonEdu_OTFBoldA;">공지사항</div>
 									</a> <a href="#" class="item">
 										<div>
 											<i class="fa-solid fa-face-smile"></i>
 										</div>
-										<div>이용안내</div>
+										<div style="font-family: GangwonEdu_OTFBoldA;">이용안내</div>
 									</a> <a href="#" class="item">
 										<div>
 											<i class="fa-solid fa-phone"></i>
 										</div>
-										<div>고객센터</div>
+										<div style="font-family: GangwonEdu_OTFBoldA;">고객센터</div>
 									</a>
 								</div>
 							</div>
@@ -208,8 +197,9 @@
 					<div class="col-9 col-12-medium imp-medium">
 
 						<table>
-							<thead>
+							<thead style="height: 65px;">
 								<tr>
+									<th>예약번호</th>
 									<th>성함</th>
 									<th>연락처</th>
 									<th>테마명</th>
@@ -217,23 +207,47 @@
 									<th>예약일</th>
 									<th>예약시간</th>
 									<th>예약인원</th>
-									<th>결제비용</th>
+									<th>결제비용</th>						
+									<th>예약취소</th>
 								</tr>
 							</thead>
 							<tbody>
 
+								
 								<c:forEach items="${listRev}" var="l">
-									<tr>
-										<td>${l.name}</td>
-										<td>${l.tel}</td>
-										<td>${l.themename}</td>
-										<td>${l.branch}</td>
-										<td>${l.regdate}</td>
-										<td>${l.time}</td>
-										<td>${l.peoplecount}</td>
-										<td>${l.total}</td>
-									</tr>
-								</c:forEach>
+                           <tr style="font-family: GangwonEdu_OTFBoldA; ">
+                              <td>${l.seq}</td>
+                              <td>${l.name}</td>
+                              <td>${l.tel}</td>
+                              <td>${l.themename}</td>
+                              <td>${l.branch}</td>
+                              <td>${l.regdate}</td>
+                              <td>${l.time}</td>
+                              <td>${l.peoplecount}</td>
+                              <td>${l.total}</td>
+                              <td>
+                              <jsp:useBean id="now" class="java.util.Date" />
+                              <fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" />
+                              <fmt:parseDate var="regdate" value="${l.regdate}"  pattern="yyyy-MM-dd"/>
+                              <c:if test="${regdate < now}">
+                              <input id="done" class="done" type="button" value="예약완료" style="font-size:12pt; 
+                              background:gray; font-family: 'GangwonEdu_OTFBoldA';" disabled="disabled"/>
+                              </c:if>
+                              <c:if test="${regdate >= now}">
+                              <a id="cancel" class="cancel" href="../reservation/deleteReservation.do?seq=${l.seq}">
+                              <input  type="button" value="예약취소" style="font-size:12pt; font-family: 'GangwonEdu_OTFBoldA';"/>
+                              </a>
+                              </c:if>
+                              </td>
+                           </tr>
+                        </c:forEach>
+								
+								
+								
+								
+								
+								
+								
 							</tbody>
 						</table>
 
@@ -374,10 +388,15 @@
 
 
 	<script type="text/javascript">
-		function openPop() {
-			var popup = window.open('theme_sangse.do', '테마_상세보기',
-					'width=600px,height=700px,scrollbars=yes');
-		}
+		$(".cancel").click(function(){
+	    	var result = confirm('예약을 취소하시겠습니까?');
+	    	if(result){
+	    	}
+	    	  if(!result){
+	    		  return false;
+	    		  }
+		})
+		
 	</script>
 
 </body>

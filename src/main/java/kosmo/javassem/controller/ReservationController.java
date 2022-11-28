@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kosmo.javassem.domain.BoardVO;
 import kosmo.javassem.domain.ReservationVO;
 import kosmo.javassem.service.ReservationService;
 
@@ -66,5 +67,22 @@ public class ReservationController {
 		System.out.println(list.size());
 		m.addAttribute("listRev", list);
 	}
+	
+	// 예약 취소
+		@RequestMapping("/deleteReservation.do")
+		public String deleteReservation(ReservationVO vo) {
+			reservationService.deleteReservation(vo);
+			return "redirect:/customer/index.do";
+		}
 
+		@GetMapping("mypageM.do")
+		// 예약 디비 값 MYPAGE에 출력
+		public void listRevM(ReservationVO vo, Model m) {
+			System.out.println("[/reservation/mypageM.do 요청]" + vo);
+			List<ReservationVO> list = reservationService.listRevM(vo);
+			System.out.println(list.size());
+			m.addAttribute("listRev", list);
+		}
+		
+		
 }

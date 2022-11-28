@@ -18,5 +18,11 @@ public interface ReservationService {
 	
 	// 예약 값 디비 mypage 출력
 	List<ReservationVO> listRev(ReservationVO vo);
+
+	// 예약 값 디비 mypage 매니저 모드로 모두 출력
+	List<ReservationVO> listRevM(ReservationVO vo);
+	
+	//예약 취소
+	public void deleteReservation(ReservationVO vo);
 	
 }

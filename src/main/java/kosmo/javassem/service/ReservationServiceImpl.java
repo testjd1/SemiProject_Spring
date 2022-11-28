@@ -37,4 +37,14 @@ public class ReservationServiceImpl implements ReservationService {
 		return reservationDAO.listRev(vo);
 	}
 
+	// 예약 디비값 mypage 매니저 모드로 모두 출력
+	public List<ReservationVO> listRevM(ReservationVO vo) {
+		return reservationDAO.listRevM(vo);
+	}
+	
+	//예약 취소
+	public void deleteReservation(ReservationVO vo) {
+		reservationDAO.deleteReservation(vo);		
+	}
+
 }

@@ -36,6 +36,10 @@ public class QnaServiceImpl implements QnaService {
 	public QnaVO getBoard(QnaVO vo) {
 		return qnaDAO.getBoard(vo);
 	}
+	//글 상세보기(ADMIN)
+	public QnaVO getBoardM(QnaVO vo) {
+		return qnaDAO.getBoardM(vo);
+	}
 	//글 목록보기+검색+게시글 목록 조회
 	public List<QnaVO> getBoardList(SearchCriteria scri) {
 		return qnaDAO.getBoardList(scri);

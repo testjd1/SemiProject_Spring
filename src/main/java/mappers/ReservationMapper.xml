@@ -48,13 +48,33 @@
 		resultType="ReservationVO">
    
     <![CDATA[
-   SELECT name, tel, themename, branch,  regdate, time, peoplecount, total
+   SELECT name, tel, themename, branch,  regdate, time, peoplecount, total, seq
    FROM Reservation
    WHERE userid = #{userid}
+   order by seq desc
      ]]>
 
 	</select>
+	
+	<!-- 예약 취소 -->
+	<delete id="deleteReservation" parameterType="ReservationVO">
+      <![CDATA[
+      DELETE RESERVATION
+      WHERE SEQ = #{seq}
+      ]]>
+	</delete>
 
+	<!-- 예약DB MYPAGE매니저에 모두 출력 -->
+	<select id="listRevM" parameterType="ReservationVO"
+		resultType="ReservationVO">
+   
+    <![CDATA[
+   SELECT name, tel, themename, branch,  regdate, time, peoplecount, total, seq
+   FROM Reservation
+   order by seq desc
+     ]]>
+
+	</select>
 
 
 </mapper>
