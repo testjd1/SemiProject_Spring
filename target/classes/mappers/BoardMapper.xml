@@ -44,12 +44,6 @@
       ]]>
 	</select>
 
-	<!-- <select id="getBoardList" parameterType="hashmap" resultType="kosmo.javassem.domain.BoardVO" 
-		> SELECT * FROM board WHERE seq in (SELECT seq FROM (SELECT rownum AS rnum 
-		,seq FROM (select rownum, seq from board order by seq desc)) <where> <if 
-		test="searchCondition != null"> ${searchCondition} like '%${searchKeyword}%' 
-		</if> <![CDATA[and RNUM BETWEEN #{criteria.rowStart} AND #{criteria.rowEnd}]]> 
-		</where> ) ORDER BY SEQ DESC </select> -->
 	<!-- 게시판 목록 보기+검색기능+페이징기능 -->
 	<select id="getBoardList"
 		resultType="kosmo.javassem.domain.BoardVO"

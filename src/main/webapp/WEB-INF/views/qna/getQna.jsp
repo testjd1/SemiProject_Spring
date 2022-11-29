@@ -135,7 +135,6 @@
                   <li><a href="../theme/theme.do?themegenre=comic">코믹</a></li>
                   <li><a href="../theme/theme.do?themegenre=fantasy">판타지</a></li>
                   <li><a href="../theme/theme.do?themegenre=emotion">감성</a></li>
-                  <li><a href="../customer/error.do">에러페이지</a></li>
                </ul></li>
             <li class="current"><a href="../qna/getQnaList.do">Q&A</a></li>
             <li><a href="../board/getBoardList.do">Board</a></li>
@@ -174,7 +173,7 @@
             </tr>
             <tr>
                <td align="center">내용</td>
-               <td align="left"><textarea name="content" readonly cols="40" rows="10">
+               <td align="left"><textarea name="content" readonly cols="40" rows="10" style="font-family: GangwonEdu_OTFBoldA;">
                   ${board.content }</textarea></td>
             </tr>
             <tr>
@@ -199,10 +198,10 @@
       <c:if test="${sessionScope.loginId!=null}">
       <!-- 댓글 입력창 -->
       <form id ='replyFrm' name='replyFrm'>
-      <input type='text' size='2' readonly name='bno' id="bno" value='${board.seq}'>
+      <input type='text' size='2' readonly name='bno' id="bno" value='${board.seq}' >
       <input type='text' name ='userid' id ='userid' readonly value='<%=session.getAttribute("loginId")%>'>
       &nbsp;&nbsp;
-      <input type = 'text' name = 'comm' id ='comm' style="width :500" placeholder="댓글 입력">
+      <input type = 'text' name = 'comm' id ='comm' style="width :500; font-family: GangwonEdu_OTFBoldA;" placeholder="댓글 입력" >
       &nbsp;&nbsp;
       <input type = 'button' value='댓글추가' id='replyConfirm' style='font-family:GangwonEdu_OTFBoldA;'>
       </form>

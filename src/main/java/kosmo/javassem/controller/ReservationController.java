@@ -8,12 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kosmo.javassem.domain.BoardVO;
+import kosmo.javassem.domain.PageMaker;
 import kosmo.javassem.domain.ReservationVO;
+import kosmo.javassem.domain.SearchCriteria;
 import kosmo.javassem.service.ReservationService;
 
 @Controller
@@ -83,6 +86,21 @@ public class ReservationController {
 			System.out.println(list.size());
 			m.addAttribute("listRev", list);
 		}
+		
+		// 글 목록 검색
+		@RequestMapping("/getReservationList.do")
+		public void getReservationList(@ModelAttribute("scri") SearchCriteria scri, Model m) {
+
+			m.addAttribute("listRev", reservationService.getReservationList(scri));
+
+			PageMaker pageMaker = new PageMaker();
+			pageMaker.setCri(scri);
+			pageMaker.setTotalCount(reservationService.listCount(scri));
+
+			m.addAttribute("pageMaker", pageMaker);
+			// ViewResolver를 지정하지 않으면 아래처럼 페이지명 지정
+			// return "views/getBoardList.jsp"; // View 이름 리턴
+		}	
 		
 		
 }

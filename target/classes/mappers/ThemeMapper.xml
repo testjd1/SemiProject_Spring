@@ -52,7 +52,7 @@
 	</insert>
 
 
-    <!-- 테마 예약 -->
+    <!-- 테마 등록2 -->
     
      <insert id="register2"
       parameterType="kosmo.javassem.domain.ThemeVO">
@@ -106,6 +106,14 @@
    <delete id="delete"  parameterType="kosmo.javassem.domain.ThemeVO">
       DELETE FROM theme
       WHERE seq = #{seq}
+   </delete>
+
+	<!-- 테마 등록 삭제2 -->
+
+   <delete id="delete2"  parameterType="kosmo.javassem.domain.ThemeVO">
+        delete 
+  from  reservetheme r
+  where exists ( select 1 from theme t where t.picture = r.picture and  t.seq = #{seq} )
    </delete>
 
 

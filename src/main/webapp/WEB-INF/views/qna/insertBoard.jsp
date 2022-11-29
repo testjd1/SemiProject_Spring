@@ -47,7 +47,6 @@
                   <li><a href="../theme/theme.do?themegenre=comic">코믹</a></li>
                   <li><a href="../theme/theme.do?themegenre=fantasy">판타지</a></li>
                   <li><a href="../theme/theme.do?themegenre=emotion">감성</a></li>
-                  <li><a href="../customer/error.do">에러페이지</a></li>
                </ul></li>
                   <li class="current"><a href="qna.do">Q&A</a></li>
                   <li><a href="board.do">Board</a></li>

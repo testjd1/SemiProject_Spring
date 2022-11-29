@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import kosmo.javassem.domain.ReservationVO;
+import kosmo.javassem.domain.SearchCriteria;
 import kosmo.javassem.domain.UserMemberVO;
 
 
@@ -53,6 +54,18 @@ public class ReservationDAOImpl implements ReservationDAO {
 	public void deleteReservation(ReservationVO vo) {
 		System.out.println("=>ReservationDAOImpl.java::UserMapper::예약취소");		
 		mybatis.delete("ReservationDAO.deleteReservation", vo);
+	}
+
+	//글 목록보기+ 검색+ 게시글 목록  조회
+	public List<ReservationVO> getReservationList(SearchCriteria scri) {
+		System.out.println("===> Mybatis getReservationList() 호출");
+		return mybatis.selectList("ReservationDAO.getReservationList", scri);
+	}
+
+	//게시글 총 갯수
+	public int listCount(SearchCriteria scri) {
+		System.out.println("===> Mybatis listCount() 호출");
+		return mybatis.selectOne("ReservationDAO.listCount",scri);
 	}
 	 
 	 

@@ -28,7 +28,16 @@
 	font-weight: normal;
 	font-style: normal;
 }
+
 </style>
+<style type="text/css">
+         
+  select {
+    appearance:none;
+}
+      
+      
+      </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title id='logo'>S.o.S escape</title>
 <!--  select icon -->
@@ -54,7 +63,12 @@
 <!-- login css -->
 <link rel="stylesheet" href='<%=pjName%>/resources/assets/css/login.css'>
 
-
+<!-- Bootstrap star icons-->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+	rel="stylesheet" />
+<!-- Core theme CSS (includes Bootstrap)-->
+<link href="css/styles.css" rel="stylesheet" />
 
 
 <!-- 모달  css-->
@@ -105,7 +119,6 @@
 						<li><a href="../theme/theme.do?themegenre=comic">코믹</a></li>
 						<li><a href="../theme/theme.do?themegenre=fantasy">판타지</a></li>
 						<li><a href="../theme/theme.do?themegenre=emotion">감성</a></li>
-						<li><a href="../customer/error.do">에러페이지</a></li>
 					</ul></li>
 				<li><a href="../qna/getQnaList.do">Q&A</a></li>
 				<li><a href="../board/getBoardList.do">Board</a></li>
@@ -113,12 +126,14 @@
 					<li><a id="gologin" class="btn trigger"
 						href="../customer/login.do">Login</a></li>
 				</c:if>
-					<c:if test="${sessionScope.loginId!=null && loginId!='admin'}">
-					<li><a href="../reservation/mypage.do?userid=${sessionScope.loginId}">Mypage</a></li>
+				<c:if test="${sessionScope.loginId!=null && loginId!='admin'}">
+					<li><a
+						href="../reservation/mypage.do?userid=${sessionScope.loginId}">Mypage</a></li>
 					<li><a class="btn" href="../customer/logout.do">Logout</a></li>
 				</c:if>
 				<c:if test='${sessionScope.loginId=="admin"}'>
-					<li><a href="../reservation/mypageM.do?userid=${sessionScope.loginId}">Mypage</a></li>
+					<li><a
+						href="../reservation/mypageM.do?userid=${sessionScope.loginId}">Mypage</a></li>
 					<li><a class="btn" href="../customer/logout.do">Logout</a></li>
 				</c:if>
 
@@ -197,108 +212,226 @@
 			<div class="container">
 
 
-				
-                
+
+
 				<!-- select start -->
 				<%
 					String genre = request.getParameter("themegenre");
 				%>
+				<div class="select">
+					<select onchange="if(this.value) location.href=(this.value);"
+						style="font-family: GangwonEdu_OTFBoldA; font-size:20px;" >
 
-				<select onchange="if(this.value) location.href=(this.value);">
-					<option value="../theme/theme.do" <%if (genre == null) {%>
-						selected='selected' <%}%>>전체 (All)</option>
-					<option value="../theme/theme.do?themegenre=horror"
-						<%if (genre != null && genre.equals("horror")) {%>
-						selected='selected' <%}%>>공포 (Horror)</option>
-					<option value="../theme/theme.do?themegenre=infiltration"
-						<%if (genre != null && genre.equals("infiltration")) {%>
-						selected='selected' <%}%>>잠입
-						(Infiltration)</option>
-					<option value="../theme/theme.do?themegenre=comic"
-						<%if (genre != null && genre.equals("comic")) {%>
-						selected='selected' <%}%>>코믹 (Comic)</option>
-					<option value="../theme/theme.do?themegenre=fantasy"
-						<%if (genre != null && genre.equals("fantasy")) {%>
-						selected='selected' <%}%>>판타지 (Fantasy)</option>
-					<option value="../theme/theme.do?themegenre=emotion"
-						<%if (genre != null && genre.equals("emotion")) {%>
-						selected='selected' <%}%>>감성 (Emotion)</option>
-				</select>
-	
-				
-				
-				<div align="right">
-				<c:if test="${sessionScope.loginId=='admin'}">
-					<td><a href="../theme/getthemelist.do"> 
-					<input type="button" value="테마 관리"></a></td>
-				</c:if>
-				</div>
-				 
-				
-				
-				<!-- select   finish -->
-				<!-- 테마 이미지 Section-->
-				<section class="py-5">
-					<div class="container px-4 px-lg-5 mt-5">
-						<%
-							if (genre == null) {
-						%>
-						<div
-							class="row gx-5 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-5 justify-content-center">
-							<%
-								}
-							%>
-							<%
-								if (genre != null) {
-							%>
-							<div
-								class="row gx-3 gx-lg-3 row-cols-2 row-cols-md-3 row-cols-xl-3 justify-content-center">
-								<%
-									}
-								%>
-
-
-								<!-- cart start -->
-								<c:forEach items="${themeList}" var="theme">
-									<div class="col mb-2 ">
-										<div class="card h-100 ">
-
-											<!-- 테마 image-->
-
-											<img class="card-img-top"
-												src="<%=pjName%>/resources/images/${theme.picture}"
-												alt="..." />
-
-											<!-- 테마 details-->
-											<div class="card-body p-5">
-												<div class="text-center">
-													<!-- 테마 name-->
-													<h5 class="fw-bolder"
-														style="font-family: GangwonEdu_OTFBoldA;">${theme.themename}</h5>
-													<!-- 테마 난이도-->
-													<h5>${theme.thlevel}</h5>
-												</div>
-											</div>
-											<!-- Product actions-->
-											<div class="card-footer p-5 pt-0 border-top-0 bg-transparent">
-												<div class="text-center">
-
-													<a href="../theme/theme_sangse.do?picture=${theme.picture}">View
-														options</a>
-
-												</div>
-											</div>
-										</div>
-									</div>
-								</c:forEach>
-								<!-- card end -->
-
-							</div>
-						</div>
-				</section>
-
-
+							<option value="../theme/theme.do" <%if (genre == null) {%>
+								selected='selected' <%}%>>전체 (All)</option>
+							<option value="../theme/theme.do?themegenre=horror"
+								<%if (genre != null && genre.equals("horror")) {%>
+								selected='selected' <%}%>>공포 (Horror)</option>
+							<option value="../theme/theme.do?themegenre=infiltration"
+								<%if (genre != null && genre.equals("infiltration")) {%>
+								selected='selected' <%}%>>잠입 (Infiltration)</option>
+							<option value="../theme/theme.do?themegenre=comic"
+								<%if (genre != null && genre.equals("comic")) {%>
+								selected='selected' <%}%>>코믹 (Comic)</option>
+							<option value="../theme/theme.do?themegenre=fantasy"
+								<%if (genre != null && genre.equals("fantasy")) {%>
+								selected='selected' <%}%>>판타지 (Fantasy)</option>
+							<option value="../theme/theme.do?themegenre=emotion"
+								<%if (genre != null && genre.equals("emotion")) {%>
+								selected='selected' <%}%>>감성 (Emotion)</option>
+					</select>
 			</div>
+				</br>
+
+						<div align="right">
+							<c:if test="${sessionScope.loginId=='admin'}">
+								<td><a href="../theme/getthemelist.do"> <input
+										type="button" value="테마 관리"></a></td>
+							</c:if>
+						</div>
+
+
+
+						<!-- select   finish -->
+						<!-- 테마 이미지 Section-->
+						<section class="py-5">
+							<div class="container px-4 px-lg-5 mt-5">
+								<%
+									if (genre == null) {
+								%>
+								<div
+									class="row gx-5 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-5 justify-content-center">
+									<%
+										}
+									%>
+									<%
+										if (genre != null) {
+									%>
+									<div
+										class="row gx-5 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-5 justify-content-center">
+										<%
+											}
+										%>
+
+
+										<!-- cart start -->
+										<c:forEach items="${themeList}" var="theme">
+											<div class="col mb-2 ">
+												<div class="card h-100 ">
+
+													<!-- 테마 image-->
+
+													<img class="card-img-top"
+														src="<%=pjName%>/resources/images/${theme.picture}"
+														alt="..." />
+
+													<!-- 테마 details-->
+													<div class="card-body p-5">
+														<div class="text-center">
+															<!-- 테마 name-->
+															<h5 class="fw-bolder"
+																style="font-family: GangwonEdu_OTFBoldA;">${theme.themename}</h5>
+															<!-- 테마 난이도-->
+															<c:choose>
+																<c:when test="${theme.thlevel=='0'}">
+																	<div
+																		class="d-flex justify-content-center small text-warning mb-2">
+																		<div class="bi bi-star"></div>
+																		<div class="bi bi-star"></div>
+																		<div class="bi bi-star"></div>
+																		<div class="bi bi-star"></div>
+																		<div class="bi bi-star"></div>
+																		<div class="bi bi-star"></div>
+																	</div>
+																</c:when>
+																<c:when test="${theme.thlevel=='0.5'}">
+																	<div
+																		class="d-flex justify-content-center small text-warning mb-2">
+																		<div class="bi bi-star-half"></div>
+																		<div class="bi bi-star"></div>
+																		<div class="bi bi-star"></div>
+																		<div class="bi bi-star"></div>
+																		<div class="bi bi-star"></div>
+																		<div class="bi bi-star"></div>
+																	</div>
+																</c:when>
+																<c:when test="${theme.thlevel=='1'}">
+																	<div
+																		class="d-flex justify-content-center small text-warning mb-2">
+																		<div class="bi bi-star-fill"></div>
+																		<div class="bi bi-star"></div>
+																		<div class="bi bi-star"></div>
+																		<div class="bi bi-star"></div>
+																		<div class="bi bi-star"></div>
+																		<div class="bi bi-star"></div>
+																	</div>
+																</c:when>
+																<c:when test="${theme.thlevel=='1.5'}">
+																	<div
+																		class="d-flex justify-content-center small text-warning mb-2">
+																		<div class="bi bi-star-fill"></div>
+																		<div class="bi bi-star-half"></div>
+																		<div class="bi bi-star"></div>
+																		<div class="bi bi-star"></div>
+																		<div class="bi bi-star"></div>
+																	</div>
+																</c:when>
+																<c:when test="${theme.thlevel=='2'}">
+																	<div
+																		class="d-flex justify-content-center small text-warning mb-2">
+																		<div class="bi bi-star-fill"></div>
+																		<div class="bi bi-star-fill"></div>
+																		<div class="bi bi-star"></div>
+																		<div class="bi bi-star"></div>
+																		<div class="bi bi-star"></div>
+																		<div class="bi bi-star"></div>
+																	</div>
+																</c:when>
+																<c:when test="${theme.thlevel=='2.5'}">
+																	<div
+																		class="d-flex justify-content-center small text-warning mb-2">
+																		<div class="bi bi-star-fill"></div>
+																		<div class="bi bi-star-fill"></div>
+																		<div class="bi bi-star-half"></div>
+																		<div class="bi bi-star"></div>
+																		<div class="bi bi-star"></div>
+																	</div>
+																</c:when>
+																<c:when test="${theme.thlevel=='3'}">
+																	<div
+																		class="d-flex justify-content-center small text-warning mb-2">
+																		<div class="bi bi-star-fill"></div>
+																		<div class="bi bi-star-fill"></div>
+																		<div class="bi bi-star-fill"></div>
+																		<div class="bi bi-star"></div>
+																		<div class="bi bi-star"></div>
+																	</div>
+																</c:when>
+																<c:when test="${theme.thlevel=='3.5'}">
+																	<div
+																		class="d-flex justify-content-center small text-warning mb-2">
+																		<div class="bi bi-star-fill"></div>
+																		<div class="bi bi-star-fill"></div>
+																		<div class="bi bi-star-fill"></div>
+																		<div class="bi bi-star-half"></div>
+																		<div class="bi bi-star"></div>
+																	</div>
+																</c:when>
+																<c:when test="${theme.thlevel=='4'}">
+																	<div
+																		class="d-flex justify-content-center small text-warning mb-2">
+																		<div class="bi bi-star-fill"></div>
+																		<div class="bi bi-star-fill"></div>
+																		<div class="bi bi-star-fill"></div>
+																		<div class="bi bi-star-fill"></div>
+																		<div class="bi bi-star"></div>
+																	</div>
+																</c:when>
+																<c:when test="${theme.thlevel=='4.5'}">
+																	<div
+																		class="d-flex justify-content-center small text-warning mb-2">
+																		<div class="bi bi-star-fill"></div>
+																		<div class="bi bi-star-fill"></div>
+																		<div class="bi bi-star-fill"></div>
+																		<div class="bi bi-star-fill"></div>
+																		<div class="bi bi-star-half"></div>
+																	</div>
+																</c:when>
+																<c:when test="${theme.thlevel=='5'}">
+																	<div
+																		class="d-flex justify-content-center small text-warning mb-2">
+																		<div class="bi bi-star-fill"></div>
+																		<div class="bi bi-star-fill"></div>
+																		<div class="bi bi-star-fill"></div>
+																		<div class="bi bi-star-fill"></div>
+																		<div class="bi bi-star-fill"></div>
+																	</div>
+																</c:when>
+
+
+															</c:choose>
+														</div>
+													</div>
+													<!-- Product actions-->
+													<div
+														class="card-footer p-5 pt-0 border-top-0 bg-transparent">
+														<div class="text-center">
+
+															<a
+																href="../theme/theme_sangse.do?picture=${theme.picture}">View
+																options</a>
+
+														</div>
+													</div>
+												</div>
+											</div>
+										</c:forEach>
+										<!-- card end -->
+
+									</div>
+								</div>
+						</section>
+				</div>
 		</section>
 
 		<!-- Footer -->
@@ -359,5 +492,8 @@
 			src="<%=pjName%>/resources/https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<!-- login  js 추가-->
 		<script src="<%=pjName%>/resources/assets/js/login.js"></script>
+		<script type="text/javascript">
+			
+		</script>
 </body>
 </html>

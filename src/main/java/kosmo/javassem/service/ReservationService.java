@@ -3,7 +3,9 @@ package kosmo.javassem.service;
 import java.util.HashMap;
 import java.util.List;
 
+import kosmo.javassem.domain.BoardVO;
 import kosmo.javassem.domain.ReservationVO;
+import kosmo.javassem.domain.SearchCriteria;
 
 public interface ReservationService {
 
@@ -24,5 +26,11 @@ public interface ReservationService {
 	
 	//예약 취소
 	public void deleteReservation(ReservationVO vo);
+	
+	// 글 목록 조회+게시글 목록 조회
+	List<ReservationVO> getReservationList(SearchCriteria scri);
+
+	//게시글 총 갯수
+	public int listCount(SearchCriteria scri);
 	
 }

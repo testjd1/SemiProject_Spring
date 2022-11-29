@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kosmo.javassem.dao.ReservationDAOImpl;
+import kosmo.javassem.domain.BoardVO;
 import kosmo.javassem.domain.ReservationVO;
+import kosmo.javassem.domain.SearchCriteria;
 
 @Service
 public class ReservationServiceImpl implements ReservationService {
@@ -45,6 +47,16 @@ public class ReservationServiceImpl implements ReservationService {
 	//예약 취소
 	public void deleteReservation(ReservationVO vo) {
 		reservationDAO.deleteReservation(vo);		
+	}
+
+	//글 목록보기+검색+게시글 목록 조회
+		public List<ReservationVO> getReservationList(SearchCriteria scri) {
+			return reservationDAO.getReservationList(scri);
+	}
+
+	//게시글 총 갯수
+	public int listCount(SearchCriteria scri) {
+		return reservationDAO.listCount(scri);
 	}
 
 }

@@ -14,7 +14,7 @@ public interface ThemeService {
 
 	// 테마 등록하기
 	void register(ThemeVO vo);
-	//테마 예약
+	//테마 등록하기2
 	void register2(ThemeVO vo);
 
 	// 테마 등록 수정하기
@@ -22,6 +22,10 @@ public interface ThemeService {
 
 	// 테마 등록 삭제하기
 	void delete(ThemeVO vo);
+	
+	// 테마 등록 삭제하기2
+	void delete2(ThemeVO vo);
+	
 
 	// 테마 등록 목록 보기
 	List<ThemeVO> getthemelist(ThemeVO vo);

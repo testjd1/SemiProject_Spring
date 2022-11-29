@@ -29,7 +29,7 @@ public class ThemeServiceImpl implements ThemeService {
 		themeDAO.register(vo);
 	}
 
-	//테마 예약
+	//테마 등록2
 	public void register2(ThemeVO vo) {
 		themeDAO.register2(vo);
 	}
@@ -42,6 +42,10 @@ public class ThemeServiceImpl implements ThemeService {
 	// 테마 등록 삭제
 	public void delete(ThemeVO vo) {
 		themeDAO.delete(vo);
+	}
+	// 테마 등록 삭제2
+	public void delete2(ThemeVO vo) {
+		themeDAO.delete2(vo);
 	}
 
 	// 테마 목록 보기

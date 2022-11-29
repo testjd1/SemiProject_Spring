@@ -18,6 +18,12 @@
 <!-- modal js -->
 <script src="<%=pjName%>/resources/assets/js/modal.js"></script>
 
+<!-- alert창 -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+
+
 <!-- 페이징 관련 js -->
 <script>
    function selChange() {
@@ -125,7 +131,6 @@
                   <li><a href="../theme/theme.do?themegenre=comic">코믹</a></li>
                   <li><a href="../theme/theme.do?themegenre=fantasy">판타지</a></li>
                   <li><a href="../theme/theme.do?themegenre=emotion">감성</a></li>
-                  <li><a href="../customer/error.do">에러페이지</a></li>
                </ul></li>
             <li><a href="../qna/getQnaList.do">Q&A</a></li>
             <li class="current"><a href="../board/getBoardList.do">Board</a></li>
@@ -133,13 +138,13 @@
                <li><a class="btn trigger" href="../customer/login.do">Login</a></li>
             </c:if>
              <c:if test="${sessionScope.loginId!=null && loginId!='admin'}">
-					<li><a href="../reservation/mypage.do?userid=${sessionScope.loginId}">Mypage</a></li>
-					<li><a class="btn" href="../customer/logout.do">Logout</a></li>
-				</c:if>
-				<c:if test='${sessionScope.loginId=="admin"}'>
-					<li><a href="../reservation/mypageM.do?userid=${sessionScope.loginId}">Mypage</a></li>
-					<li><a class="btn" href="../customer/logout.do">Logout</a></li>
-				</c:if>
+               <li><a href="../reservation/mypage.do?userid=${sessionScope.loginId}">Mypage</a></li>
+               <li><a class="btn" href="../customer/logout.do">Logout</a></li>
+            </c:if>
+            <c:if test='${sessionScope.loginId=="admin"}'>
+               <li><a href="../reservation/mypageM.do?userid=${sessionScope.loginId}">Mypage</a></li>
+               <li><a class="btn" href="../customer/logout.do">Logout</a></li>
+            </c:if>
 
             
             
@@ -219,9 +224,7 @@
 
                        </tbody>
                     </table>
-                     <a href='../board/saveBoard.do'>
-                     <input type="button" id="insertBoard" name='insertBoard' value="write">
-                     </a>              
+                     <input type="button" id="insertBoard" name='insertBoard' value="write">            
                     
                  </div>
               </div>
@@ -309,10 +312,12 @@
       $("#insertBoard").click(function() {
          var k = "<%=session.getAttribute("loginId")%>" 
          if(k!="null"){
-            alert(k +"님 글쓰기 페이지로 이동합니다.")
+            Swal.fire("접근 허용","글쓰기 페이지로 이동합니다.",'success').then(function(){
+              location.href='/sosBoard/board/saveBoard.do';
+              })
          }
          if(k=="null"){
-            alert("로그인 후 이용가능 합니다.")
+            Swal.fire("접근 불가","로그인 후 이용가능 합니다.",'error')
             return false;
          } 
    

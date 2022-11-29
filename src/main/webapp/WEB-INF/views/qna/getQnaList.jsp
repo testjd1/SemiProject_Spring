@@ -18,6 +18,12 @@
 <!-- modal js -->
 <script src="<%=pjName%>/resources/assets/js/modal.js"></script>
 
+<!-- alert창 -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+
+
 <!-- 페이징 관련 js -->
 <script>
    function selChange() {
@@ -125,7 +131,6 @@
                   <li><a href="../theme/theme.do?themegenre=comic">코믹</a></li>
                   <li><a href="../theme/theme.do?themegenre=fantasy">판타지</a></li>
                   <li><a href="../theme/theme.do?themegenre=emotion">감성</a></li>
-                  <li><a href="../customer/error.do">에러페이지</a></li>
                </ul></li>
             <li class="current"><a href="../qna/getQnaList.do">Q&A</a></li>
             <li><a href="../board/getBoardList.do">Board</a></li>
@@ -133,13 +138,13 @@
                <li><a class="btn trigger" href="../customer/login.do">Login</a></li>
             </c:if>
             <c:if test="${sessionScope.loginId!=null && loginId!='admin'}">
-					<li><a href="../reservation/mypage.do?userid=${sessionScope.loginId}">Mypage</a></li>
-					<li><a class="btn" href="../customer/logout.do">Logout</a></li>
-				</c:if>
-				<c:if test='${sessionScope.loginId=="admin"}'>
-					<li><a href="../reservation/mypageM.do?userid=${sessionScope.loginId}">Mypage</a></li>
-					<li><a class="btn" href="../customer/logout.do">Logout</a></li>
-				</c:if>
+               <li><a href="../reservation/mypage.do?userid=${sessionScope.loginId}">Mypage</a></li>
+               <li><a class="btn" href="../customer/logout.do">Logout</a></li>
+            </c:if>
+            <c:if test='${sessionScope.loginId=="admin"}'>
+               <li><a href="../reservation/mypageM.do?userid=${sessionScope.loginId}">Mypage</a></li>
+               <li><a class="btn" href="../customer/logout.do">Logout</a></li>
+            </c:if>
           
 
 
@@ -206,7 +211,7 @@
                            <!-- 프라퍼티이름 변경 -->
                        <tr>
                           <td>${qnaList.seq }</td>
-                          <c:if test="${sessionScope.loginId=='admin'}">                          	
+                          <c:if test="${sessionScope.loginId=='admin'}">                             
                            <td align="left" id="lock"><a href="../qna/getQnaM.do?seq=${qnaList.seq}">
                                      &#128274; ${qnaList.title }</a></td>
                           </c:if>
@@ -225,9 +230,7 @@
 
                        </tbody>
                     </table>
-                          <a href='../qna/saveQna.do'>
                           <input type="button" id="saveQna" name='saveQna' value="write">
-                          </a>
                           
                           
                <!-- 페이징 -->  
@@ -317,19 +320,21 @@
       src="<%=pjName%>/resources/https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!-- login  js 추가-->
    <script src="<%=pjName%>/resources/assets/js/login.js"></script> 
-   <!-- 로그인 안했을 시 글 못씀 -->
-      <script type="text/javascript">
+<!-- 로그인 안했을 시 글 못씀 -->
+   <script type="text/javascript">
       $("#saveQna").click(function() {
          var k = "<%=session.getAttribute("loginId")%>" 
          if(k!="null"){
-            alert(k +"님 글쓰기 페이지로 이동합니다.")
+            Swal.fire("접근 허용","글쓰기 페이지로 이동합니다.",'success').then(function(){
+              location.href='/sosBoard/qna/saveQna.do';
+              })
          }
          if(k=="null"){
-            alert("로그인 후 이용가능 합니다.")
+            Swal.fire("접근 불가","로그인 후 이용가능 합니다.",'error')
             return false;
          } 
    
-      })//end
-   </script>  
+      })
+   </script>    
 </body>
 </html>

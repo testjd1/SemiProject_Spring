@@ -37,11 +37,17 @@
 <!-- modal js -->
 <script src="<%=pjName%>/resources/assets/js/modal.js"></script>
 
+<!-- alert창 -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+
       <style>
    ul{
          list-style:none;
       }      
       </style>
+        
 
 </head>
 <body>
@@ -50,7 +56,7 @@
 
 
       <!-- Nav -->
-		<br/><br/><br/><br/><br/>
+      <br/><br/><br/><br/><br/>
       <nav id="nav">
          <div id="navImage">
             <a href="../customer/index.do"><img
@@ -74,7 +80,6 @@
                   <li><a href="../theme/theme.do?themegenre=comic">코믹</a></li>
                   <li><a href="../theme/theme.do?themegenre=fantasy">판타지</a></li>
                   <li><a href="../theme/theme.do?themegenre=emotion">감성</a></li>
-                  <li><a href="../customer/error.do">에러페이지</a></li>
                </ul></li>
             <li><a href="../qna/getQnaList.do">Q&A</a></li>
             <li><a href="../board/getBoardList.do">Board</a></li>
@@ -82,14 +87,14 @@
                <li><a id="gologin" class="btn trigger"
                   href="../customer/login.do">Login</a></li>
             </c:if>
-            	<c:if test="${sessionScope.loginId!=null && loginId!='admin'}">
-					<li><a href="../reservation/mypage.do?userid=${sessionScope.loginId}">Mypage</a></li>
-					<li><a class="btn" href="../customer/logout.do">Logout</a></li>
-				</c:if>
-				<c:if test='${sessionScope.loginId=="admin"}'>
-					<li><a href="../reservation/mypageM.do?userid=${sessionScope.loginId}">Mypage</a></li>
-					<li><a class="btn" href="../customer/logout.do">Logout</a></li>
-				</c:if>
+               <c:if test="${sessionScope.loginId!=null && loginId!='admin'}">
+               <li><a href="../reservation/mypage.do?userid=${sessionScope.loginId}">Mypage</a></li>
+               <li><a class="btn" href="../customer/logout.do">Logout</a></li>
+            </c:if>
+            <c:if test='${sessionScope.loginId=="admin"}'>
+               <li><a href="../reservation/mypageM.do?userid=${sessionScope.loginId}">Mypage</a></li>
+               <li><a class="btn" href="../customer/logout.do">Logout</a></li>
+            </c:if>
 
 
 
@@ -180,7 +185,7 @@
             <li><span>권장 인원 :</span>${theme.peoplecount}명</li>
             <li><span>이용 지역 :</span>${theme.branch}</li>
             <li><span>설명 :</span>${theme.content}</li>
-            <li><a href = "../reservation/reservation.do?picture=${theme.picture}" style="font-family: GangwonEdu_OTFBoldA;" id="reservationgo">예약</a></li>
+            <li><a href="#" style="font-family: GangwonEdu_OTFBoldA;" id="reservationgo">예약</a></li>
             <li><a href="../theme/theme.do" style="font-family: GangwonEdu_OTFBoldA;" id="reservationgo">전체 테마로 이동</a></li>
          </ul>
        </div>
@@ -198,15 +203,16 @@
       $("#reservationgo").click(function() {
          var k = "<%=session.getAttribute("loginId")%>" 
          if(k!="null"){
-            alert(k +"님 예약 페이지로 이동하겠습니다.")
+            Swal.fire("예약페이지","예약 페이지로 이동하겠습니다.","success").then(function(){
+               location.href='/sosBoard/reservation/reservation.do?picture=${theme.picture}';
+            })
          }
          if(k=="null"){
-            alert("로그인 후 이용가능 합니다.")
+            Swal.fire("접근불가!","로그인 후 이용가능 합니다.","error")
             return false;
          }
-         
-   
-      })
+      });
+      
    </script>   
    
  <!-- Footer -->

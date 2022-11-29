@@ -76,5 +76,40 @@
 
 	</select>
 
+	<!-- 예약 목록 보기+검색기능+페이징기능 -->
+	<select id="getReservationList"
+		resultType="ReservationVO"
+		parameterType="kosmo.javassem.domain.SearchCriteria">
+		SELECT seq,userid, regdate, time, total,
+		name,tel,peoplecount,branch,themename
+		FROM (
+		SELECT seq,userid, regdate, time, total,
+		name,tel,peoplecount,branch,themename,
+		ROW_NUMBER() OVER(ORDER BY SEQ DESC) AS RNUM
+		FROM Reservation
+		WHERE 1=1
+		<include refid="search"></include>
+		) MP
+		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
+		ORDER BY SEQ DESC
+	</select>
+
+	<!-- 게시물 총 갯수 -->
+	<select id="listCount"
+		parameterType="kosmo.javassem.domain.SearchCriteria" resultType="int">
+		SELECT COUNT(SEQ)
+		FROM Reservation
+		WHERE 1=1
+		<include refid="search"></include>
+		AND SEQ > 0
+	</select>
+
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 't'.toString()">AND NAME LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'c'.toString()">AND THEMENAME LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'w'.toString()">AND USERID LIKE '%' || #{keyword} || '%'</if>
+		</if>
+	</sql>
 
 </mapper>

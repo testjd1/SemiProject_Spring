@@ -1,8 +1,9 @@
 package kosmo.javassem.controller;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
-
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -42,7 +43,7 @@ public class UserMemberController {
         if (userService.checkId(vo) != null) {
            // id exists in DB. Make customer input different id
            //session.setAttribute("sok", 9);
-        	m.addAttribute("sok", 9);
+           m.addAttribute("sok", 9);
            return "/customer/index"; 
         }
         int insertResult = userService.insertCustomer(vo);
@@ -59,6 +60,7 @@ public class UserMemberController {
      public String logout(HttpServletRequest request,  Model m ) {
          System.out.println("logout.do-------------------------------");
         HttpSession session = request.getSession(true);
+        logCustomer(" logged out at ", session);
         session.invalidate();
         return "/customer/index";
      }
@@ -71,32 +73,57 @@ public class UserMemberController {
         if (loginResult != null) { // login success!
            session.setAttribute("loginId", vo.getUserid());
            session.setAttribute("loginPass",vo.getPass() );
+           logCustomer(" logged in at ", session);
            return "/customer/index";
         }else {
         // 로그인 실패
         //session.setAttribute("sok", 5);
-        	m.addAttribute("sok", 5);
+           m.addAttribute("sok", 5);
         }
         return "/customer/index";
      }
      // ---user login end
       
+      public void logCustomer(String strToWrite, HttpSession session) {
+        try {
+           File myObj = new File("fileLog.txt");
+           FileWriter myWriter = null;
+           if (myObj.createNewFile()) {
+              myWriter = new FileWriter("C:\\sosBoard\\src\\main\\fileLog.txt");
+              LocalDateTime now = LocalDateTime.now();
+              myWriter.write("Customer " + session.getAttribute("loginId") + strToWrite + String.valueOf(now));
+              myWriter.write('\n');
+           } else {
+              // file already exists
+              myWriter = new FileWriter("C:\\\\sosBoard\\\\src\\\\main\\\\fileLog.txt", true);
+              LocalDateTime now = LocalDateTime.now();
+              myWriter.write("Customer " + session.getAttribute("loginId") + strToWrite + String.valueOf(now));
+              myWriter.write('\n');
+           }
+           myWriter.close();
+        } catch (IOException e) {
+           e.printStackTrace();
+        }
+     }// logCustomer
+      
+      
+      
       //회원정보 수정 페이지
       @RequestMapping(value="/customerUpdateView.do", method = RequestMethod.GET)
       public String customerUpdateView(UserMemberVO vo,Model m) {
-    	  UserMemberVO list = userService.getCustomer(vo);
-    	  m.addAttribute("customer", list);
-    	  return "/customer/customerUpdateView";
+         UserMemberVO list = userService.getCustomer(vo);
+         m.addAttribute("customer", list);
+         return "/customer/customerUpdateView";
       }
       
       //회원정보 수정
       @RequestMapping(value="customerUpdate.do", method = RequestMethod.GET)
       public String customerUpdate(UserMemberVO vo, HttpSession session) {
-    	  userService.customerUpdate(vo);
-    	  //로그인 되어있던 세션을 끊고
-    	  session.invalidate();
-    	  //메인으로 돌아감
-    	 return "redirect:/customer/index.do";
+         userService.customerUpdate(vo);
+         //로그인 되어있던 세션을 끊고
+         session.invalidate();
+         //메인으로 돌아감
+        return "redirect:/customer/index.do";
       }
       
       

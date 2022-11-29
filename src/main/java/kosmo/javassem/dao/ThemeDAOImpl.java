@@ -30,7 +30,7 @@ public class ThemeDAOImpl implements ThemeDAO {
 		System.out.println("===> Mybatis register() 호출");
 		mybatis.insert("ThemeDAO.register", vo);
 	}
-	//테마 예약
+	//테마 등록하기2
 	public void register2(ThemeVO vo) {
 		System.out.println("===> Mybatis register2() 호출");
 		mybatis.insert("ThemeDAO.register2", vo);
@@ -47,6 +47,13 @@ public class ThemeDAOImpl implements ThemeDAO {
 		System.out.println("===> Mybatis delete() 호출");
 		mybatis.delete("ThemeDAO.delete", vo);
 	}
+	// 테마 등록 삭제하기2
+	public void delete2(ThemeVO vo) {
+		System.out.println("===> Mybatis delete2() 호출");
+		mybatis.delete("ThemeDAO.delete2", vo);
+	}
+	
+	
 
 	// 테마 등록 목록 보기
 	public List<ThemeVO> getthemelist(ThemeVO vo) {

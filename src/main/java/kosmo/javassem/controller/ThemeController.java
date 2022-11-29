@@ -60,7 +60,9 @@ public class ThemeController {
 	@RequestMapping("/deletetheme.do")
 	public void delete(ThemeVO vo) {
 		System.out.println("delete_theme 요청 :" + vo);
+		themeService.delete2(vo);
 		themeService.delete(vo);
+				
 	}
 
 //테마 목록 검색     

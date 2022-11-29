@@ -96,7 +96,6 @@
 						<li><a href="../theme/theme.do?themegenre=comic">코믹</a></li>
 						<li><a href="../theme/theme.do?themegenre=fantasy">판타지</a></li>
 						<li><a href="../theme/theme.do?themegenre=emotion">감성</a></li>
-						<li><a href="../customer/error.do">에러페이지</a></li>
 					</ul></li>
 				<li><a href="../qna/getQnaList.do">Q&A</a></li>
 				<li><a href="../board/getBoardList.do">Board</a></li>
@@ -132,7 +131,7 @@
 							<div class="wrap">
 								<div class="greenContainer" style="height: auto; width: 1000px">
 									<div>
-										<div class="name">${sessionScope.loginId}님환영합니다!</div>
+										<div class="name">${sessionScope.loginId}님 환영합니다!</div>
 									</div>
 
 								</div>
