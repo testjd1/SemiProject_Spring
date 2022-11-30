@@ -140,7 +140,7 @@
                   <li><a href="../customer/anyang.do">안양</a></li>
                   <li><a href="../customer/gumi.do">구미</a></li>
                </ul></li>
-             <li><a href="../theme/theme.do">Theme</a>
+            <li><a href="../theme/theme.do">Theme</a>
                <ul>
                   <li><a href="../theme/theme.do?themegenre=horror">공포</a></li>
                   <li><a href="../theme/theme.do?themegenre=infiltration">잠입</a></li>
@@ -154,14 +154,16 @@
                <li><a id="gologin" class="btn trigger"
                   href="../customer/login.do">Login</a></li>
             </c:if>
-           <c:if test="${sessionScope.loginId!=null && loginId!='admin'}">
-					<li><a href="../reservation/mypage.do?userid=${sessionScope.loginId}">Mypage</a></li>
-					<li><a class="btn" href="../customer/logout.do">Logout</a></li>
-				</c:if>
-				<c:if test='${sessionScope.loginId=="admin"}'>
-					<li><a href="../reservation/mypageM.do?userid=${sessionScope.loginId}">Mypage</a></li>
-					<li><a class="btn" href="../customer/logout.do">Logout</a></li>
-				</c:if>
+            <c:if test="${sessionScope.loginId!=null && loginId!='admin'}">
+               <li><a
+                  href="../reservation/mypage.do?userid=${sessionScope.loginId}">Mypage</a></li>
+               <li><a class="btn" href="../customer/logout.do">Logout</a></li>
+            </c:if>
+            <c:if test='${sessionScope.loginId=="admin"}'>
+               <li><a
+                  href="../reservation/mypageM.do?userid=${sessionScope.loginId}">Mypage</a></li>
+               <li><a class="btn" href="../customer/logout.do">Logout</a></li>
+            </c:if>
 
 
 
@@ -179,41 +181,41 @@
                      <!-- Sidebar -->
 
                      <!-- Recent Posts -->
-<!--                      <section> -->
-<!--                         <h2 class="major"> -->
-<!--                            <span>Posts</span> -->
-<!--                         </h2> -->
-<!--                         <ul class="divided"> -->
-<!--                            <li> -->
-<!--                               <article class="box post-summary"> -->
-<!--                                  <h3> -->
-<!--                                     <a href="#content1">VARIETY</a> -->
-<!--                                  </h3> -->
-<!--                               </article> -->
-<!--                            </li> -->
-<!--                            <li> -->
-<!--                               <article class="box post-summary"> -->
-<!--                                  <h3> -->
-<!--                                     <a href="#content2">PLAY</a> -->
-<!--                                  </h3> -->
-<!--                               </article> -->
-<!--                            </li> -->
-<!--                            <li> -->
-<!--                               <article class="box post-summary"> -->
-<!--                                  <h3> -->
-<!--                                     <a href="#content3">ESCAPE</a> -->
-<!--                                  </h3> -->
-<!--                               </article> -->
-<!--                            </li> -->
-<!--                            <li> -->
-<!--                               <article class="box post-summary"> -->
-<!--                                  <h3> -->
-<!--                                     <a href="#content4">STORY</a> -->
-<!--                                  </h3> -->
-<!--                               </article> -->
-<!--                            </li> -->
-<!--                         </ul> -->
-<!--                      </section> -->
+                     <!--                      <section> -->
+                     <!--                         <h2 class="major"> -->
+                     <!--                            <span>Posts</span> -->
+                     <!--                         </h2> -->
+                     <!--                         <ul class="divided"> -->
+                     <!--                            <li> -->
+                     <!--                               <article class="box post-summary"> -->
+                     <!--                                  <h3> -->
+                     <!--                                     <a href="#content1">VARIETY</a> -->
+                     <!--                                  </h3> -->
+                     <!--                               </article> -->
+                     <!--                            </li> -->
+                     <!--                            <li> -->
+                     <!--                               <article class="box post-summary"> -->
+                     <!--                                  <h3> -->
+                     <!--                                     <a href="#content2">PLAY</a> -->
+                     <!--                                  </h3> -->
+                     <!--                               </article> -->
+                     <!--                            </li> -->
+                     <!--                            <li> -->
+                     <!--                               <article class="box post-summary"> -->
+                     <!--                                  <h3> -->
+                     <!--                                     <a href="#content3">ESCAPE</a> -->
+                     <!--                                  </h3> -->
+                     <!--                               </article> -->
+                     <!--                            </li> -->
+                     <!--                            <li> -->
+                     <!--                               <article class="box post-summary"> -->
+                     <!--                                  <h3> -->
+                     <!--                                     <a href="#content4">STORY</a> -->
+                     <!--                                  </h3> -->
+                     <!--                               </article> -->
+                     <!--                            </li> -->
+                     <!--                         </ul> -->
+                     <!--                      </section> -->
 
 
                   </div>
@@ -229,25 +231,25 @@
                            <h2>STORY</h2>
                            <p>Story of Savior</p>
                         </header>
-                             
+
                         <br>
-                        <section id="content1" class="box feature" >
-                        <a class="image featured">
-                           <img src="<%=pjName%>/resources/images/story1.png" alt=""
-                              style="width:190px; height:190px;"  /></a>
+                        <section id="content1" class="box feature">
+                           <a class="image featured"> <img
+                              src="<%=pjName%>/resources/images/story1.png" alt=""
+                              style="width: 190px; height: 190px;" /></a>
                            <h4 style="font-family: GangwonEdu_OTFBoldA;" align="left">
                               방탈출은 다양한 요소들이 조화를 이뤄 만들어지는 하나의 작품입니다.<br /> SoS의 이야기는 다채롭습니다.
-                              크게 5가지로 나누어진 큰 갈래에 여러가지의 이야기를 담은 가지들을 내려 <br/>  오랜 시간 저희와 함께 할 수 있게 준비했습니다.<br/> 
-                              SoS 는 저희가 각자의 분야에서 정성스레 준비한 공간에 여러분이라는 가장 중요한
-                              마지막 조각으로 이야기를 채워 <br /> 완성시키는 과정을 나누고 싶어 만들어진 브랜드입니다.<br /> 여러분과 SoS,
-                              우리가 만들어낼 온전한 이야기를 기대하며 항상 연구하고 준비하고 있겠습니다.<br />
+                              크게 5가지로 나누어진 큰 갈래에 여러가지의 이야기를 담은 가지들을 내려 <br /> 오랜 시간 저희와 함께
+                              할 수 있게 준비했습니다.<br /> SoS 는 저희가 각자의 분야에서 정성스레 준비한 공간에 여러분이라는
+                              가장 중요한 마지막 조각으로 이야기를 채워 <br /> 완성시키는 과정을 나누고 싶어 만들어진 브랜드입니다.<br />
+                              여러분과 SoS, 우리가 만들어낼 온전한 이야기를 기대하며 항상 연구하고 준비하고 있겠습니다.<br />
                            </h4>
                         </section>
 
                         <section id="content2" class="box feature">
-                        <a class="image featured">
-                           <img src="<%=pjName%>/resources/images/story2.png" alt=""
-                              style="width:190px; height:190px; justify-content: center; align-items: center; display: flex;" /></a>
+                           <a class="image featured"> <img
+                              src="<%=pjName%>/resources/images/story2.png" alt=""
+                              style="width: 190px; height: 190px; justify-content: center; align-items: center; display: flex;" /></a>
                            <h3 style="font-family: GangwonEdu_OTFBoldA;" align="left">
                               SoS는 현재에 안주하지 않고 새로움을 향해 늘 도전합니다. 여러분들의 믿음이 있기에 쉬운 길을 가지 않고
                               더디더라도 제대로 합니다.<br /> 행복을 선사하는 놀이문화를 위해, 우리는 지금도 노력합니다.<br />
@@ -255,10 +257,10 @@
                         </section>
 
                         <section id="content3" class="box feature">
-                        <a class="image featured">
-                           <img src="<%=pjName%>/resources/images/story3.png" alt=""
-                              style="width:190px; height:190px; justify-content: center; align-items: center; display: flex;" />
-                        </a>
+                           <a class="image featured"> <img
+                              src="<%=pjName%>/resources/images/story3.png" alt=""
+                              style="width: 190px; height: 190px; justify-content: center; align-items: center; display: flex;" />
+                           </a>
                            <h3 style="font-family: GangwonEdu_OTFBoldA;" align="left">
                               보편화 되고 상용화 되어 있는 기존의 방탈출에서 새롭게 변화된 방탈출을 만들어 보고 싶었습니다.<br />
                               ‘탈출러에게 조금 더 변화된 조금 더 다른 방탈출을 느끼게 할 수 없을까？’ 라는 물음을 시작해 SoS를 만들게
@@ -269,22 +271,17 @@
                         </section>
 
                         <section id="content4" class="box feature">
-                        <a class="image featured">
-                           <img src="<%=pjName%>/resources/images/story4.png" alt=""
-                              style="width:190px; height:190px; justify-content: center; align-items: center; display: flex;"/></a>
+                           <a class="image featured"> <img
+                              src="<%=pjName%>/resources/images/story4.png" alt=""
+                              style="width: 190px; height: 190px; justify-content: center; align-items: center; display: flex;" /></a>
                            <h3 style="font-family: GangwonEdu_OTFBoldA;" align="left">
-                              S.tory<br /> o.f<br /> S.avior<br /><br /> 'SoS'는 방탈출을 진심으로 좋아하는
-                              사람들이 모여 만든 공간입니다.<br /> 구원자의 이야기, 우리가 빠져들게 될 그 이야기의 주인공은 항상
-                              여러분입니다.<br /> 여러 차원에서 일어나는 일들을 차곡차곡 하나씩 해결해 나아가는 여러분들의 이야기를
-                              모아, 이 곳에 담아두었습니다.<br /> 저희 SoS Escape에서 여러가지 이야기들의 주인공이 되어 각 이야기들의
-                              구원자가 되시길 바랍니다. <br />
-                              <br />
-                              <br />
-                              <br />
-                              <br />
-                              <br />
-                              <br />
-                              
+                              S.tory<br /> o.f<br /> S.avior<br /> <br /> 'SoS'는 방탈출을
+                              진심으로 좋아하는 사람들이 모여 만든 공간입니다.<br /> 구원자의 이야기, 우리가 빠져들게 될 그 이야기의
+                              주인공은 항상 여러분입니다.<br /> 여러 차원에서 일어나는 일들을 차곡차곡 하나씩 해결해 나아가는
+                              여러분들의 이야기를 모아, 이 곳에 담아두었습니다.<br /> 저희 SoS Escape에서 여러가지 이야기들의
+                              주인공이 되어 각 이야기들의 구원자가 되시길 바랍니다. <br /> <br /> <br /> <br />
+                              <br /> <br /> <br />
+
                            </h3>
                         </section>
 
@@ -292,10 +289,7 @@
 
                   </div>
                </div>
-               <br />
-               <br />
-               <br />
-               <br />
+               <br /> <br /> <br /> <br />
                <div class="col-12">
 
                   <!-- Features -->
@@ -310,13 +304,15 @@
                               <!-- Feature -->
                               <section class="box feature">
                                  <a href="" class="image featured"><img
-                                    src="<%=pjName%>/resources/images/storyProfile.jpg" width="200" height="250" alt="" /></a>
+                                    src="<%=pjName%>/resources/images/telsun.png" width="200"
+                                    height="250" alt="" /></a>
                                  <h3>
                                     <a href="#">SEUNGMIN KIM</a>
                                  </h3>
                                  <p style="font-family: GangwonEdu_OTFBoldA;">
-                                    KOSMO 명실상부 최고의 강사님. <br /> 프로젝트 준비에 많은 도움을 주시고 꿀팁들을 쏙쏙 정리하여
-                                    전수해주셨습니다!<br /> 감사합니다! :)
+                                    KOSMO 명실상부 최고의 강사님. <br> 프로젝트 준비에 많은 도움을 주시고 <br>꿀팁들을
+                                    쏙쏙 전수해 주셨습니다!<br> 우유 빛깔 김승민 코딩천재 김승민<br> 뽀에버
+                                    감사합니다.
                                  </p>
                               </section>
 
@@ -326,13 +322,14 @@
                               <!-- Feature -->
                               <section class="box feature">
                                  <a href="#" class="image featured"><img
-                                    src="<%=pjName%>/resources/images/storyProfile.jpg" width="200" height="250" alt="" /></a>
+                                    src="<%=pjName%>/resources/images/telred2.png" width="200"
+                                    height="250" alt="" /></a>
                                  <h3>
                                     <a href="#">SARANG YE</a>
                                  </h3>
-                                 <p style="font-family: GangwonEdu_OTFBoldA;">1조에서 나이를 맡고
-                                    있습니다. <br />S.o.S의 전반적인 무드와 테마 설정 및 디자인에 참여하였고 코딩을 느낌만 싹 줬습니다.<br />
-                                    재동아 소윤아 고마워 사랑해 움쪽쪽</p>
+                                 <p style="font-family: GangwonEdu_OTFBoldA;">1조에서 기강을
+                                    담당하고 있습니다.<br /> S.o.S의 전반적인 무드와 테마 설정 및<br /> 디자인에 참여하였고 Board와 QnA를<br /> 만들어
+                                    냈습니다. 재동아 소윤아<br /> 고마워 사랑해 움쪽쪽</p>
                               </section>
 
                            </div>
@@ -341,13 +338,16 @@
                               <!-- Feature -->
                               <section class="box feature">
                                  <a href="#" class="image featured"><img
-                                    src="<%=pjName%>/resources/images/storyProfile.jpg" width="200" height="250" alt="" /></a>
+                                    src="<%=pjName%>/resources/images/telpur2.png" width="200"
+                                    height="250" alt="" /></a>
                                  <h3>
                                     <a href="#">SOYUN KIM</a>
                                  </h3>
-                                 <p style="font-family: GangwonEdu_OTFBoldA;">1조에서 의젓함을 맡고있습니다.<br />
-                                    S.o.S의 어쩌고 저쩌고를 했고 이거저거 건드려서 데이터 연결 했습니다.<br />
-                                    각자 하고 싶은 말 쓰시면 됩니다!! 룰루랄라!!</p>
+                                 <p style="font-family: GangwonEdu_OTFBoldA;">
+                                    1조에서 미모를 맡고 있습니다.<br /> S.o.S의 로그인 파트와 마이페이지<br> 관리자
+                                    테마관리 위주로 담당했습니다. <br /> 약 3주라는 시간동안 서로 싸우지 않고 편하게 작업할 수 있어서
+                                    좋았습니다.
+                                 </p>
                               </section>
 
                            </div>
@@ -356,13 +356,15 @@
                               <!-- Feature -->
                               <section class="box feature">
                                  <a href="#" class="image featured"><img
-                                    src="<%=pjName%>/resources/images/storyProfile.jpg" width="200" height="250" alt="" /></a>
+                                    src="<%=pjName%>/resources/images/telyel2.png" width="200"
+                                    height="250" alt="" /></a>
                                  <h3>
                                     <a href="#">JAEDONG KIM</a>
                                  </h3>
-                                 <p style="font-family: GangwonEdu_OTFBoldA;">1조에서 막내를 맡고있습니다.<br />
-                                 S.o.S의 어쩌고 저쩌고를 했고 이거저거 건드려서 데이터 연결 했습니다.<br />
-                                    각자 하고 싶은 말 쓰시면 됩니다!! 룰루랄라!!</p>
+                                 <p style="font-family: GangwonEdu_OTFBoldA;">
+                                    1조에서 막내를 맡고 있습니다.<br /> S.o.S의 핵심 기능인 테마 예약 부분을 뚝딱뚝딱 만들어
+                                    냈습니다. 반복문이 너무 쉬워져버린 나, 비정상인가요? <br /> 1조와 함께해서 행복했습니다.
+                                 </p>
                               </section>
 
                            </div>
@@ -377,15 +379,15 @@
       </section>
 
 
-    <!-- Footer -->
+      <!-- Footer -->
       <footer id="footer">
          <div class="container">
             <div class="row gtr-200">
                <div class="col-12">
 
                   <!-- About -->
-                 
-                     
+
+
 
                </div>
                <div class="col-12">
@@ -402,7 +404,7 @@
                               class="label">Twitter</span></a></li>
                         <li><a class="icon brands fa-instagram" href="#"><span
                               class="label">Instagram</span></a></li>
-                     
+
                      </ul>
                   </section>
 

@@ -12,6 +12,12 @@
       <link rel="stylesheet" href='<%=pjName%>/resources/assets/css/main.css' />
       <link rel="stylesheet" href='<%=pjName%>/resources/assets/css/qna.css' />
       
+<!-- alert창 -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+
+      
       <!-- Favicon -->
         <link rel="icon" href='<%=pjName%>/resources/images/favicon.ico'> 
 
@@ -30,7 +36,7 @@
     
       <hr>
       <!-- 1. 폼태그에 속성 추가  -->
-      <form action="savetheme.do"  method='post' enctype="multipart/form-data"> 
+      <form action="savetheme.do"  method='post' enctype="multipart/form-data" id="formSave"> 
          <table border="1" cellpadding="0" cellspacing="0" >
             <!-- 2. 각 항목에  name 맞추기 -->
 <!--             <tr> -->
@@ -81,7 +87,7 @@
             
             <!-- 추가항목 끝 -->
             <tr>
-               <td colspan="2" align="center"><input type="submit"   value="테마 등록"   id="regiok"/></td>
+               <td colspan="2" align="center"><input type="button"   value="테마 등록"   id="regiok"/></td>
             </tr>
             
          </table>
@@ -98,12 +104,27 @@
 <script type="text/javascript">
 	
     $("#regiok").click(function() {
-    	var result = confirm('등록하시겠습니까?');
-
-    	  if(!result){
-    		  return false;
-    		  }
-     })
+    	Swal.fire({
+            title: '등록하시겠습니까?',
+            text: "",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#b1ddab',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '등록'
+          }).then((result) => {
+            if (result.isConfirmed) {
+            	Swal.fire({
+                    title : '등록 성공',
+                    text : '테마가 등록되었습니다.',
+                    icon : 'success',
+                    confirmButtonColor: '#b1ddab'
+                  }).then((result) => {
+                	  $("#formSave").submit();
+                   })//END THEN
+            }//end if
+          })//END THEN
+     });
       
      
    </script>

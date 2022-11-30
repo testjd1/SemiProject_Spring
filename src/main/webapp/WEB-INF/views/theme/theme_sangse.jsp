@@ -203,12 +203,18 @@
       $("#reservationgo").click(function() {
          var k = "<%=session.getAttribute("loginId")%>" 
          if(k!="null"){
-            Swal.fire("예약페이지","예약 페이지로 이동하겠습니다.","success").then(function(){
+        	 Swal.fire({title : "접근 확인",
+ 		  		text : "예약 페이지로 이동하겠습니다.",
+ 		  		icon : "success",
+ 		  		confirmButtonColor: '#b1ddab'}).then(function(){
                location.href='/sosBoard/reservation/reservation.do?picture=${theme.picture}';
             })
          }
          if(k=="null"){
-            Swal.fire("접근불가!","로그인 후 이용가능 합니다.","error")
+        	 Swal.fire({title : "접근 불가",
+ 		  		text : "로그인 후 이용가능 합니다.",
+ 		  		icon : "error",
+ 		  		confirmButtonColor: '#d33'});
             return false;
          }
       });

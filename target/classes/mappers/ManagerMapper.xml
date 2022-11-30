@@ -25,21 +25,21 @@ order by regdate asc
       resultType="kosmo.javassem.domain.ManagerVO">
    select sum(total) total 
    from reservation 
-   where regdate like '%-11-%' and branch = '홍대'
+   where  branch = '홍대'
    </select>
    
      <select id="totalBranchA" 
       resultType="kosmo.javassem.domain.ManagerVO">
    select sum(total) total 
    from reservation 
-   where regdate like '%-11-%' and branch = '안양'
+   where  branch = '안양'
    </select>
    
      <select id="totalBranchG" 
       resultType="kosmo.javassem.domain.ManagerVO">
    select sum(total) total 
    from reservation 
-   where regdate like '%-11-%' and branch = '구미'
+   where  branch = '구미'
    </select>
    
    <select id="totalBranchT" 

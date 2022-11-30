@@ -200,32 +200,8 @@
 
 
 
-
-            <!-- 주의사항 div -->
-
-            <div class="alertsize">
-               <section class=alertsec style ="text-align:center";>
-                  
-                  <span style=" font-family: GangwonEdu_OTFBoldA; justify-content: center; align-items: center; display: flex; font-size: 32px;">예약시 주의 사항</span>
-                  <br> <br> <img
-                     src="<%=pjName%>/resources/images/rev1.PNG" alt="" />
-                        <br>   <br>   <br>
-
-
-
-
-
-               </section>
-            </div>
-
-
-
-
-
-
-
-            <!-- 테이블 div -->
-            <div class="tablesize">
+			 <!-- 테이블 div -->
+			        <div class="tablesize">
                <section class='revsec'>
                   <h1 class='title' style="font-family: GangwonEdu_OTFBoldA;">
                      <br> <span
@@ -333,8 +309,31 @@
 
                </section>
             </div>
+                  <br>  <br>  <br>
+            <!-- 주의사항 div -->
+
+            <div class="alertsize">
+               <section class=alertsec style ="text-align:center";>
+                  
+                  <span style=" font-family: GangwonEdu_OTFBoldA; justify-content: center; align-items: center; display: flex; font-size: 32px;">예약시 주의 사항</span>
+                  <br> <br> <img
+                     src="<%=pjName%>/resources/images/rev1.PNG" alt="" />
+                        <br>   <br>   <br>
+
+
+               </section>
+            </div>
+
+
+
+
+
+
+
+           
+     
            </div> 
-                   <br>  <br>  <br>
+             
 
 
   
@@ -475,31 +474,62 @@
          var diftime = Math.floor((date.getTime() - datecheck.getTime())/(1000*60*60*24)); // 오늘 날짜 - 선택한 값 , 0>= 일경우 정상, +일경우 부적합
          
          if(diftime>0){
-            Swal.fire("선택한 날에 이용이 불가능합니다.","날짜를 똑바로 입력해주세요 ! ","error");            
+        	 Swal.fire({
+                 title : '날짜 선택 오류',
+                 text : '날짜를 똑바로 선택해주세요! 선택하신 날은 이용이 불가능합니다.',
+                 icon : 'error',
+                 confirmButtonColor: '#d33'
+               });            
             return false;
          }
        /* 유효성 검사 ( 시간 ) */
        var time = $("input[type=radio][name=time]:checked").val();        // 클릭한 시간
       // alert(time);
-       if(time==null){
-          Swal.fire("예약 불가","시간을 선택해주세요 ! ","error");
+       if(time==undefined){
+    	   Swal.fire({
+               title : '예약 불가',
+               text : '시간을 선택해주세요 !',
+               icon : 'error',
+               confirmButtonColor: '#d33'
+             });
           return false;
        }
+       
+       var inputname = $(".inputname").val();
+       // alert(inputname);
+        if(inputname == ""){
+        	Swal.fire({
+                title : '예약 불가',
+                text : '이름을 입력해주세요 !',
+                icon : 'error',
+                confirmButtonColor: '#d33'
+              });
+            return false;
+        }
+        var inputtel = $(".inputtel").val();
+       // alert(inputname);
+        if(inputtel == ""){
+        	Swal.fire({
+                title : '예약 불가',
+                text : '연락처를 입력해주세요 !',
+                icon : 'error',
+                confirmButtonColor: '#d33'
+              });
+            return false;
+        }
+       
+       Swal.fire({
+           title : '예약 성공',
+           text : '예약이 완료되었습니다! MY PAGE에서 확인하실 수 있습니다!',
+           icon : 'success',
+           confirmButtonColor: '#b1ddab'
+         }).then((result) => {
+         if (result.isConfirmed) {
+            $("#insert-reservation").submit()
+            }
+          });            
+       
       }) // 예약하기 버튼 end
-      
-     $("#reservation").click(function(){ 
-//            Swal.fire("예약 완료",'예약 완료되었습니다!',"success").then(function(){
-//               $("#insert-reservation").submit();
-//            });
-        Swal.fire("예약 완료",'예약 완료되었습니다!',"success").then((result) => {
-            if (result.isConfirmed) {
-               $("#insert-reservation").submit()
-               }
-             });
-             
-          
-     })
-      
       
       $("#peoplecount").on("change",function(){ // 인원 수 변경시 total값 바로 변경
          
@@ -518,7 +548,12 @@
          // alert(date);
          
          if(date=="Invalid Date"){
-            Swal.fire("선택 불가","날짜를 먼저 선택해주세요.","error");
+        	 Swal.fire({
+                 title : '선택 불가',
+                 text : '날짜를 먼저 선택해주세요.',
+                 icon : 'error',
+                 confirmButtonColor: '#d33'
+               });
             return false;
          }
       }) // 시간 버튼 event end
@@ -564,6 +599,34 @@
       console.log(this.value);
       this.value = autoHypenPhone( this.value ) ;  
     }
+    /*날짜 1 start */
+    var regdate = document.getElementById('regdate');
+    var todaydate = new Date();
+    var year=todaydate.getFullYear();
+    var month =todaydate.getMonth() + 1;
+    var date = todaydate.getDate();
+  /*
+    alert(year);
+    alert(month);
+    alert(date);
+   */
+
+    if(month>=10){
+       month = month;
+    }
+    if(month <10){
+       month = '0' + month;
+    }
+
+    var changedate =year +'-'+month+'-'+date;
+    // alert(changedate1);   //'2022-11-28'
+
+    regdate.setAttribute("min", changedate);
+
+  
+
+
+    /* 날짜 1 end*/
       
       
 

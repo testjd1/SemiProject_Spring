@@ -149,10 +149,16 @@
 			enctype="multipart/form-data">
 			<table border="1" cellpadding="0" cellspacing="0">
 				<!-- 2. 각 항목에  name 맞추기 -->
+				<c:if test='${sessionScope.loginId=="admin"}'>
+				<tr>
+					<td width="70">공지체크</td>
+					<td align="left"><input type="checkbox" name='ping' class='ping' style='zoom:1.5;'/></td>
+				</tr>
+				</c:if>
 				<tr>
 					<td width="70">제목</td>
-					<td align="left"><input type="text" name='title'
-						placeholder="15자 이내로 설정해주세요." /></td>
+					<td align="left"><input type="text" name='title' maxlength='15'
+						placeholder="15자 이내로 설정해주세요." required/></td>
 				</tr>
 				<tr>
 					<td>작성자</td>
@@ -161,13 +167,13 @@
 				</tr>
 				<tr>
 					<td>내용</td>
-					<td align="left"><textarea cols="40" rows="10" name='content'></textarea></td>
+					<td align="left"><textarea cols="40" rows="10" name='content' required></textarea></td>
 				</tr>
 				<!-- 추가항목 시작 -->
 				<tr>
 					<td>비밀번호</td>
 					<td align="left"><input type="text" name='pass'
-						placeholder="글 삭제시 사용되니 본인만 아는 비밀번호로 설정하세요!" /></td>
+						placeholder="글 삭제시 사용되니 본인만 아는 비밀번호로 설정하세요!" required/></td>
 				</tr>
 
 				<!-- 추가항목 끝 -->
@@ -193,5 +199,7 @@
 		src="<%=pjName%>/resources/https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<!-- login  js 추가-->
 	<script src="<%=pjName%>/resources/assets/js/login.js"></script>
+	
+
 </body>
 </html>

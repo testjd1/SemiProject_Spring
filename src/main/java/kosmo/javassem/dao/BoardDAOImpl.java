@@ -63,7 +63,23 @@ public class BoardDAOImpl implements BoardDAO{
 		return mybatis.selectList("BoardDAO.listboard", vo);
 	}
 	
+	// 공지사항
+	public List<BoardVO> notice(){
+		System.out.println("===> Mybatis notice() 호출");
+		return mybatis.selectList("BoardDAO.notice");
+	}
+	// 공지사항 글보기
+	public BoardVO getBoardg(BoardVO vo) {
+		System.out.println("===> Mybatis getBoardg() 호출");
+		return (BoardVO) mybatis.selectOne("BoardDAO.getBoardg", vo);
+	}
 	
+	
+	// 공지 글 입력하기
+		public void insertBoard2(BoardVO vo) {
+			System.out.println("===> Mybatis insertBoard2() 호출");	
+			mybatis.insert("BoardDAO.insertBoard2", vo);
+		}
 	
 
 }

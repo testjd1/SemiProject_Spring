@@ -44,6 +44,12 @@
 <link rel="stylesheet" href='<%=pjName%>/resources/assets/css/main.css'>
 <!-- <link rel ="stylesheet" href='resources/css/test.css'> -->
 
+<!-- alert창 -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+
+
        <!-- Favicon -->
         <link rel="icon" href='<%=pjName%>/resources/images/favicon.ico'> 
 
@@ -228,10 +234,15 @@
       <script type="text/javascript">
       $("#deleteCheck").click(function() {
          var k = "<%=session.getAttribute("loginId")%>" 
-         if(k=="null"){
-            alert("로그인 후 이용가능 합니다.")
-            return false;
-         } 
+         if (k == "null") {
+				Swal.fire({
+	                title : '접근 불가',
+	                text : '로그인 후 이용가능 합니다.',
+	                icon : 'warning',
+	                ButtonColor: '#d33'
+	              })
+				return false;
+			}
    
       })//end   
       </script>

@@ -110,7 +110,7 @@
                <li><a class="btn" href="../customer/logout.do">Logout</a></li>
             </c:if>
             <c:if test='${sessionScope.loginId=="admin"}'>
-               <li><a href="../reservation/getReservationList.do?userid=${sessionScope.loginId}">Mypage</a></li>
+               <li><a href="../reservation/mypageM.do?userid=${sessionScope.loginId}">Mypage</a></li>
                <li><a class="btn" href="../customer/logout.do">Logout</a></li>
             </c:if>
 
@@ -515,11 +515,26 @@
 
       var t = '${sok}';
       if (t == '1') {
-         Swal.fire('회원가입이 완료되었습니다!','로그인창을 통해 로그인해주세요.','success');
+         Swal.fire({
+             title : '회원가입 완료!',
+             text : '로그인창을 통해 로그인해주세요.',
+             icon : 'success',
+             confirmButtonColor: '#b1ddab'
+           });
       } else if (t == '9') {
-         Swal.fire('중복된 아이디입니다.','다른 아이디를 입력해주세요!','error');
+    	  Swal.fire({
+          title : '중복된 아이디입니다.',
+          text : '다른 아이디를 입력해주세요!',
+          icon : 'error',
+          confirmButtonColor: '#d33'
+        });
       } else if (t == '5') {
-         Swal.fire('로그인 오류!','아이디와 비밀번호를 다시 입력해주세요.','error');
+    	  Swal.fire({
+          title : '로그인 오류!',
+          text : '아이디와 비밀번호를 다시 입력해주세요.',
+          icon : 'error',
+          confirmButtonColor: '#d33'
+        });
       }
       
    </script>

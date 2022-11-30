@@ -13,7 +13,7 @@
 			</where>
 		</if>
 
-		ORDER BY picture asc
+		ORDER BY seq asc
 	</select>
 
 	<!-- 테마 상세 보기 -->

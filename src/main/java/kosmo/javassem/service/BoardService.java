@@ -11,7 +11,7 @@ public interface BoardService {
 	// CRUD 기능의 메소드 구현
 	// 글 등록
 	void insertBoard(BoardVO vo);
-
+	
 	// 글 수정
 	void updateBoard(BoardVO vo);
 
@@ -32,5 +32,13 @@ public interface BoardService {
 	
 	//게시글 목록 mypage에 출력
 	List<BoardVO> listboard(BoardVO vo);
+	
+	//공지글
+	List<BoardVO> notice();
+	
+	// 공지글 상세 조회
+		BoardVO getBoardg(BoardVO vo);
+	// 공지글 등록
+	void insertBoard2(BoardVO vo);	
 
 }

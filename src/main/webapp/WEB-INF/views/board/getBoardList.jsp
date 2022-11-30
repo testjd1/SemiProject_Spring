@@ -207,6 +207,22 @@
                        </tr>
                        </thead>
                        <tbody>
+                          <c:forEach items="${notice}" var="notice">
+                           <!-- 프라퍼티이름 변경 -->
+                       <tr>
+                          <td>${notice.seq }</td>
+                           <td align="left"><strong><a href="getBoard.do?seq=${notice.seq}" >
+                                    ${notice.title }</a></strong></td>
+                          <td>${notice.userid }</td>
+                          <td>${notice.regdate }</td>
+                          <c:if test="${sessionScope.loginId=='admin'}">
+                          <td><a href="../board/deleteBoardm.do?seq=${notice.seq}">
+                          <input type="button" value="delete"></a></td>
+                          </c:if>
+                       </tr>
+                          </c:forEach>
+                       </tbody>
+                       <tbody>
                           <c:forEach items="${list}" var="board">
                            <!-- 프라퍼티이름 변경 -->
                        <tr>
@@ -224,8 +240,7 @@
 
                        </tbody>
                     </table>
-                     <input type="button" id="insertBoard" name='insertBoard' value="write">            
-                    
+                     <input type="button" id="insertBoard" name='insertBoard' value="write" style="float:right;"> 
                  </div>
               </div>
                  
@@ -312,12 +327,22 @@
       $("#insertBoard").click(function() {
          var k = "<%=session.getAttribute("loginId")%>" 
          if(k!="null"){
-            Swal.fire("접근 허용","글쓰기 페이지로 이동합니다.",'success').then(function(){
+            Swal.fire({
+            		title : '접근 허용',
+                    text : '글쓰기 페이지로 이동합니다.',
+                    icon : 'success',
+                    confirmButtonColor: '#b1ddab'
+            }).then(function(){
               location.href='/sosBoard/board/saveBoard.do';
               })
          }
          if(k=="null"){
-            Swal.fire("접근 불가","로그인 후 이용가능 합니다.",'error')
+            Swal.fire({
+        		title : '접근 불가',
+                text : '로그인 후 이용가능 합니다.',
+                icon : 'error',
+                confirmButtonColor: '#d33'
+        })
             return false;
          } 
    

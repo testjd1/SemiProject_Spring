@@ -173,17 +173,18 @@
                     <div class="search-window" style="background : white;" >
                        <form action="../qna/getQnaList.do" method='get'>
                           <div class="search-wrap">
-                             <select name='searchType'>
+                             <select name='searchType' style="display : inline-block;">
                         <option value='n'>----</option>
                         <option value='t'>제목</option>
                         <option value="c">내용</option>
                         <option value="w">작성자</option>
                      </select>
-                             <input id="keywordInput" type="text" name="keywordInput" placeholder="검색어를 입력해주세요." >
-                            <button id="searchBtn" type="button">search</button>
+                             <input id="keywordInput" type="text" name="keywordInput" placeholder="검색어를 입력해주세요." style="display : inline-block;">
+                            <button id="searchBtn" type="button" >search</button>
                          <script>
                            $(function(){
                              $('#searchBtn').click(function() {
+                            	 
                                self.location = "../qna/getQnaList.do" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
                              });
                            });   
@@ -223,14 +224,14 @@
                           <td>${qnaList.regdate }</td>
                           <c:if test="${sessionScope.loginId=='admin'}">
                                    <td><a href="../qna/deleteBoardm.do?seq=${qnaList.seq}">
-                                   <input type="button" value="delete"></a></td>
+                                   <input type="button" value="delete" ></a></td>
                                </c:if>
                        </tr>
                           </c:forEach>
 
                        </tbody>
                     </table>
-                          <input type="button" id="saveQna" name='saveQna' value="write">
+                          <input type="button" id="saveQna" name='saveQna' value="write" style="float:right;">
                           
                           
                <!-- 페이징 -->  
@@ -325,12 +326,22 @@
       $("#saveQna").click(function() {
          var k = "<%=session.getAttribute("loginId")%>" 
          if(k!="null"){
-            Swal.fire("접근 허용","글쓰기 페이지로 이동합니다.",'success').then(function(){
+        	 Swal.fire({
+         		title : '접근 허용',
+                 text : '글쓰기 페이지로 이동합니다.',
+                 icon : 'success',
+                 confirmButtonColor: '#b1ddab'
+         }).then(function(){
               location.href='/sosBoard/qna/saveQna.do';
               })
          }
          if(k=="null"){
-            Swal.fire("접근 불가","로그인 후 이용가능 합니다.",'error')
+        	 Swal.fire({
+         		title : '접근 불가',
+                 text : '로그인 후 이용가능 합니다.',
+                 icon : 'error',
+                 confirmButtonColor: '#d33'
+         })
             return false;
          } 
    

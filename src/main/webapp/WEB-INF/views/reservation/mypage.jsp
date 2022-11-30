@@ -178,21 +178,21 @@
                         </div>
                         <div class="listContainer"></div>
                         <div class="infoContainer">
-                           <a href="#" class="item">
+                           <a href="../board/getBoardList.do" class="item">
                               <div>
                                  <i class="fa-solid fa-circle-info"></i>
                               </div>
                               <div style="font-family: GangwonEdu_OTFBoldA;">공지사항</div>
-                           </a> <a href="#" class="item">
+                           </a> <a href="../board/getBoard.do?seq=10000" class="item" >
                               <div>
                                  <i class="fa-solid fa-face-smile"></i>
                               </div>
                               <div style="font-family: GangwonEdu_OTFBoldA;">이용안내</div>
-                           </a> <a href="#" class="item">
+                           </a> <a href="#" class="item" id ="gogak">
                               <div>
                                  <i class="fa-solid fa-phone"></i>
                               </div>
-                              <div style="font-family: GangwonEdu_OTFBoldA;">고객센터</div>
+                              <div  style="font-family: GangwonEdu_OTFBoldA;">고객센터</div>
                            </a>
                         </div>
                      </div>
@@ -398,22 +398,30 @@
             text: "예약을 취소할 시 모든 정보가 삭제됩니다!",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
+            confirmButtonColor: '#b1ddab',
             cancelButtonColor: '#d33',
             confirmButtonText: '예약 취소'
           }).then((result) => {
             if (result.isConfirmed) {
-              Swal.fire(
-                '취소 성공',
-                '예약이 취소되었습니다.',
-                'success'
-              ).then((result) => {
+              Swal.fire({
+                title : '취소 성공',
+                text : '예약이 취소되었습니다.',
+                icon : 'success',
+                confirmButtonColor: '#b1ddab'
+              }).then((result) => {
                  location.href='../reservation/deleteReservation.do?seq='+$('#seq').text();
                    })//END THEN
             }//end if
           })//END THEN
 
       })//END CLICK
+      
+      $("#gogak").click(function(){
+    	  Swal.fire({title : "접근 불가",
+			  		text : "준비중인 서비스입니다.",
+			  		icon : "warning",
+			  		confirmButtonColor: '#d33'});
+      })
    </script>
 
 </body>

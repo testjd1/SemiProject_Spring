@@ -155,35 +155,35 @@
 					<!-- 2. 각 항목에  name 맞추기 -->
 					<tr>
 						<td width="70">제목</td>
-						<td align="left"><input type="text" name='b_title' /></td>
+						<td align="left"><input type="text" name='b_title' required/></td>
 					</tr>
 					<tr>
 						<td>작성자</td>
-						<td align="left"><input type="text" size="10" name='b_name' /></td>
+						<td align="left"><input type="text" size="10" name='b_name' required/></td>
 					</tr>
 					<tr>
 						<td>내용</td>
 						<td align="left"><textarea cols="40" rows="10"
-								name='b_content'></textarea></td>
+								name='b_content' required></textarea></td>
 					</tr>
 					<!-- 추가항목 시작 -->
 					<tr>
 						<td>이메일</td>
-						<td align="left"><input type="text" / name='b_email'></td>
+						<td align="left"><input type="text" / name='b_email' required></td>
 					</tr>
 					<tr>
 						<td>비밀번호</td>
-						<td align="left"><input type="text" name='b_pwd' /></td>
+						<td align="left"><input type="text" name='b_pwd' required/></td>
 					</tr>
 					<tr>
 						<td width="70">파일추가</td>
 						<td align="left"><input type="file" name='file'
-							maxlength="60" size="40"></td>
+							maxlength="60" size="40" required></td>
 					</tr>
 					<!-- 추가항목 끝 -->
 					<tr>
 						<td colspan="2" align="center"><input type="submit"
-							value=" 새글 등록 " /></td>
+							value=" 새글 등록 " required/></td>
 					</tr>
 				</table>
 			</form>

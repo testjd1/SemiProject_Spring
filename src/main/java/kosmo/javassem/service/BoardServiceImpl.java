@@ -52,5 +52,17 @@ public class BoardServiceImpl implements BoardService {
 		return boardDAO.listboard(vo);
 	}
 	
+	// 공지글
+	public List<BoardVO> notice(){
+		return boardDAO.notice();
+	}
 	
+	// 공지글 상세보기
+		public BoardVO getBoardg(BoardVO vo) {
+			return boardDAO.getBoardg(vo);
+		}
+		// 공지글 입력하기
+		public void insertBoard2(BoardVO vo) {
+			boardDAO.insertBoard2(vo);
+		}	
 }

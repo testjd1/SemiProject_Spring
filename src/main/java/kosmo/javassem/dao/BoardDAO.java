@@ -16,6 +16,10 @@ public interface BoardDAO {
 	public void deleteBoardm(BoardVO vo);
 	//글 상세보기
 	public BoardVO getBoard(BoardVO vo) ;
+	//공지글 상세보기
+	public BoardVO getBoardg(BoardVO vo) ;
+	
+	
 	//글 목록보기+검색+게시글 목록 조회
 	public List<BoardVO> getBoardList(SearchCriteria scri) ;
 	//게시글 총 갯수
@@ -23,4 +27,8 @@ public interface BoardDAO {
 	//게시글 목록 mypage에 출력
 	public List<BoardVO> listboard(BoardVO vo);
 	
+	// 공지사항
+	public List<BoardVO> notice();
+	// 공지 글 입력하기
+		public void insertBoard2(BoardVO vo);
 }

@@ -16,6 +16,11 @@
 <!-- main css -->
       <link rel="stylesheet" href='<%=pjName%>/resources/assets/css/main.css' />
       <link rel="stylesheet" href='<%=pjName%>/resources/assets/css/qna.css' />
+
+<!-- alert창 -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />      
       
       <!-- Favicon -->
         <link rel="icon" href='<%=pjName%>/resources/images/favicon.ico'> 
@@ -30,7 +35,7 @@
 	
 	<hr>
 	<!-- 1. 폼태그에 속성 추가  -->
-	<form action="updatetheme.do" method='post' enctype="multipart/form-data">
+	<form action="updatetheme.do" method='post' enctype="multipart/form-data" id="updateForm">
 		<input name="seq" type="hidden" value="${theme.seq}" />
 		<table border="1" cellpadding="0" cellspacing="0">
 			<!-- 2. 각 항목에  name 맞추기 -->
@@ -96,30 +101,62 @@
 
 		</table>
 		    
-		     <input type="submit" id='modiok' value="테마 수정"/>
+		     <input type="button" id='modiok' name='modiok' value="테마 수정"/>
 	</form>
 	<hr> 
 	
-     <a href="deletetheme.do?seq=${theme.seq}" id="delok" class="button" align="center">테마 삭제</a>
+     <a href="#" id="delok" class="button" align="center">테마 삭제</a>
 	 <a href="getthemelist.do" class="button" style="float: right;">테마 목록</a> <br>  <br>  <br>  <br> 
 	</div>
 
 	<script type="text/javascript">
 	
     $("#delok").click(function() {
-    	var result = confirm('삭제하시겠습니까?');
+    	Swal.fire({
+            title: '삭제하시겠습니까?',
+            text: "삭제할 시 모든 테마 정보가 삭제됩니다!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#b1ddab',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '삭제'
+          }).then((result) => {
+            if (result.isConfirmed) {
+            	Swal.fire({
+                    title : '삭제 성공',
+                    text : '테마가 삭제되었습니다.',
+                    icon : 'success',
+                    confirmButtonColor: '#b1ddab'
+                  }).then((result) => {
+                	  location.href="deletetheme.do?seq="+${theme.seq};
+                   })//END THEN
+            }//end if
+          })//END THEN
 
-    	  if(!result){
-    		  return false;
-    		  }
      })
       
     $("#modiok").click(function() {  
-    	var result = confirm('수정하시겠습니까?');
+    	Swal.fire({
+            title: '수정하시겠습니까?',
+            text: "수정할 시 모든 정보가 바뀐 이후로 저장됩니다!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#b1ddab',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '수정'
+          }).then((result) => {
+            if (result.isConfirmed) {
+            	Swal.fire({
+                    title : '수정 성공',
+                    text : '테마가 수정되었습니다.',
+                    icon : 'success',
+                    confirmButtonColor: '#b1ddab'
+                  }).then((result) => {
+                	  $("#updateForm").submit();
+                   })//END THEN
+            }//end if
+          })//END THEN
 
-    	  if(!result){
-    		  return false;
-    		  }
      }) 
      
      

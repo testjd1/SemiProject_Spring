@@ -35,13 +35,13 @@ public class BoardController {
 	// 글 목록 검색
 	@RequestMapping("/getBoardList.do")
 	public void getBoardList(@ModelAttribute("scri") SearchCriteria scri, Model m) {
-
+		m.addAttribute("notice",boardService.notice());
 		m.addAttribute("list", boardService.getBoardList(scri));
-
+		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(scri);
 		pageMaker.setTotalCount(boardService.listCount(scri));
-
+		
 		m.addAttribute("pageMaker", pageMaker);
 		// ViewResolver를 지정하지 않으면 아래처럼 페이지명 지정
 		// return "views/getBoardList.jsp"; // View 이름 리턴
@@ -50,7 +50,12 @@ public class BoardController {
 	// 글 등록
 	@RequestMapping(value = "/insertBoard.do", method = RequestMethod.POST)
 	public String insertBoard(BoardVO vo) throws IOException {
-		boardService.insertBoard(vo);
+		if(vo.getPing()==null) {
+			boardService.insertBoard(vo);
+		}
+		if(vo.getPing()!=null) {
+			boardService.insertBoard2(vo);
+		}
 		return "redirect:/board/getBoardList.do";
 	}
 
@@ -80,6 +85,13 @@ public class BoardController {
 	public void getBoard(BoardVO vo, Model model) {
 		BoardVO list = boardService.getBoard(vo);
 		model.addAttribute("board", list); // Model 정보 저장
+		
+		BoardVO listg = boardService.getBoardg(vo);
+		if(listg != null) {
+			model.addAttribute("board", listg); // Model 정보 저장
+		}
+		
+		
 	}
 
 	// my board 값 my page에 출력

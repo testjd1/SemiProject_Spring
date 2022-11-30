@@ -13,6 +13,6 @@ public class BoardVO {
     private String email;   // 이메일
     private String content; //내용
     private String pass;    //password
-    
+    private String ping;
    
 }
