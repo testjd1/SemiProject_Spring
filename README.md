@@ -90,3 +90,14 @@ check ::아래 것들 확인하기
 4. pom.xml 확인
 5. controller, mapper 확인
 6. ThemeVO 파일 경로 본인 웹서버 경로로 설정하기 (관리자 테마 등록 관련)
+![login](https://user-images.githubusercontent.com/112688190/205600123-c942ebc7-33af-436e-b60c-d4c62476befd.PNG)
+![qna](https://user-images.githubusercontent.com/112688190/205601830-784cd15e-9ad5-4f16-823d-5cf7ef033244.PNG)
+![관리자마이페이지](https://user-images.githubusercontent.com/112688190/205602147-727a16f3-d292-455e-a8a1-3199b947be63.png)
+![보드사진](https://user-images.githubusercontent.com/112688190/205602940-7e3df2ef-9d41-4d3d-b8e2-3fe1c138673d.png)
+![관리자테마관리목록상세ㅏ](https://user-images.githubusercontent.com/112688190/205603241-6d98f1aa-4d44-4357-84a2-4ed0251c7fab.PNG)
+![myboard](https://user-images.githubusercontent.com/112688190/205603375-d1b80ac7-e6aa-45f4-a595-6b787a790617.png)
+![myboard](https://user-images.githubusercontent.com/112688190/205603375-d1b80ac7-e6aa-45f4-a595-6b787a790617.png)
+![theme](https://user-images.githubusercontent.com/112688190/205603475-64d2f662-b8f9-4886-8374-fba6b2fdf5fd.PNG)
+![theme_sang](https://user-images.githubusercontent.com/112688190/205603541-e4049e12-fcc1-42f6-9ef4-2d968a22d589.PNG)
+![rev](https://user-images.githubusercontent.com/112688190/205603493-34e22d3e-41b9-4417-a75d-70cba6d5e7b9.PNG)
+![차트](https://user-images.githubusercontent.com/112688190/205603638-eaec57a0-dfc6-48d2-892f-4af7ce2c0a27.png)
