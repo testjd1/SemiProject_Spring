@@ -95,31 +95,41 @@ check ::아래 것들 확인하기
    
 =========관련 사진 업로드===================
 1. 로그인 페이지
+   
 ![login](https://user-images.githubusercontent.com/112688190/205600123-c942ebc7-33af-436e-b60c-d4c62476befd.PNG)
 
 2. Qna 페이지 ( 글 작성시 자동으로 비밀번호 걸림 )
+   
 ![qna](https://user-images.githubusercontent.com/112688190/205601830-784cd15e-9ad5-4f16-823d-5cf7ef033244.PNG)
 
 3. 보드 페이지 ( 댓글 작성자,관리자만 본인 댓글 삭제 가능 )
+   
 ![보드사진](https://user-images.githubusercontent.com/112688190/205602940-7e3df2ef-9d41-4d3d-b8e2-3fe1c138673d.png)
 
 4. 관리자 마이페이지 (예약기간 하루 미만 남았을 경우 예약 취소 불가능)
+   
 ![관리자마이페이지](https://user-images.githubusercontent.com/112688190/205602147-727a16f3-d292-455e-a8a1-3199b947be63.png)
 
 5. 관리자 테마 관리 페이지 ( 기존 등록 되어 있는 테마 수정 및 삭제 가능 )
+   
 ![관리자테마관리목록상세ㅏ](https://user-images.githubusercontent.com/112688190/205603241-6d98f1aa-4d44-4357-84a2-4ed0251c7fab.PNG)
 
 6. 관리자 보드 페이지 ( 작성 된 글들 관리 )
+   
 ![myboard](https://user-images.githubusercontent.com/112688190/205603375-d1b80ac7-e6aa-45f4-a595-6b787a790617.png)
 
 7. 테마 페이지 ( 전체 테마 목록 확인 )
+   
 ![theme](https://user-images.githubusercontent.com/112688190/205603475-64d2f662-b8f9-4886-8374-fba6b2fdf5fd.PNG)
 
 8. 테마 상세 페이지 ( 각 테마별 상세 내용 확인 )
+   
 ![theme_sang](https://user-images.githubusercontent.com/112688190/205603541-e4049e12-fcc1-42f6-9ef4-2d968a22d589.PNG)
 
 9. 예약 페이지 ( 소비자 예약 페이지 )
+   
 ![rev](https://user-images.githubusercontent.com/112688190/205603493-34e22d3e-41b9-4417-a75d-70cba6d5e7b9.PNG)
 
 10. 차트 페이지 ( 지점, 기간, 장르, 시간 별 차트 )
+   
 ![차트](https://user-images.githubusercontent.com/112688190/205603638-eaec57a0-dfc6-48d2-892f-4af7ce2c0a27.png)
