@@ -90,6 +90,9 @@ check ::아래 것들 확인하기
 4. pom.xml 확인
 5. controller, mapper 확인
 6. ThemeVO 파일 경로 본인 웹서버 경로로 설정하기 (관리자 테마 등록 관련)
+   
+<br>  
+   
 =========관련 사진 업로드===================
 1. 로그인 페이지
 ![login](https://user-images.githubusercontent.com/112688190/205600123-c942ebc7-33af-436e-b60c-d4c62476befd.PNG)
