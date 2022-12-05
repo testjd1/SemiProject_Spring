@@ -16,3 +16,13 @@ public class BoardVO {
     private String ping;
    
 }
+
+
+
+
+
+
+
+
+
+

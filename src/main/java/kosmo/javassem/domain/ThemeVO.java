@@ -110,7 +110,7 @@ public class ThemeVO {
          
          this.b_fsize = file.getSize();
          // 추 후에 파일 저장 위치를 서버의 경로를 얻어서 상대경로로 수정
-         File f = new File("C:\\Users\\kosmo\\Desktop\\작업용spring\\sosBoard\\src\\main\\webapp\\resources\\images\\"+ picture);
+         File f = new File("D:\\semi\\sosBoard\\src\\main\\webapp\\resources\\images\\"+ picture);
          try {
             file.transferTo(f);
          }catch(IllegalStateException|IOException e) {

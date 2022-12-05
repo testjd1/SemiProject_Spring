@@ -193,15 +193,14 @@
 
 
       <br> <br> <br> <br>
+      
+      <!--  form start -->
       <form method='post' id="insert-reservation"
          action="insertReservation.do">
          <div class='container'>
          
-
-
-
-			 <!-- 테이블 div -->
-			        <div class="tablesize">
+          <!-- 테이블 div -->
+                 <div class="tablesize">
                <section class='revsec'>
                   <h1 class='title' style="font-family: GangwonEdu_OTFBoldA;">
                      <br> <span
@@ -209,17 +208,10 @@
                         정보 입력</span>
                   </h1>
 
-
-
                   <table class="tablesize2"
                      style="width: 650px; height: 600px; margin-left: auto; margin-right: auto;">
                      <p style="font-family: GangwonEdu_OTFBoldA; font-size: 19px"></p>
-
-
-
                      <tbody style="font-family: GangwonEdu_OTFBoldA; font-size: 19px">
-
-
                         <tr>
                            <td style="height: 50px;">지점</td>
                            <td style="height: 50px;"><input type="text" value="${reservation.BRANCH}"
@@ -417,7 +409,35 @@
    <!--       type="text/javascript"></script> -->
 
    <script type="text/javascript">
-   
+   /*예약일 지정 start */
+   var regdate = document.getElementById('regdate'); // 예약일의 값
+   var todaydate = new Date();         // 현재 시간
+   var year=todaydate.getFullYear();   // 현재 년도
+   var month =todaydate.getMonth() + 1;   // 현재 달 ( 월 )
+   var date = todaydate.getDate();      // 현재 날짜
+ /*
+   alert(year);
+   alert(month);
+   alert(date);
+  */
+
+   if(month>=10){         // 달이 두 자리인경우 그대로 출력 
+      month = month;      // ex) 10 -> 10
+   }
+   if(month <10){         // 달이 한 자리인 경우 앞에 0을 붙여서 출력
+      month = '0' + month;   // ex ) 3 -> 03
+   }
+   if(date>=10){         // 날짜가 두 자리인 경우 그대로 출력
+      date=date;         // ex) 10 0 -> 10
+   }
+   if(date<10){            // 날짜가 한 자리인 경우 앞에 0을 붙여서 출력
+      date='0'+date;      // ex ) 3 -> 03
+   }
+
+   var changedate =year +'-'+month+'-'+date;   // 달력의 최솟값 지정을 위해 형태 변형
+  // alert(changedate);   //'2022-11-28'
+
+   regdate.setAttribute("min", changedate);
    function changeDate(e){      // 날짜 눌렀을때 function
      
       var regdate = e.target.value;          // 클릭한 값
@@ -426,7 +446,7 @@
             'regdate' : regdate      
                      };
      
-      $.ajax({
+      $.ajax({   // 날짜 변경 할때마다 예약 시간대 버튼 실시간으로 on/off
           type   : 'get',  //입력할꺼니까
           url    : 'reservedate.do',   //요청 받기 - controller *경로주의*
           data   : vo,
@@ -474,7 +494,7 @@
          var diftime = Math.floor((date.getTime() - datecheck.getTime())/(1000*60*60*24)); // 오늘 날짜 - 선택한 값 , 0>= 일경우 정상, +일경우 부적합
          
          if(diftime>0){
-        	 Swal.fire({
+            Swal.fire({
                  title : '날짜 선택 오류',
                  text : '날짜를 똑바로 선택해주세요! 선택하신 날은 이용이 불가능합니다.',
                  icon : 'error',
@@ -486,7 +506,7 @@
        var time = $("input[type=radio][name=time]:checked").val();        // 클릭한 시간
       // alert(time);
        if(time==undefined){
-    	   Swal.fire({
+          Swal.fire({
                title : '예약 불가',
                text : '시간을 선택해주세요 !',
                icon : 'error',
@@ -498,7 +518,7 @@
        var inputname = $(".inputname").val();
        // alert(inputname);
         if(inputname == ""){
-        	Swal.fire({
+           Swal.fire({
                 title : '예약 불가',
                 text : '이름을 입력해주세요 !',
                 icon : 'error',
@@ -509,7 +529,7 @@
         var inputtel = $(".inputtel").val();
        // alert(inputname);
         if(inputtel == ""){
-        	Swal.fire({
+           Swal.fire({
                 title : '예약 불가',
                 text : '연락처를 입력해주세요 !',
                 icon : 'error',
@@ -518,7 +538,7 @@
             return false;
         }
        
-       Swal.fire({
+       Swal.fire({      // 예약 성공 알림 창
            title : '예약 성공',
            text : '예약이 완료되었습니다! MY PAGE에서 확인하실 수 있습니다!',
            icon : 'success',
@@ -547,8 +567,8 @@
          // alert(time);
          // alert(date);
          
-         if(date=="Invalid Date"){
-        	 Swal.fire({
+         if(date=="Invalid Date"){      // 시간 클릭했을때, 날짜의 값이 없다면 알림창 발생
+            Swal.fire({
                  title : '선택 불가',
                  text : '날짜를 먼저 선택해주세요.',
                  icon : 'error',
@@ -599,29 +619,7 @@
       console.log(this.value);
       this.value = autoHypenPhone( this.value ) ;  
     }
-    /*날짜 1 start */
-    var regdate = document.getElementById('regdate');
-    var todaydate = new Date();
-    var year=todaydate.getFullYear();
-    var month =todaydate.getMonth() + 1;
-    var date = todaydate.getDate();
-  /*
-    alert(year);
-    alert(month);
-    alert(date);
-   */
-
-    if(month>=10){
-       month = month;
-    }
-    if(month <10){
-       month = '0' + month;
-    }
-
-    var changedate =year +'-'+month+'-'+date;
-    // alert(changedate1);   //'2022-11-28'
-
-    regdate.setAttribute("min", changedate);
+ 
 
   
 

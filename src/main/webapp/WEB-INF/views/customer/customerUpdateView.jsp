@@ -142,7 +142,7 @@
 							<div class="wrap">
 								<div class="greenContainer" style="height: auto; width: 1000px">
 									<div>
-										<div class="name">${sessionScope.loginId} 님환영합니다!</div>
+										<div class="name">${sessionScope.loginId}님 환영합니다!</div>
 									</div>
 
 								</div>

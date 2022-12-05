@@ -452,20 +452,18 @@
       $(document).ready(function() {
          $('.slider').bxSlider({
 
-            auto : true, //자동넘어감
-            controls : true,//좌우 화살표
-            autoControls : true, //stop,play 
-
-            pause : 5000,
-            speed : 500,
-            autoDelay : 0,
-            stopAutoOnclick : true,
-            slideWidth : 2000, //이미지 박스 크기설정 
-
-            autoHover : true,
-            minSlides : 1,
-            maxSlides : 1,
-            margin : 0
+            auto : true,              //자동넘어감
+            controls : true,          //좌우 화살표
+            autoControls : true,     //stop,play 
+            pause : 5000,             //슬라이더 속도 조절
+            speed : 500,             //슬라이더 속도 조절
+            autoDelay : 0,           //슬라이더 속도 조절
+            stopAutoOnclick : true,  //슬라이더 속도 조절
+            slideWidth : 2000,       //이미지 박스 크기설정 
+            autoHover : true,       //슬라이더 속도 조절
+            minSlides : 1,          //화면에 표시되는 최소 슬라이드 수
+            maxSlides : 1,         //화면에 표시되는 최대 슬라이드 수
+            margin : 0             //화면 옆 공백 조절
 
          });
       });

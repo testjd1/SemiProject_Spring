@@ -84,6 +84,9 @@ public class UserMemberController {
      }
      // ---user login end
       
+      
+      
+      
       public void logCustomer(String strToWrite, HttpSession session) {
         try {
            File myObj = new File("fileLog.txt");

@@ -185,8 +185,11 @@
             <li><span>권장 인원 :</span>${theme.peoplecount}명</li>
             <li><span>이용 지역 :</span>${theme.branch}</li>
             <li><span>설명 :</span>${theme.content}</li>
-            <li><a href="#" style="font-family: GangwonEdu_OTFBoldA;" id="reservationgo">예약</a></li>
-            <li><a href="../theme/theme.do" style="font-family: GangwonEdu_OTFBoldA;" id="reservationgo">전체 테마로 이동</a></li>
+<!--             <li><a href="#" style="font-family: GangwonEdu_OTFBoldA; width:15px; height:15px;" id="reservationgo" class="button" >예약</a></li><br> -->
+<!--             <li><a href="../theme/theme.do" style="font-family: GangwonEdu_OTFBoldA;" id="reservationgo" class="button">전체 테마로 이동</a></li> -->
+            <button type="button" id="reservationgo" style="font-family: GangwonEdu_OTFBoldA; ">예약</button>
+            <button type="button" id="reservationgo" onclick="location.href='../theme/theme.do';" style="font-family: GangwonEdu_OTFBoldA; ">전체 테마로 이동</button>
+            
          </ul>
        </div>
 
@@ -203,18 +206,18 @@
       $("#reservationgo").click(function() {
          var k = "<%=session.getAttribute("loginId")%>" 
          if(k!="null"){
-        	 Swal.fire({title : "접근 확인",
- 		  		text : "예약 페이지로 이동하겠습니다.",
- 		  		icon : "success",
- 		  		confirmButtonColor: '#b1ddab'}).then(function(){
+            Swal.fire({title : "접근 확인",
+               text : "예약 페이지로 이동하겠습니다.",
+               icon : "success",
+               confirmButtonColor: '#b1ddab'}).then(function(){
                location.href='/sosBoard/reservation/reservation.do?picture=${theme.picture}';
             })
          }
          if(k=="null"){
-        	 Swal.fire({title : "접근 불가",
- 		  		text : "로그인 후 이용가능 합니다.",
- 		  		icon : "error",
- 		  		confirmButtonColor: '#d33'});
+            Swal.fire({title : "접근 불가",
+               text : "로그인 후 이용가능 합니다.",
+               icon : "error",
+               confirmButtonColor: '#d33'});
             return false;
          }
       });

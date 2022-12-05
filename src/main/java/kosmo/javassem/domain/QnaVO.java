@@ -13,3 +13,14 @@ public class QnaVO {
     private String pass;    //password
 	
 }
+
+
+
+
+
+
+
+
+
+
+
