@@ -93,7 +93,7 @@ check ::아래 것들 확인하기
    
 <br>  
    
-=========관련 사진 업로드===================
+=========관련 사진 업로드=========
 1. 로그인 페이지
    
 ![login](https://user-images.githubusercontent.com/112688190/205600123-c942ebc7-33af-436e-b60c-d4c62476befd.PNG)
