@@ -72,7 +72,7 @@ spring (src) > main > webapp > start.jsp > ( ctrl + alt + F11 ) > run tomcat ser
 
 Product image at: (src) > main > webapp > resources > assets > img
 
-Error could occur saying step <=0 --> in that case, in views/index.jsp, change (step to step +1) or add the products before running index
+
 
 🏃 :: How to run :: 실행하기
 spring (src) > main > webapp > start.jsp > ( ctrl + alt + F11 )
